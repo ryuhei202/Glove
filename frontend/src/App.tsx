@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { Users } from './containers/Users_index';
+
+import { Top } from './containers/Top';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          react-typescript × ruby on rails-api
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+     
+     
+
+     <Routes>
+      <Route path='/' element={<Top />}/>
+      <Route path='/users' element={<Users/>}/>
+     </Routes>
+    </BrowserRouter>
+
+    </>
+     
+   
+   
   );
-}
+ }
 
 export default App;
