@@ -1,9 +1,11 @@
 3.times do |n|
-  user = User.create!(
+  user = User.new(
     name:"example_user_#{n}",
-    email:"eampleuser#{n+1}@gmail.com",
+    email:"eampleuuser#{n+1}@gmail.com",
     password:"foobar",
     password_confirmation:"foobar",
-    gender:1
+    gender:0
   )
+
+  user.save!
 end

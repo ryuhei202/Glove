@@ -2,10 +2,10 @@ module Api
   module V1
     class UsersController < ApplicationController
       def index
-        @users = User.all
+        users = User.all
 
         render json: {
-          users: @users
+          users: users
         }, status: :ok
       end
     end
