@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import { Users } from './containers/users';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Users } from './containers/Users';
 
 import { Top } from './containers/Top';
 

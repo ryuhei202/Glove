@@ -10,7 +10,18 @@ export const usersActionTypes = {
   FETCH_SUCCESS: 'FETCH_SUCCESS'
 }
 
-export const usersReducer = (state, action) => {
+type State = {
+  fetchState: string;
+  usersList: Array<object>
+}
+
+type Action = {
+  type: string;
+  payload?: any;
+}
+
+
+export const usersReducer = (state: State, action: Action) => {
   switch (action.type) {
     case usersActionTypes.FETCHING:
       return {

@@ -34,7 +34,7 @@ export const Users = () => {
   <>
     <p>ユーザー一覧ページです</p>
     {
-      state.usersList.map((user) =>
+      state.usersList.map((user: any) =>
         <div key={user.id}>
           {user.name}
         </div>
