@@ -7,6 +7,8 @@ export const Top = () => {
     <>
     <p>topページです</p>
     <Link to="/users">ユーザー一覧ページです</Link>
+    <br />
+    <Link to="/users/signup">ユーザー登録ページです</Link>
      
     </>
   )
