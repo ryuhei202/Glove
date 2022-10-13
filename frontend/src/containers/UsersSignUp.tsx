@@ -24,7 +24,7 @@ export const UsersSignUp = () => {
       name: data.name,
       gender: data.gender,
       email: data.email,
-      password: data.password,
+      password: data.password
     }).then(() => navigate('/users'))
   
    }  
@@ -56,6 +56,10 @@ export const UsersSignUp = () => {
         <h4>password: </h4>
         <input { ...register('password', { required: true })} />
         { errors.password && <span>Passwordを入力してください</span> } 
+        
+        {/* <h4>password_confirmation: </h4>
+        <input { ...register('password_confirmation', { required: true })} />
+        { errors.password_confirmation && <span>Passwordをもう一度入力してください</span> }  */}
         
         <div>
             <input type="submit" value="Submit"></input>

@@ -21,7 +21,7 @@ module Api
 
       def create
         @user = User.new(user_params)
-        if @user.save
+        if @user.save!
           render json: {
             user: @user
           }
@@ -42,12 +42,16 @@ module Api
       #   # end
       # end
 
-      private
+      wrap_parameters :user, include: [:name, :gender, :email, :password]
 
-        def user_params
-          params.require(:user).permit(:name, :gender, :email, :password)
+  private
+
+    def user_params
+      params.require(:user).permit(:name, :gender, :email, :password)
           
-        end
+  end
+
+  
 
 
 

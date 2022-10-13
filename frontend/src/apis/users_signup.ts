@@ -15,7 +15,7 @@ export const fetchpostUsers =(params:Inputs) => {
       name: params.name,
       email: params.email,
       gender: params.gender,
-      password: params.password ,
+      password: params.password
     }
   )
   .then(res => {
