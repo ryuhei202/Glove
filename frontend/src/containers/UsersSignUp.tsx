@@ -1,9 +1,13 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { fetchpostUsers } from "../apis/users_signup";
 
 type Inputs = {
   name: string;
+  gender: string;
   email: string;
+  password: string;
 };
 
 
@@ -11,11 +15,19 @@ type Inputs = {
 
 
 export const UsersSignUp = () => {
+  const navigate = useNavigate();
 
   const { register, handleSubmit, formState: { errors } } = useForm();     
 
-  const onSubmit:SubmitHandler<any> = (data) => { alert(data.email);
-  console.log(data) }  
+  const onSubmit:SubmitHandler<any> = (data) => { 
+    fetchpostUsers({
+      name: data.name,
+      gender: data.gender,
+      email: data.email,
+      password: data.password,
+    }).then(() => navigate('/users'))
+  
+   }  
 
   return (
     
@@ -31,7 +43,7 @@ export const UsersSignUp = () => {
           <option value="man">Man</option>
           <option value="woman">Woman</option>
         </select>
-        { errors.email && <span>genderを選択してください</span> } 
+        { errors.gender && <span>genderを選択してください</span> } 
 {/*          
         <h4>Nationality: </h4>
         <input { ...register('nationality', { required: true })} />
@@ -43,7 +55,7 @@ export const UsersSignUp = () => {
 
         <h4>password: </h4>
         <input { ...register('password', { required: true })} />
-        { errors.email && <span>Passwordを入力してください</span> } 
+        { errors.password && <span>Passwordを入力してください</span> } 
         
         <div>
             <input type="submit" value="Submit"></input>
