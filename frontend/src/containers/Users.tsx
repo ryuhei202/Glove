@@ -38,7 +38,7 @@ export const Users = () => {
       state.usersList.map((user: any) =>
         <div key={user.id}>
           {user.name}
-          <Link to={`/edit/${user.id}`}>編集</Link>
+          <Link to={`${user.id}/edit/`}>編集</Link>
         </div>
       )
     }

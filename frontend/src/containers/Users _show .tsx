@@ -31,7 +31,7 @@ export const UsersShow = () => {
 
 
   const onClickEdit = () => {
-    navigate('/:id/edit')
+    navigate('edit', {state: id})
   }
   
 
