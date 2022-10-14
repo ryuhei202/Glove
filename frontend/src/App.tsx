@@ -6,6 +6,7 @@ import { UsersShow } from './containers/Users _show '
 import { Top } from './containers/Top';
 
 import { UsersSignUp } from './containers/UsersSignUp';
+import { UsersEdit } from './containers/Users_edit';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
       <Route path='users' element={<Users/>}/>
       <Route path='users/:id' element={<UsersShow />}/>
       <Route path='users/signup' element={<UsersSignUp />}/>
-
+      <Route path='users/edit/:id' element={<UsersEdit />} />
      </Routes>
     </BrowserRouter>
 

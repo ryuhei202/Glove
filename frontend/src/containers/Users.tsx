@@ -1,6 +1,7 @@
 // ここではusers一覧を表示します。GET: /usersに反応
 
 import React, { useReducer, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { fetchUsers } from "../apis/users";
 
 import {
@@ -37,6 +38,7 @@ export const Users = () => {
       state.usersList.map((user: any) =>
         <div key={user.id}>
           {user.name}
+          <Link to={`/edit/${user.id}`}>編集</Link>
         </div>
       )
     }
