@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Users } from './containers/Users';
-import { UsersShow } from './containers/Users _show '
+import { UsersShow } from './containers/UsersShow '
 
 import { Top } from './containers/Top';
 
 import { UsersSignUp } from './containers/UsersSignUp';
-import { UsersEdit } from './containers/Users_edit';
+import { UsersEdit } from './containers/UsersEdit';
 
 function App() {
   return (

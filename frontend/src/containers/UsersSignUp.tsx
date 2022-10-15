@@ -3,12 +3,12 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { fetchpostUsers } from "../apis/users_signup";
 
-type Inputs = {
-  name: string;
-  gender: string;
-  email: string;
-  password: string;
-};
+// type Inputs = {
+//   name: string;
+//   gender: string;
+//   email: string;
+//   password: string;
+// };
 
 
   
@@ -26,6 +26,8 @@ export const UsersSignUp = () => {
       email: data.email,
       password: data.password
     }).then(() => navigate('/users'))
+
+    console.log(data)
   
    }  
 
@@ -64,7 +66,8 @@ export const UsersSignUp = () => {
         <div>
             <input type="submit" value="Submit"></input>
         </div>
-    </form></>
+    </form>
+    </>
    
   )
 }

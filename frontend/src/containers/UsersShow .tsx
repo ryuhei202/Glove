@@ -54,7 +54,7 @@ export const UsersShow = () => {
     <p>showページです</p>
     <ul>
       <li>name:{state?.name}</li>
-      <li>email:{state?.name}</li>
+      <li>email:{state?.email}</li>
       <li>gender:{state?.gender}</li>
       <li>self_introduction:{state?.self_introduction}</li>
     </ul>
