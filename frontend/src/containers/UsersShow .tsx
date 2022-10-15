@@ -2,6 +2,7 @@ import { match } from "assert";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchUsersShow } from "../apis/users_id";
+import { fetchUserDelete } from "../apis/user_delete";
 
 
 type Userstype = {
@@ -29,9 +30,19 @@ export const UsersShow = () => {
 
   const  { id } = useParams<{ id: any }>();
 
-
+//編集ボタンを押した際のアクション
   const onClickEdit = () => {
     navigate('edit', {state: id})
+  }
+
+  //消去ボタンを押した際のアクション
+  const onClickDelete = () => {
+    //deleteリクエスト
+    
+    fetchUserDelete(id).then(() => {
+      navigate('/users')
+    }    )
+
   }
   
 
@@ -60,6 +71,7 @@ export const UsersShow = () => {
     </ul>
 
     <button onClick={onClickEdit}>編集する</button>
+    <button onClick={onClickDelete}>ログアウトする</button>
   
      
     </>

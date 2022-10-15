@@ -45,6 +45,14 @@ module Api
         end
       end
 
+      def destroy
+        @user = User.find(params[:id])
+        @user.destroy!
+        render json: {
+          user: @user
+        }
+      end
+
 
       wrap_parameters :user, include: [:name, :gender, :email, :password, :self_introduction]
 
