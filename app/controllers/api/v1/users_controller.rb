@@ -32,33 +32,29 @@ module Api
         end
       end
 
-      # def create
-      #   @user = User.new(name: name, gender: gender, email: email, password: password )
-      #   @user.save
-      #   # if @user.save
-      #   #   redirect_to 'users/@user.id'
-      #   # else
-      #   #   render 'users/signup'
-      #   # end
-      # end
+      def update
+        @user = User.find(params[:id])
+        if @user.update!(user_params)
+          render json: {
+            user: @user
+          }
+        else
+          render json: {
+            errors: @user.errors
+          }, status: 422
+        end
+      end
 
-      wrap_parameters :user, include: [:name, :gender, :email, :password]
+
+      wrap_parameters :user, include: [:name, :gender, :email, :password, :self_introduction]
 
   private
 
     def user_params
-      params.require(:user).permit(:name, :gender, :email, :password)
+      params.require(:user).permit(:name, :gender, :email, :password, :self_introduction)
           
-  end
-
-  
-
-
-
-
-
-
     end
+  end
     
   end
 end
