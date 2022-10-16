@@ -4,6 +4,7 @@ import { usersSignUp } from "../urls";
 type Inputs = {
   name: string;
   gender: string;
+  language: string;
   email: string;
   password: string;
 };
@@ -15,6 +16,7 @@ export const fetchpostUsers =(params:Inputs) => {
       name: params.name,
       email: params.email,
       gender: params.gender,
+      language: params.language,
       password: params.password
     }
   )

@@ -54,12 +54,12 @@ module Api
       end
 
 
-      wrap_parameters :user, include: [:name, :gender, :email, :password, :self_introduction]
+      wrap_parameters :user, include: [:name, :gender, :language, :email, :password, :self_introduction]
 
   private
 
     def user_params
-      params.require(:user).permit(:name, :gender, :email, :password, :self_introduction)
+      params.require(:user).permit(:name, :gender, :language, :email, :password, :self_introduction)
           
     end
   end
