@@ -1,6 +1,8 @@
-const DEFAULT_API_LOCALHOST = 'http://localhost:3000/api/v1';
+const DEFAULT_API_LOCALHOST: string = 'http://localhost:3000/api/v1';
 
-export const usersIndex = `${DEFAULT_API_LOCALHOST}/users`;
+export const usersIndex: string = `${DEFAULT_API_LOCALHOST}/users`;
 export const usersShow = (userid: number) => `${DEFAULT_API_LOCALHOST}/users/${userid}`;
-export const usersSignUp = `${DEFAULT_API_LOCALHOST}/users`;
+export const usersSignUp: string = `${DEFAULT_API_LOCALHOST}/users`;
+export const usersLogin: string =  `${DEFAULT_API_LOCALHOST}/login`;
+export const usersLogout: string =  `${DEFAULT_API_LOCALHOST}/logout`;
 
