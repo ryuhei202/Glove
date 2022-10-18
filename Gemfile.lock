@@ -166,7 +166,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4)
-  rails_same_site_cookie
+  rails_same_site_cookie (~> 0.1.8)
   tzinfo-data
 
 RUBY VERSION

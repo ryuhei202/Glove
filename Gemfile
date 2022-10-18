@@ -8,7 +8,8 @@ gem "rails", "~> 7.0.4"
 
 gem 'bcrypt'
 
-gem "rails_same_site_cookie"
+# gem "rails_same_site_cookie"
+gem "rails_same_site_cookie", "~> 0.1.8"
 
 
 
