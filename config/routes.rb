@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       #  #topページのルーティング GET:"/"
         root 'top#index'
         resources :users
+
+        post   '/login',   to: 'sessions#create'
+        delete '/logout',  to: 'sessions#destroy'
     end
   end
  
