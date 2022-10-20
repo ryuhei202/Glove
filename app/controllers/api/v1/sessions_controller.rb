@@ -6,8 +6,9 @@ module Api
         user = User.find_by(email: params[:session][:email].downcase)
       
         # userが有効かつ、パスワードが正しいか
-        if user&.authenticate(params[:session][:password])
+        if user && user.authenticate(params[:session][:password])
           log_in user
+          remember user
           #params[:session][:remember_me] ? remember(user) : forget(user)
           render json: {}, status: :ok
         else
