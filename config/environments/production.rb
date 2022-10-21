@@ -25,8 +25,9 @@ Rails.application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
 
-  config.asset_host = "http://morning-tundra-39064.herokuapp.com"
-  config.assets.compile = true
+  # config.asset_host = "http://morning-tundra-39064.herokuapp.com"
+  # config.assets.compile = true
+  config.assets.compile = false
 # config.assets.initialize_on_precompile=false
 
   # Specifies the header that your server uses for sending files.
