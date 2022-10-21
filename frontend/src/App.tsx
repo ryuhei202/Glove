@@ -8,6 +8,7 @@ import { Top } from './containers/Top';
 import { UsersSignUp } from './containers/UsersSignUp';
 import { UsersEdit } from './containers/UsersEdit';
 import { UsersLogin } from './containers/UsersLogin';
+import { Page404 } from './containers/Page404';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route path='signup' element={<UsersSignUp />}/>
       <Route path='login' element={<UsersLogin />}/>
       <Route path='users/:id/edit' element={<UsersEdit />} />
+      <Route path='*' element={<Page404 />} />
      </Routes>
     </BrowserRouter>
 
