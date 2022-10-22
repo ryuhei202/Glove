@@ -27,7 +27,7 @@ Rails.application.configure do
 
   # config.asset_host = "http://morning-tundra-39064.herokuapp.com"
   # config.assets.compile = true
-  config.assets.compile = false
+  # config.assets.compile = false
 # config.assets.initialize_on_precompile=false
 
   # Specifies the header that your server uses for sending files.
