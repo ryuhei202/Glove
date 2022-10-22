@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: glove_development
+  database: glove_production
   username: glove
   password: Nasnas15
