@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Users } from './containers/Users';
 import { UsersShow } from './containers/UsersShow '
@@ -11,6 +11,11 @@ import { UsersLogin } from './containers/UsersLogin';
 import { Page404 } from './containers/Page404';
 
 function App() {
+
+  //ユーザーのログイン情報
+  const [loggedInStatus, setLoggedInStatus] = useState<string>("未ログイン")
+  const [user, setUser] = useState({})
+
   return (
     <>
     <BrowserRouter>
@@ -21,11 +26,11 @@ function App() {
 
       <Route path='/' element={<Top />}/>
 
-      <Route path='users' element={<Users/>}/>
-      <Route path='users/:id' element={<UsersShow />}/>
-      <Route path='signup' element={<UsersSignUp />}/>
-      <Route path='login' element={<UsersLogin />}/>
-      <Route path='users/:id/edit' element={<UsersEdit />} />
+      <Route path='users' element={<Users user={user} loggedInStatus={loggedInStatus} />}/>
+      <Route path='users/:id' element={<UsersShow user={user}loggedInStatus={loggedInStatus} />}/>
+      <Route path='signup' element={<UsersSignUp user={user}loggedInStatus={loggedInStatus} />}/>
+      <Route path='login' element={<UsersLogin user={user} loggedInStatus={loggedInStatus} />}/>
+      <Route path='users/:id/edit' element={<UsersEdit user={user}loggedInStatus={loggedInStatus} />} />
       <Route path='*' element={<Page404 />} />
      </Routes>
     </BrowserRouter>

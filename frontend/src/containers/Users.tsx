@@ -10,7 +10,9 @@ import {
   usersReducer,
 } from '../reducers/users';
 
-export const Users = () => {
+export const Users = (props:any) => {
+
+  
 
   const [state, dispatch] = useReducer(usersReducer, initialState);
 
@@ -34,6 +36,8 @@ export const Users = () => {
     
   <>
     <p>ユーザー一覧ページです</p>
+    <h2>ログイン状態: {props.loggedInStatus}</h2>
+
     {
       state.usersList.map((user: any) =>
         <div key={user.id}>

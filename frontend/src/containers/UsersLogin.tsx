@@ -4,7 +4,7 @@ import { fetchLoginUser } from "../apis/user_login";
 
 
 
-export const UsersLogin = () => {
+export const UsersLogin = (props:any) => {
 
   const navigate = useNavigate();
 
@@ -21,6 +21,7 @@ export const UsersLogin = () => {
   return (
     <>
   <p>ログインページです</p>
+  <h2>ログイン状態: {props.loggedInStatus}</h2>
   <form onSubmit={handleSubmit(onSubmit)}>
         <h4>Email: </h4>
         <input {...register('email', { required: true })} />

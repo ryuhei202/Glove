@@ -7,7 +7,7 @@ import { fetchpostUsers } from "../apis/users_signup";
   
 
 
-export const UsersSignUp = () => {
+export const UsersSignUp = (props:any) => {
   const navigate = useNavigate();
 
   const { register, handleSubmit, formState: { errors } } = useForm();     
@@ -27,6 +27,7 @@ export const UsersSignUp = () => {
     
     <>
    <p>ユーザー登録ページです</p>
+   <h2>ログイン状態: {props.loggedInStatus}</h2>
     <form onSubmit={handleSubmit(onSubmit)}>
         <h4>Name: </h4>
         <input {...register('name', { required: true })} />

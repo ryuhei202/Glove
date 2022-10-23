@@ -20,7 +20,7 @@ type Userstype = {
 
 
 
-export const UsersShow = () => {
+export const UsersShow = (props:any) => {
 
   const navigate = useNavigate();
 
@@ -63,6 +63,7 @@ export const UsersShow = () => {
   return (
     <>
     <p>showページです</p>
+    <h2>ログイン状態: {props.loggedInStatus}</h2>
     <ul>
       <li>name:{state?.name}</li>
       <li>email:{state?.email}</li>
