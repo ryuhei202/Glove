@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes,  } from 'react-router-dom';
 import { Users } from './containers/Users';
 import { UsersShow } from './containers/UsersShow '
 
@@ -16,6 +16,15 @@ function App() {
   const [loggedInStatus, setLoggedInStatus] = useState<string>("未ログイン")
   const [user, setUser] = useState({})
 
+  const handleLogin = (data:any) => {
+    setLoggedInStatus("ログインなう")
+    setUser(data.user)
+  }
+
+  // const navigate = useNavigate();
+
+  
+
   return (
     <>
     <BrowserRouter>
@@ -28,7 +37,7 @@ function App() {
 
       <Route path='users' element={<Users user={user} loggedInStatus={loggedInStatus} />}/>
       <Route path='users/:id' element={<UsersShow user={user}loggedInStatus={loggedInStatus} />}/>
-      <Route path='signup' element={<UsersSignUp user={user}loggedInStatus={loggedInStatus} />}/>
+      <Route path='signup' element={<UsersSignUp user={user}loggedInStatus={loggedInStatus} handleLogin={handleLogin} />}/>
       <Route path='login' element={<UsersLogin user={user} loggedInStatus={loggedInStatus} />}/>
       <Route path='users/:id/edit' element={<UsersEdit user={user}loggedInStatus={loggedInStatus} />} />
       <Route path='*' element={<Page404 />} />

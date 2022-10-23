@@ -14,8 +14,9 @@ module Api
         @user = User.find(params[:id])
 
         render json: {
-          user: @user
-        }, status: :ok
+          user: @user,
+          status: :ok
+        }
       end
 
 
@@ -25,7 +26,7 @@ module Api
           login!
           render json: {
             user: @user,
-            status: :created
+            status: :created,
           }
         else
           render json: {

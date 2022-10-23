@@ -10,6 +10,15 @@ import { fetchpostUsers } from "../apis/users_signup";
 export const UsersSignUp = (props:any) => {
   const navigate = useNavigate();
 
+  const handleSuccessfulAuthentication = (data:any) => {
+    // props.history.push("/dashboard")
+    // navigate()
+    props.handleLogin(data);
+    navigate('/users');
+
+
+}
+
   const { register, handleSubmit, formState: { errors } } = useForm();     
 
   const onSubmit:SubmitHandler<any> = (data) => { 
@@ -19,7 +28,18 @@ export const UsersSignUp = (props:any) => {
       language: data.language,
       email: data.email,
       password: data.password
-    }).then(() => navigate('/users'))
+    }).then(data => {
+
+      //ユーザー作成に成功した後の処理
+      // console.log(data)
+      if (data.status === 'created' ) {
+          handleSuccessfulAuthentication(data)
+        
+      }
+
+  }).catch(error => {
+    console.log("registration error", error)
+})
   
    }  
 
