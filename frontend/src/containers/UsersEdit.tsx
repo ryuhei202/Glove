@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { updateUser } from "../apis/users_update";
 
 
-export const UsersEdit= () => {
+export const UsersEdit= (props:any) => {
 
   const navigate = useNavigate();
 
@@ -39,6 +39,7 @@ console.log(state)
   return (
     <>
     <p>{state}の編集ページです</p>
+    <h2>ログイン状態: {props.loggedInStatus}</h2>
     <form onSubmit={handleSubmit(onSubmit)}>
         <h4>Name: </h4>
         <input {...register('name', { required: true })} />
