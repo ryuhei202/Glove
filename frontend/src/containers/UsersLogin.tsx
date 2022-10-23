@@ -15,7 +15,7 @@ export const UsersLogin = () => {
     fetchLoginUser({
       email:data.email,
       password:data.password
-    }).then()
+    }).then(() => navigate("/users"))
   }
 
   return (

@@ -31,6 +31,6 @@ module Glove
 
     config.middleware.use ActionDispatch::Cookies               # 追加する
     config.middleware.use ActionDispatch::Session::CookieStore  # 追加する
-    config.action_dispatch.cookies_same_site_protection = :none
+    config.action_dispatch.cookies_same_site_protection = nil
   end
 end
