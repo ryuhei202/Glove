@@ -12,7 +12,7 @@ export const fetchLoginUser =(params:Inputs) => {
     password:params.password,
    }, { withCredentials: true })
   .then(response => {
-    console.log(response);
+    return response.data
   })
   .catch(error => {
     console.log(error);

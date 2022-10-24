@@ -37,8 +37,8 @@ function App() {
 
       <Route path='users' element={<Users user={user} loggedInStatus={loggedInStatus} />}/>
       <Route path='users/:id' element={<UsersShow user={user}loggedInStatus={loggedInStatus} />}/>
-      <Route path='signup' element={<UsersSignUp user={user}loggedInStatus={loggedInStatus} handleLogin={handleLogin} />}/>
-      <Route path='login' element={<UsersLogin user={user} loggedInStatus={loggedInStatus} />}/>
+      <Route path='signup' element={<UsersSignUp user={user} loggedInStatus={loggedInStatus} handleLogin={handleLogin} />}/>
+      <Route path='login' element={<UsersLogin user={user} loggedInStatus={loggedInStatus} handleLogin={handleLogin} />}/>
       <Route path='users/:id/edit' element={<UsersEdit user={user}loggedInStatus={loggedInStatus} />} />
       <Route path='*' element={<Page404 />} />
      </Routes>

@@ -8,14 +8,34 @@ export const UsersLogin = (props:any) => {
 
   const navigate = useNavigate();
 
+  const handleSuccessfulAuthentication = (data:any) => {
+    // props.history.push("/dashboard")
+    // navigate()
+    props.handleLogin(data);
+    navigate('/users');
+
+
+}
+
   const { register, handleSubmit, formState: { errors } } = useForm();     
 
   const onSubmit:SubmitHandler<any> = (data) => {
 
     fetchLoginUser({
       email:data.email,
-      password:data.password
-    }).then(() => navigate("/users"))
+      password:data.password,
+    }).then(data => {
+
+      //ユーザー作成に成功した後の処理
+      if (data.status === 'created' ) {
+          handleSuccessfulAuthentication(data)
+          // console.log(props.loggedInStatus)
+        
+      }
+
+  }).catch(error => {
+    console.log("registration error", error)
+})
   }
 
   return (

@@ -9,7 +9,11 @@ module Api
         # userが有効かつ、パスワードが正しいか
         if @user && @user.authenticate(params[:session][:password])
           login!
-          render json: { logged_in: true, user: @user }, status: :ok
+          render json: { 
+            logged_in: true,
+            user: @user,
+            status: :created,
+                       }
         else
           render json: {  status: 401, errors: ['認証に失敗しました。', '正しいメールアドレス・パスワードを入力し直すか、新規登録を行ってください。'] }, status: :bad_request
         end
