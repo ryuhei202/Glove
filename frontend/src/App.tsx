@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes,  } from 'react-router-dom';
 import { Users } from './containers/Users';
 import { UsersShow } from './containers/UsersShow '
@@ -9,19 +9,47 @@ import { UsersSignUp } from './containers/UsersSignUp';
 import { UsersEdit } from './containers/UsersEdit';
 import { UsersLogin } from './containers/UsersLogin';
 import { Page404 } from './containers/Page404';
+import axios from 'axios';
+import { usersLoggedin } from './urls';
+
 
 function App() {
 
   //ユーザーのログイン情報
-  const [loggedInStatus, setLoggedInStatus] = useState<string>("未ログイン")
+   const [loggedInStatus, setLoggedInStatus] = useState<string>("未ログイン")
   const [user, setUser] = useState({})
 
-  const handleLogin = (data:any) => {
+   const handleLogin = (data:any) => {
     setLoggedInStatus("ログインなう")
     setUser(data.user)
   }
+ 
+//ログイン状態をチェックできるサイクルを作成
+  useEffect(() => {
+    checkLoginStatus()
+  })
 
-  // const navigate = useNavigate();
+
+   const checkLoginStatus = () => {
+    axios.get(usersLoggedin, { withCredentials: true }).then(
+
+    
+     response => {
+      if (response.data.logged_in && loggedInStatus === "未ログイン") {
+        setLoggedInStatus("ログインなう")
+        setUser(response.data.user)
+      } else if (!response.data.logged_in && loggedInStatus === "ログインなう") {
+        setLoggedInStatus("未ログイン")
+        setUser({})
+      }
+    }
+    ).catch(error => {
+      console.log("ログインエラー", error)
+    })
+  }
+    
+
+  
 
   
 

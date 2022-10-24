@@ -13,6 +13,7 @@ module Api
             logged_in: true,
             user: @user,
             status: :created,
+            session: session[:user_id]
                        }
         else
           render json: {  status: 401, errors: ['認証に失敗しました。', '正しいメールアドレス・パスワードを入力し直すか、新規登録を行ってください。'] }, status: :bad_request
@@ -26,7 +27,7 @@ module Api
       end
 
       def logged_in?
-        if @current_user
+        if current_user
             render json: { logged_in: true, user: @current_user }
         else
             render json: { logged_in: false, message: 'ユーザーが存在しません' }

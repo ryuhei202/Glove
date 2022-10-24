@@ -11,8 +11,10 @@ export const UsersLogin = (props:any) => {
   const handleSuccessfulAuthentication = (data:any) => {
     // props.history.push("/dashboard")
     // navigate()
+    console.log(data)
     props.handleLogin(data);
     navigate('/users');
+ 
 
 
 }
@@ -28,7 +30,9 @@ export const UsersLogin = (props:any) => {
 
       //ユーザー作成に成功した後の処理
       if (data.status === 'created' ) {
+        
           handleSuccessfulAuthentication(data)
+          
           // console.log(props.loggedInStatus)
         
       }
@@ -37,6 +41,8 @@ export const UsersLogin = (props:any) => {
     console.log("registration error", error)
 })
   }
+
+  
 
   return (
     <>

@@ -5,4 +5,5 @@ export const usersShow = (userid: number) => `${DEFAULT_API_LOCALHOST}/users/${u
 export const usersSignUp: string = `${DEFAULT_API_LOCALHOST}/users`;
 export const usersLogin: string =  `${DEFAULT_API_LOCALHOST}/login`;
 export const usersLogout: string =  `${DEFAULT_API_LOCALHOST}/logout`;
+export const usersLoggedin: string = `${DEFAULT_API_LOCALHOST}/logged_in`;
 
