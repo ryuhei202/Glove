@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_20_034414) do
-  create_table "massages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "room_id", null: false
-    t.bigint "user_id", null: false
-    t.text "massage", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_massages_on_room_id"
-    t.index ["user_id"], name: "index_massages_on_user_id"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2022_10_26_142544) do
   create_table "members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "room_id", null: false
     t.bigint "user_id", null: false
@@ -28,6 +18,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_034414) do
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_members_on_room_id"
     t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "room_id", null: false
+    t.bigint "user_id", null: false
+    t.text "massage", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -50,8 +50,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_034414) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "massages", "rooms"
-  add_foreign_key "massages", "users"
   add_foreign_key "members", "rooms"
   add_foreign_key "members", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
 end

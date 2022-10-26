@@ -70,6 +70,7 @@ function App() {
       <Route path='login' element={<UsersLogin user={user} loggedInStatus={loggedInStatus} handleLogin={handleLogin} />}/>
       <Route path='users/:id/edit' element={<UsersEdit user={user}loggedInStatus={loggedInStatus} />} />
       <Route path='chat' element={<Groupchat user={user} loggedInStatus={loggedInStatus}/>} />
+      
       <Route path='*' element={<Page404 />} />
      </Routes>
     </BrowserRouter>
