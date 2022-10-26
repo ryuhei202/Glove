@@ -11,6 +11,7 @@ import { UsersLogin } from './containers/UsersLogin';
 import { Page404 } from './containers/Page404';
 import axios from 'axios';
 import { usersLoggedin } from './urls';
+import { Groupchat } from './containers/Groupchat';
 
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
       <Route path='signup' element={<UsersSignUp user={user} loggedInStatus={loggedInStatus} handleLogin={handleLogin} />}/>
       <Route path='login' element={<UsersLogin user={user} loggedInStatus={loggedInStatus} handleLogin={handleLogin} />}/>
       <Route path='users/:id/edit' element={<UsersEdit user={user}loggedInStatus={loggedInStatus} />} />
+      <Route path='chat' element={<Groupchat user={user} loggedInStatus={loggedInStatus}/>} />
       <Route path='*' element={<Page404 />} />
      </Routes>
     </BrowserRouter>
