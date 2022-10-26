@@ -21,7 +21,7 @@ module Api
       end
 
       #logout機能
-      def delete
+      def destroy
         reset_session
         render json: { status: 200, logged_out: true }
       end

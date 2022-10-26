@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { fetchLogoutUser } from "../apis/users_logout";
 import { fetchLoginUser } from "../apis/user_login";
 
 
@@ -13,11 +14,15 @@ export const UsersLogin = (props:any) => {
     // navigate()
     console.log(data)
     props.handleLogin(data);
-    navigate('/users');
- 
-
-
+    navigate('/chat')
 }
+
+// const handleLogoutClick = () => {
+//   fetchLogoutUser()
+//   props.handleLogout()
+//   navigate("/")
+
+// }
 
   const { register, handleSubmit, formState: { errors } } = useForm();     
 
