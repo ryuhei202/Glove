@@ -7,4 +7,6 @@ export const usersLogin: string =  `${DEFAULT_API_LOCALHOST}/login`;
 export const usersLogout: string =  `${DEFAULT_API_LOCALHOST}/logout`;
 export const usersLoggedin: string = `${DEFAULT_API_LOCALHOST}/logged_in`;
 
+export const groupChat: string =  `${DEFAULT_API_LOCALHOST}/message`;
+
 

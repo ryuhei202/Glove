@@ -75,7 +75,7 @@ function App() {
       <Route path='signup' element={<UsersSignUp user={user} loggedInStatus={loggedInStatus} handleLogin={handleLogin} />}/>
       <Route path='login' element={<UsersLogin user={user} loggedInStatus={loggedInStatus} handleLogin={handleLogin} handleLogout={handleLogout}/>}/>
       <Route path='users/:id/edit' element={<UsersEdit user={user}loggedInStatus={loggedInStatus} />} />
-      <Route path='chat' element={<Groupchat user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout} />} />
+      <Route path='groupchat' element={<Groupchat user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout} />} />
 
       <Route path='*' element={<Page404 />} />
      </Routes>

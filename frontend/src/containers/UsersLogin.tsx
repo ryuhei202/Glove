@@ -14,7 +14,7 @@ export const UsersLogin = (props:any) => {
     // navigate()
     console.log(data)
     props.handleLogin(data);
-    navigate('/chat')
+    navigate('/groupchat')
 }
 
 // const handleLogoutClick = () => {
