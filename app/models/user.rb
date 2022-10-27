@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
-  has_many:members, dependent: :destroy
-  has_many:messages, dependent: :destroy
-  has_many:rooms, through: :members
+  has_many :members
+  has_many :messages
+  has_many :rooms, through: :members
  
   
   before_save { self.email = email.downcase }
