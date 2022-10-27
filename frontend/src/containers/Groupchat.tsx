@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { groupChatGet,  } from "../apis/groupchat_get";
 import { fetchLogoutUser } from "../apis/users_logout";
 
@@ -8,6 +8,13 @@ export const Groupchat = (props:any) => {
 
 
   const navigate = useNavigate();
+
+  const { search } = useLocation();
+  const query = new URLSearchParams(search);
+  console.log(query.get("language"));
+  
+
+  
 
 
 
@@ -25,7 +32,7 @@ const handleLogoutClick = () => {
 }
 
 useEffect(() => {
-  groupChatGet().then(res => {
+  groupChatGet(query.get("language")).then(res => {
     console.log(res)
   }).catch(error => {
     console.log(error)

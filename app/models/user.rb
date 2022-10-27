@@ -19,8 +19,6 @@ class User < ApplicationRecord
 
   enum gender: { man: 0, woman: 1 }
 
-  enum language: { japanese:0,chinese:1,english:2,russian:3,romanian:4,lithuania:5,latvian:6,portuguese:7,polish:8,bulgarian:9,french:10,finnish:11,hungarian:12,turkish:13,german:14,danish:15,czech:16,slovenian:17,slovakian:18,spanish:19,swedish:20,greek:21,dutch:22,estonian:23,ukrainian:24,indonesian:25,italian:26 }
-
   validates :gender, :language, presence: true, on: :create
 
   validates :self_introduction, length: { maximum: 500 }

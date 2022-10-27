@@ -6,7 +6,7 @@ module Api
           
             def show
       
-              users = User.where(params[:language])
+              users = User.where(language: params[:language])
               messages = []
       
               users.each do |user|
