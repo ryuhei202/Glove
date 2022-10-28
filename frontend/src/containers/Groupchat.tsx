@@ -5,9 +5,9 @@ import { fetchLogoutUser } from "../apis/users_logout";
 
 export const Groupchat = (props:any) => {
 
-  const [ messages, setMessages ] = useState({});
 
-  const [ users, setUsers ] = useState<any>();
+
+  const [ users, setUsers ] = useState<Array<string>>([]);
 
 
 
@@ -17,11 +17,6 @@ export const Groupchat = (props:any) => {
   const query = new URLSearchParams(search);
   console.log(query.get("language"));
   
-
-  
-
-
-
 const handleLogoutClick = () => {
   fetchLogoutUser().then(res => {
     console.log(res)
@@ -31,8 +26,6 @@ const handleLogoutClick = () => {
   }).catch(error => {
     console.log(error)
   })
-
-
 }
 
 useEffect(() => {
@@ -42,22 +35,25 @@ useEffect(() => {
     setUsers(res.usersnames);
   }).catch(error => {
     console.log(error)
-  })
+  },)
 
 
-})
+}, [])
 
 
-console.log(users)
 
 
   return (
     <>
     <p>グループチャットページです</p>
     <h2>ログイン状態: {props.loggedInStatus}</h2>
-    <h2>ユーザ一覧</h2>
+    <h2>ユーザ一覧:</h2>
     {
-
+      users.map((user:string, i: number) => {
+        return (
+          <h2 key={i}>{user}</h2>
+        )
+      })
     }
     
 
