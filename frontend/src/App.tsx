@@ -11,7 +11,7 @@ import { UsersLogin } from './containers/UsersLogin';
 import { Page404 } from './containers/Page404';
 import axios from 'axios';
 import { usersLoggedin } from './urls';
-import { Groupchat } from './containers/Groupchat';
+import { Groupchat } from './containers/Pages/Groupchat';
 
 
 function App() {

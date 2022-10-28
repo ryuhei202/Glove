@@ -1,12 +1,13 @@
 import { memo, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { groupChatGet,  } from "../apis/groupchat_get";
-import { fetchLogoutUser } from "../apis/users_logout";
+import { groupChatGet,  } from "../../apis/groupchat_get";
+import { fetchLogoutUser } from "../../apis/users_logout";
 
 export const Groupchat = (props:any) => {
 
 
 
+  const [ messages, setMessages ] = useState<Array<string>>([]);
   const [ users, setUsers ] = useState<Array<string>>([]);
 
 
@@ -33,6 +34,8 @@ useEffect(() => {
   groupChatGet(query.get("language")).then(res => {
     console.log(res.usersnames);
     setUsers(res.usersnames);
+    console.log(res.messages);
+    setMessages(res.messages);
   }).catch(error => {
     console.log(error)
   },)
@@ -52,6 +55,15 @@ useEffect(() => {
       users.map((user:string, i: number) => {
         return (
           <h2 key={i}>{user}</h2>
+        )
+      })
+    }
+
+<h2>chat:</h2>
+    {
+      messages.map((message:string, i: number) => {
+        return (
+          <h2 key={i}>{message}</h2>
         )
       })
     }

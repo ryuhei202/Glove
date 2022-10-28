@@ -4,25 +4,41 @@ module Api
     
     
           
-            def show
+            # def show
       
-              users = User.where(language: params[:language])
-              usersnames = users.map { |user| user[:name]}
+            #   users = User.where(language: params[:language])
+            #   usersnames = users.map { |user| user[:name]}
 
-              messages = []
+            #   messages = []
       
-              users.each do |user|
-                messages = user.messages
-              end
+            #   users.each do |user|
+            #     messages = user.messages
+            #   end
               
-              render json: {
-                usersnames: usersnames,
-                messages: messages,
-                status: :ok
-              }
+            #   render json: {
+            #     usersnames: usersnames,
+            #     messages: messages,
+            #     status: :ok
+            #   }
       
+            # end
+      
+
+            def create
+              message = Message.new(message_params)
+          
+              if message.save
+                render json: { status: 200, message: message }
+              else
+                render json: { status: 500, message: "作成に失敗しました" }
+              end
             end
-      
+          
+            private
+          
+              def message_params
+                params.permit(:room_id, :user_id, :message)
+              end
         
       
     end
