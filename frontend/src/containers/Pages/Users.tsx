@@ -2,13 +2,13 @@
 
 import React, { useReducer, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { fetchUsers } from "../apis/users";
+import { fetchUsers } from "../../apis/users";
 
 import {
   initialState,
   usersActionTypes,
   usersReducer,
-} from '../reducers/users';
+} from '../../reducers/users';
 
 export const Users = (props:any) => {
 

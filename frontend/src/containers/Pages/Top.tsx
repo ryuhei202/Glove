@@ -12,6 +12,8 @@ export const Top = (props:any) => {
     <Link to="/signup">ユーザー登録ページです</Link>
     <br />
     <Link to="/login">ログインページです</Link>
+    <br />
+    <Link to="/chatrooms">chatroom</Link>
      
     </>
   )

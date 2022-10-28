@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes,  } from 'react-router-dom';
-import { Users } from './containers/Users';
-import { UsersShow } from './containers/UsersShow '
+import { Users } from './containers/Pages/Users';
+import { UsersShow } from './containers/Pages/UsersShow '
 
-import { Top } from './containers/Top';
+import { Top } from './containers/Pages/Top';
 
-import { UsersSignUp } from './containers/UsersSignUp';
-import { UsersEdit } from './containers/UsersEdit';
-import { UsersLogin } from './containers/UsersLogin';
-import { Page404 } from './containers/Page404';
+import { UsersSignUp } from './containers/Pages/UsersSignUp';
+import { UsersEdit } from './containers/Pages/UsersEdit';
+import { UsersLogin } from './containers/Pages/UsersLogin';
+import { Page404 } from './containers/Pages/Page404';
 import axios from 'axios';
 import { usersLoggedin } from './urls';
 import { Groupchat } from './containers/Pages/Groupchat';
+import { ChatRooms } from './containers/Pages/ChatRooms';
+import { EachChatRoom } from './containers/Pages/EachChatRoom';
 
 
 function App() {
@@ -71,14 +73,24 @@ function App() {
       <Route path='/' element={<Top user={user} loggedInStatus={loggedInStatus} />}/>
 
       <Route path='users' element={<Users user={user} loggedInStatus={loggedInStatus} />}/>
+
       <Route path='users/:id' element={<UsersShow user={user}loggedInStatus={loggedInStatus} />}/>
+
       <Route path='signup' element={<UsersSignUp user={user} loggedInStatus={loggedInStatus} handleLogin={handleLogin} />}/>
+
       <Route path='login' element={<UsersLogin user={user} loggedInStatus={loggedInStatus} handleLogin={handleLogin} handleLogout={handleLogout}/>}/>
+
       <Route path='users/:id/edit' element={<UsersEdit user={user}loggedInStatus={loggedInStatus} />} />
+
       <Route path='groupchat' element={<Groupchat user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout} />} />
 
-      <Route path='*' element={<Page404 />} />
-     </Routes>
+      <Route path='chatrooms' element={<ChatRooms />}></Route>
+
+     <Route path='chatrooms/:id' element={<EachChatRoom />}></Route>
+
+     <Route path='*' element={<Page404 />} /></Routes>
+
+
     </BrowserRouter>
 
     </>

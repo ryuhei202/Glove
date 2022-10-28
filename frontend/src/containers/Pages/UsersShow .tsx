@@ -1,8 +1,8 @@
 // import { match } from "assert";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchUsersShow } from "../apis/users_id";
-import { fetchUserDelete } from "../apis/user_delete";
+import { fetchUsersShow } from "../../apis/users_id";
+import { fetchUserDelete } from "../../apis/user_delete";
 
 
 type Userstype = {

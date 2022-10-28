@@ -2,7 +2,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
-import { updateUser } from "../apis/users_update";
+import { updateUser } from "../../apis/users_update";
 
 
 export const UsersEdit= (props:any) => {
