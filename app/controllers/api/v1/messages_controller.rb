@@ -7,6 +7,8 @@ module Api
             def show
       
               users = User.where(language: params[:language])
+              usersnames = users.map { |user| user[:name]}
+
               messages = []
       
               users.each do |user|
@@ -14,7 +16,7 @@ module Api
               end
               
               render json: {
-                users: users,
+                usersnames: usersnames,
                 messages: messages,
                 status: :ok
               }

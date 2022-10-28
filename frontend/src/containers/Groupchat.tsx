@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { memo, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { groupChatGet,  } from "../apis/groupchat_get";
 import { fetchLogoutUser } from "../apis/users_logout";
 
 export const Groupchat = (props:any) => {
+
+  const [ messages, setMessages ] = useState({});
+
+  const [ users, setUsers ] = useState<any>();
 
 
 
@@ -32,20 +36,31 @@ const handleLogoutClick = () => {
 }
 
 useEffect(() => {
+
   groupChatGet(query.get("language")).then(res => {
-    console.log(res)
+    console.log(res.usersnames);
+    setUsers(res.usersnames);
   }).catch(error => {
     console.log(error)
   })
+
+
 })
 
 
+console.log(users)
 
 
   return (
     <>
     <p>グループチャットページです</p>
     <h2>ログイン状態: {props.loggedInStatus}</h2>
+    <h2>ユーザ一覧</h2>
+    {
+
+    }
+    
+
     <button onClick={handleLogoutClick}>ログアウト</button>
 
     </>
