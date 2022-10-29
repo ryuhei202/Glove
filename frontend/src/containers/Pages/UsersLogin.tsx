@@ -32,7 +32,7 @@ export const UsersLogin = (props:any) => {
       email:data.email,
       password:data.password,
     }).then(data => {
-
+      console.log(data)
       //ユーザー作成に成功した後の処理
       if (data.status === 'created' ) {
         

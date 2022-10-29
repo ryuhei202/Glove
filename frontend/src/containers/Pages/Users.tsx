@@ -1,8 +1,9 @@
 // ここではusers一覧を表示します。GET: /usersに反応
 
 import React, { useReducer, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchUsers } from "../../apis/users";
+import { fetchLogoutUser } from "../../apis/users_logout";
 
 import {
   initialState,
@@ -13,8 +14,19 @@ import {
 export const Users = (props:any) => {
 
   
-
+const navigate = useNavigate();
   const [state, dispatch] = useReducer(usersReducer, initialState);
+
+  const handleLogoutClick = () => {
+    fetchLogoutUser().then(res => {
+      console.log(res)
+      props.handleLogout()
+      navigate("/")
+      
+    }).catch(error => {
+      console.log(error)
+    })
+  }
 
   useEffect(() => {
     dispatch({ type: usersActionTypes.FETCHING });
@@ -46,6 +58,7 @@ export const Users = (props:any) => {
         </div>
       )
     }
+    <button onClick={handleLogoutClick}>ログアウトする</button>
     </>
   )
 };

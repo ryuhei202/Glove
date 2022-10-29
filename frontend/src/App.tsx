@@ -41,9 +41,7 @@ function App() {
 
    const checkLoginStatus = () => {
     axios.get(usersLoggedin, { withCredentials: true }).then(
-
-    
-     response => {
+      response => {
       if (response.data.logged_in && loggedInStatus === "未ログイン") {
         setLoggedInStatus("ログインなう")
         setUser(response.data.user)
@@ -72,7 +70,7 @@ function App() {
 
       <Route path='/' element={<Top user={user} loggedInStatus={loggedInStatus} />}/>
 
-      <Route path='users' element={<Users user={user} loggedInStatus={loggedInStatus} />}/>
+      <Route path='users' element={<Users user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout}/>}/>
 
       <Route path='users/:id' element={<UsersShow user={user}loggedInStatus={loggedInStatus} />}/>
 
@@ -84,7 +82,7 @@ function App() {
 
       <Route path='groupchat' element={<Groupchat user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout} />} />
 
-      <Route path='chatrooms' element={<ChatRooms />}></Route>
+      <Route path='chatrooms' element={<ChatRooms user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout}/>}></Route>
 
      <Route path='chatrooms/:id' element={<EachChatRoom />}></Route>
 

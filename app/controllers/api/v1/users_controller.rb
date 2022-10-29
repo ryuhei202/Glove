@@ -23,7 +23,7 @@ module Api
       def create
         @user = User.new(user_params)
         if @user.save!
-          login!
+          login @user
           render json: {
             user: @user,
             status: :created,

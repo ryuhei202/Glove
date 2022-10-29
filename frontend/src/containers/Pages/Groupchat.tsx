@@ -34,8 +34,6 @@ useEffect(() => {
   groupChatGet(query.get("language")).then(res => {
     console.log(res.usersnames);
     setUsers(res.usersnames);
-    console.log(res.messages);
-    setMessages(res.messages);
   }).catch(error => {
     console.log(error)
   },)

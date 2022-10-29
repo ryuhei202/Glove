@@ -8,5 +8,6 @@ export const usersLogout: string =  `${DEFAULT_API_LOCALHOST}/logout`;
 export const usersLoggedin: string = `${DEFAULT_API_LOCALHOST}/logged_in`;
 
 export const groupChat = (language: any)  => `${DEFAULT_API_LOCALHOST}/message/${language}`;
+export const roomsIndex: string = `${DEFAULT_API_LOCALHOST}/rooms`;
 
 

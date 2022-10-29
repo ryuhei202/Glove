@@ -40,7 +40,7 @@ export const UsersShow = (props:any) => {
     //deleteリクエスト
     
     fetchUserDelete(id).then(() => {
-      navigate('/users')
+      navigate('/')
     }    )
 
   }
