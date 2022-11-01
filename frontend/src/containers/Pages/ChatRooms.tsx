@@ -37,7 +37,7 @@ export const ChatRooms = (props:any) => {
 
   const [loading, setLoading] = useState<boolean>(true)
 //グループチャットを取得？？
-  const [groupChatRooms, setGroupEachChatRooms] = useState([])
+  const [groupChatRooms, setGroupEachChatRooms] = useState()
   //個人チャットを取得
   const [chatRooms, setChatRooms] = useState([])
 
@@ -79,7 +79,9 @@ const navigate = useNavigate();
  {chatRooms.length > 0 ? (
   chatRooms.map((chatRoom:any, index: number) => {
     return (
-      <Link key={index} to={`/chatroom`}>{chatRoom.room.id}</Link>
+      <Link key={index} to={`/chatroom`}>
+        {chatRoom.room.id}:  {chatRoom.last_message === null ? "まだメッセージはありません。" : chatRoom.last_message.message.length > 30 ? chatRoom.last_message.message.substr(0, 30) + "..." : chatRoom.last_message.message}
+      </Link>
     )
   } ) ): (
     <p>トークルームがありません</p>
