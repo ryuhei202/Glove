@@ -13,7 +13,7 @@ module Api
             logged_in: true,
             user: current_user,
             status: :created,
-            session: current_user,
+            current_user: current_user,
             session_have:session_have?
                        }
         else
@@ -23,7 +23,7 @@ module Api
 
       #logout機能
       def destroy
-        log_out
+        log_out 
         render json: { status: 200, logged_out: true }
       end
 

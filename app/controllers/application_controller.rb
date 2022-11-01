@@ -4,24 +4,26 @@ class ApplicationController < ActionController::Base
 
   skip_before_action :verify_authenticity_token
 
-    helper_method :login, :current_user, :logged_in?, :log_out, :current_user?, :session_have?
+    helper_method :login, :current_user,  :logged_in_now?, :log_out,  :session_have?, 
 
     def login(user)
         session[:user_id] =  user.id    
     end
 
+   
 
     def current_user
-    
-        # #↓こいつ(session[:user_id])がnilになっていることが原因
-        if session[:user_id]
-            @current_user ||= User.find(session[:user_id]) 
-        # else
-        #     @current_user = User.find(17)
-        end
+        @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
-    def logged_in?
+
+    def log_out
+        reset_session
+        @current_user = nil
+    end
+
+
+    def logged_in_now?
         !@current_user.nil?
     end
 
@@ -29,12 +31,8 @@ class ApplicationController < ActionController::Base
         !session[:user_id].nil?
     end
 
-    def log_out
-        reset_session
-        @current_user = nil
-    end
+
+
   
-      def current_user?(user)
-        user && user == current_user
-      end
+  
 end
