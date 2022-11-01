@@ -6,7 +6,8 @@ module Api
         users = User.all
 
         render json: {
-          users: users
+          users: users,
+          session_have: session_have?,
         }, status: :ok
       end
 
@@ -23,7 +24,7 @@ module Api
       def create
         @user = User.new(user_params)
         if @user.save!
-          login @user
+          login(@user)
           render json: {
             user: @user,
             status: :created,

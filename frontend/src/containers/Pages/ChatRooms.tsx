@@ -40,6 +40,7 @@ export const ChatRooms = (props:any) => {
   const [eachChatRooms, setEachChatRooms] = useState([])
 
 const navigate = useNavigate();
+
   const handleGetChatRooms =  () => {
     getRooms().then((res)=> {
       console.log(res)

@@ -8,15 +8,16 @@ module Api
       
         # userが有効かつ、パスワードが正しいか
         if user && user.authenticate(params[:session][:password])
-          login user
+          login(user)
           render json: { 
             logged_in: true,
             user: current_user,
             status: :created,
-            session: current_user
+            session: current_user,
+            session_have:session_have?
                        }
         else
-          render json: {  status: 401, errors: ['認証に失敗しました。', '正しいメールアドレス・パスワードを入力し直すか、新規登録を行ってください。'] }, status: :bad_request
+          render json: {  status: 401, errors: ['認証に失敗しました。', '正しいメールアドレス・パスワードを入力し直すか、新規登録を行ってください。']}, status: :bad_request
         end
       end
 

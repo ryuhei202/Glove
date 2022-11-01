@@ -31,13 +31,15 @@ const navigate = useNavigate();
   useEffect(() => {
     dispatch({ type: usersActionTypes.FETCHING });
     fetchUsers()
-    .then((data) =>
+    .then((data) =>{
+      console.log(data);
       dispatch({
         type: usersActionTypes.FETCH_SUCCESS,
         payload: {
           users: data.users
         }
       })
+    }
     )
   }, [])
   

@@ -1,16 +1,19 @@
 class ApplicationController < ActionController::Base
   include ActionController::Cookies
 
+
   skip_before_action :verify_authenticity_token
 
-    helper_method :login!, :current_user, :logged_in?, :log_out, :session_have?
+    helper_method :login, :current_user, :logged_in?, :log_out, :current_user?, :session_have?
 
     def login(user)
-        session[:user_id] =  user.id
+        session[:user_id] =  user.id    
     end
 
+
     def current_user
-        #↓こいつ(session[:user_id])がnilになっていることが原因
+    
+        # #↓こいつ(session[:user_id])がnilになっていることが原因
         if session[:user_id]
             @current_user ||= User.find(session[:user_id]) 
         # else
@@ -27,8 +30,11 @@ class ApplicationController < ActionController::Base
     end
 
     def log_out
-        session.delete(:user_id)
+        reset_session
         @current_user = nil
-      end
+    end
   
+      def current_user?(user)
+        user && user == current_user
+      end
 end
