@@ -11,7 +11,7 @@ module Api
           login(user)
           render json: { 
             logged_in: true,
-            user: current_user,
+            user: user,
             status: :created,
             current_user: current_user,
             session_have:session_have?

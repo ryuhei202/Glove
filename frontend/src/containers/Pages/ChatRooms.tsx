@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getRooms } from "../../apis/rooms";
 import { fetchLogoutUser } from "../../apis/users_logout";
 
@@ -32,6 +32,8 @@ import { fetchLogoutUser } from "../../apis/users_logout";
 
 export const ChatRooms = (props:any) => {
 
+  const {state} = useLocation();
+  console.log(state);
 
   const [loading, setLoading] = useState<boolean>(true)
 //グループチャットを取得？？
@@ -42,7 +44,7 @@ export const ChatRooms = (props:any) => {
 const navigate = useNavigate();
 
   const handleGetChatRooms =  () => {
-    getRooms().then((res)=> {
+    getRooms(state.user.id).then((res)=> {
       console.log(res)
       setEachChatRooms(res)
     }).catch((error)=>{

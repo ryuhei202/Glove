@@ -14,15 +14,8 @@ export const UsersLogin = (props:any) => {
     // navigate()
     console.log(data)
     props.handleLogin(data);
-    navigate(`/chatrooms`)
+    navigate(`/chatrooms`,{state:data})
 }
-
-// const handleLogoutClick = () => {
-//   fetchLogoutUser()
-//   props.handleLogout()
-//   navigate("/")
-
-// }
 
   const { register, handleSubmit, formState: { errors } } = useForm();     
 

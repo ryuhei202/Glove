@@ -2,8 +2,8 @@ import axios from 'axios';
 import { roomsIndex } from '../urls/index'
 
 
-export const getRooms =() => {
-  return axios.get(roomsIndex)
+export const getRooms =(id:number) => {
+  return axios.get(roomsIndex,{params:{userId:id}})
   .then(res => {
     return res.data
   })
