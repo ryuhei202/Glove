@@ -20,7 +20,7 @@ module Api
             # 部屋の情報（相手のユーザーは誰か、最後に送信されたメッセージはどれか）をJSON形式で作成
             rooms << {
               room: room,
-              other_users: room.users.where.not(id: current_user.id),
+              other_users: room.users.where.not(id: user.id),
               last_message: room.messages[-1]
             }
           end
