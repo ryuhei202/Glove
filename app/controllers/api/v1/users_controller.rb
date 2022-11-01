@@ -26,9 +26,9 @@ module Api
         @user = User.new(user_params)
         if @user.save!
           login @user
-          remember @user
+          
           render json: {
-            user: @user,
+            user: current_user,
             status: :created,
           }
         else
