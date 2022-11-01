@@ -13,7 +13,6 @@ import axios from 'axios';
 import { usersLoggedin } from './urls';
 import { Groupchat } from './containers/Pages/Groupchat';
 import { ChatRooms } from './containers/Pages/ChatRooms';
-import { EachChatRoom } from './containers/Pages/EachChatRoom';
 
 
 function App() {
@@ -83,8 +82,6 @@ function App() {
       <Route path='groupchat' element={<Groupchat user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout} />} />
 
       <Route path='chatrooms' element={<ChatRooms user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout}/>}></Route>
-
-     <Route path='chatrooms/:id' element={<EachChatRoom />}></Route>
 
      <Route path='*' element={<Page404 />} /></Routes>
 

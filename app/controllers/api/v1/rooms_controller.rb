@@ -24,7 +24,7 @@ module Api
               last_message: room.messages[-1]
             }
           end
-        render json: { status: 200, rooms: rooms, session_have: session_have? } 
+        render json: { status: 200, rooms: rooms } 
       end
     
       def show

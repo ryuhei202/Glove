@@ -32,21 +32,21 @@ import { fetchLogoutUser } from "../../apis/users_logout";
 
 export const ChatRooms = (props:any) => {
 
-  const {state} = useLocation();
-  console.log(state);
+  const location = useLocation();
+  console.log(location);
 
   const [loading, setLoading] = useState<boolean>(true)
 //グループチャットを取得？？
   const [groupChatRooms, setGroupEachChatRooms] = useState([])
   //個人チャットを取得
-  const [eachChatRooms, setEachChatRooms] = useState([])
+  const [chatRooms, setChatRooms] = useState([])
 
 const navigate = useNavigate();
 
   const handleGetChatRooms =  () => {
-    getRooms(state.user.id).then((res)=> {
-      console.log(res)
-      setEachChatRooms(res)
+    getRooms(location.state.user.id).then((res)=> {
+      console.log(res);
+      setChatRooms(res.rooms);
     }).catch((error)=>{
       console.log(error)
     })
@@ -67,17 +67,31 @@ const navigate = useNavigate();
     handleGetChatRooms()
   }, []);
 
-  console.log(eachChatRooms);
+  console.log(chatRooms);
   // console.log(props.user)
 
   return (
     <>
-    <p>chatroom一覧です。</p>
-    <h2>ログイン状態: {props.loggedInStatus}</h2>
-    <h2>current_user:{props.user.name} </h2>
-    <button onClick={handleLogoutClick}>ログアウトする</button>
     
-    {}
+ <p>chatroom一覧です。</p>
+ <h2>ログイン状態: {props.loggedInStatus}</h2>
+ <h2>current_user:{props.user.name} </h2>
+ {chatRooms.length > 0 ? (
+  chatRooms.map((chatRoom:any, index: number) => {
+    return (
+      <Link key={index} to={`/chatroom`}>{chatRoom.room.id}</Link>
+    )
+  } ) ): (
+    <p>トークルームがありません</p>
+  )}
+ 
+
+<br />
+ <button onClick={handleLogoutClick}>ログアウトする</button>
+    
+   
+    
+    
     
     
     </>
