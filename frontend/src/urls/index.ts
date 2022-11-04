@@ -11,4 +11,6 @@ export const groupChat = (language: any)  => `${DEFAULT_API_LOCALHOST}/message/$
 export const roomsIndex = `${DEFAULT_API_LOCALHOST}/rooms`;
 export const eachRoomsIndex = (userid: number) => `${DEFAULT_API_LOCALHOST}/rooms/${userid}`;
 
+export const messageIndex: string = `${DEFAULT_API_LOCALHOST}/messages`;
+
 

@@ -102,8 +102,8 @@ export const UsersSignUp = (props:any) => {
         { errors.email && <span>Emailを入力してください</span> } 
 
         <h4>password: </h4>
-        <input { ...register('password', { required: true })} />
-        { errors.password && <span>Passwordを入力してください</span> } 
+        <input { ...register('password', { required: true,minLength: 6 })} />
+        { errors.password && <span>6文字以上のPasswordを入力してください</span> } 
         
         {/* <h4>password_confirmation: </h4>
         <input { ...register('password_confirmation', { required: true })} />
