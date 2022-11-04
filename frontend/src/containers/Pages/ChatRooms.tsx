@@ -79,7 +79,7 @@ const navigate = useNavigate();
  {chatRooms.length > 0 ? (
   chatRooms.map((chatRoom:any, index: number) => {
     return (
-    <Link key={index} to={`${chatRoom.other_users[0].id}`} state={{userId:chatRoom.other_users[0].id, roomId:chatRoom.room.id} }>
+    <Link key={index} to={`${chatRoom.room.id}`} state={{userId:chatRoom.other_users[0].id, roomId:chatRoom.room.id} }>
         {chatRoom.other_users[0].name}:  {chatRoom.last_message === null ? "まだメッセージはありません。" : chatRoom.last_message.message.length > 30 ? chatRoom.last_message.message.substr(0, 30) + "..." : chatRoom.last_message.message}
       </Link>
     )

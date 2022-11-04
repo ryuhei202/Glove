@@ -28,10 +28,12 @@ module Api
       end
     
       def show
-        other_user = @room.users.where.not(id: @current_user.id)
+        user = User.find(params[:userId])
+        
+        other_user = @room.users.where.not(id: user.id)
         messages = @room.messages.order("created_at ASC")
     
-        render json: { status: 200, other_user: other_user, messages: messages }
+        render json: { status: 200, other_user: other_user, messages: messages, room: @room }
       end
     
       private

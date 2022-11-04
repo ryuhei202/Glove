@@ -42,6 +42,7 @@ function App() {
    const checkLoginStatus = () => {
     axios.get(usersLoggedin, { withCredentials: true }).then(
       response => {
+        console.log(response);
       if (response.data.logged_in && loggedInStatus === "未ログイン") {
         setLoggedInStatus("ログインなう")
         setUser(response.data.user)
