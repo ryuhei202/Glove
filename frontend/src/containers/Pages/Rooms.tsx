@@ -8,7 +8,8 @@ const location = useLocation();
 console.log(location);
 
 const [loading, setLoading] = useState<boolean>(true)
-const [otherUser, setOtherUser] = useState<string>();
+
+const [otherUser, setOtherUser] = useState<any>([]);
 const [messages, setMessages] = useState<any>([]);
  
 useEffect(() => {
@@ -16,24 +17,34 @@ useEffect(() => {
 getEachRooms(location.state.roomId,location.state.userId).then((data)=>{
   console.log(data.messages)
   // console.log(data.other_user[0].name)
-  setOtherUser(data.other_user[0].name)
+  setOtherUser(data.other_user[0])
   // console.log(otherUser)
   setMessages(data.messages)
+
 
 }).catch()
 },[]
 )
-// console.log(messages[0].message)
+console.log(messages[0])
   
 
   return (
     <>
-    <p>{otherUser}とのchatroomです</p>
+    <p>{otherUser.name}とのchatroomです</p>
     <h2>ログイン状態: {props.loggedInStatus}</h2>
     {messages.map((m:any,index:number)=>{
-      return(
-        <p key={index}>{m.message}</p>
-      )
+      if(m.user_id === otherUser.id){
+        return(
+          <p key={index}>{otherUser.name}:{m.message}</p>
+         
+        )
+      }else{
+        return( 
+        <p key={index}>あなた:{m.message}</p>
+        )
+       
+      }
+    
     })}
 
     
