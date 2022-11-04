@@ -1,8 +1,19 @@
 import axios from 'axios';
+import { type } from 'os';
 import { messageIndex } from '../urls/index'
 
-export const createMessage =() => {
-  return axios.post(messageIndex)
+// type MessageParams = {
+// user_id:an;
+// room_id:number;
+// message:string;
+// }
+
+export const createMessage =(params:any) => {
+  return axios.post(messageIndex,{
+    user_id:params.user_id,
+    room_id:params.room_id,
+    message:params.message
+  })
   .then(res => {
     return res.data
   })

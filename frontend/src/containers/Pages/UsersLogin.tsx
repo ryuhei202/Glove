@@ -26,7 +26,7 @@ export const UsersLogin = (props:any) => {
       password:data.password,
     }).then(data => {
       console.log(data)
-      //ユーザー作成に成功した後の処理
+      //ユーザ-ログインに成功した後の処理
       if (data.status === 'created' ) {
         
           handleSuccessfulAuthentication(data)

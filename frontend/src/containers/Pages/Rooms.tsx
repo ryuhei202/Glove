@@ -2,6 +2,7 @@ import { getValue } from "@testing-library/user-event/dist/utils";
 import { memo, useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getEachRooms } from "../../apis/eachrooms";
+import { createMessage } from "../../apis/messages";
 
 export const Rooms = memo((props:any) => {
 
@@ -16,23 +17,35 @@ const [otherUser, setOtherUser] = useState<any>([]);
 const [messages, setMessages] = useState<any>([]);
 
 const onSubmit = () => {
-  alert(content);
+  // alert(content);
+  createMessage({
+    user_id:location.state.userId,
+    room_id:location.state.roomId,
+    message:content
+  }).then((res)=>{
+console.log(res);
+setMessages([...messages, res.message])
+setContent("")
+  }).catch((error)=>{
+    console.log(error)
+  })
 }
  
-useEffect(() => {
+useEffect(()=>{
 //ここでotheruserのメッセージを取得する関数を実行する。
 getEachRooms(location.state.roomId,location.state.userId).then((data)=>{
   console.log(data.messages)
-  // console.log(data.other_user[0].name)
+  console.log(data.other_user[0].name)
   setOtherUser(data.other_user[0])
   // console.log(otherUser)
   setMessages(data.messages)
 
 
-}).catch()
-},[]
-)
-console.log(messages[0])
+}).catch();
+},[])
+
+
+console.log(messages);
 
 
   
@@ -59,8 +72,7 @@ console.log(messages[0])
 <form>
 <h4>Message: </h4>
       <textarea value={content} onChange={(e)=>setContent(e.target.value)}/>
-      <button onClick={onSubmit}>送信</button>
-
+      <button onClick={onSubmit} type="button">送信</button>
   </form>
 
     

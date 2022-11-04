@@ -77,11 +77,14 @@ const navigate = useNavigate();
  <h2>ログイン状態: {props.loggedInStatus}</h2>
  <h2>current_user:{props.user.name} </h2>
  {chatRooms.length > 0 ? (
-  chatRooms.map((chatRoom:any, index: number) => {
+  chatRooms.map((chatRoom:any) => {
     return (
-    <Link key={index} to={`${chatRoom.room.id}`} state={{userId:chatRoom.other_users[0].id, roomId:chatRoom.room.id} }>
+      <>
+    <Link key={chatRoom.room.id} to={`${chatRoom.room.id}`} state={{userId:location.state.user.id, roomId:chatRoom.room.id} }>
         {chatRoom.other_users[0].name}:  {chatRoom.last_message === null ? "まだメッセージはありません。" : chatRoom.last_message.message.length > 30 ? chatRoom.last_message.message.substr(0, 30) + "..." : chatRoom.last_message.message}
       </Link>
+      <br />
+    </>
     )
   } ) ): (
     <p>トークルームがありません</p>
