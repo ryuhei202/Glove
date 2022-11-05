@@ -56,6 +56,7 @@ const navigate = useNavigate();
       state.usersList.map((user: any) =>
         <div key={user.id}>
           {user.name}
+          <Link to={`${user.id}`}>詳細</Link>
           <Link to={`${user.id}/edit/`}>編集</Link>
         </div>
       )
