@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes,  } from 'react-router-dom';
 import { Users } from './containers/Pages/Users';
 import { UsersShow } from './containers/Pages/UsersShow '
@@ -14,6 +14,7 @@ import { usersLoggedin } from './urls';
 import { Groupchat } from './containers/Pages/Groupchat';
 import { ChatRooms } from './containers/Pages/ChatRooms';
 import { Rooms } from './containers/Pages/Rooms';
+import { UserContext, UserProvider } from './providers/UserProvider';
 
 
 function App() {
@@ -21,11 +22,14 @@ function App() {
   //ユーザーのログイン情報
    const [loggedInStatus, setLoggedInStatus] = useState<string>("未ログイン")
   const [user, setUser] = useState({})
+  const setUserInfo:any = useContext(UserContext);
+  const userInfo:any = useContext(UserContext);
 
   //ログイン機能
    const handleLogin = (data:any) => {
     setLoggedInStatus("ログインなう")
     setUser(data.user)
+    
   }
   //ログアウト機能
   const handleLogout = () => {
@@ -36,7 +40,8 @@ function App() {
 //ログイン状態をチェックできるサイクルを作成
   useEffect(() => {
     checkLoginStatus()
-  })
+  },[])
+
 
 
    const checkLoginStatus = () => {
@@ -63,12 +68,9 @@ function App() {
 
   return (
     <>
+    <UserProvider>
     <BrowserRouter>
-     
-     
-
      <Routes>
-
       <Route path='/' element={<Top user={user} loggedInStatus={loggedInStatus} />}/>
 
       <Route path='users' element={<Users user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout}/>}/>
@@ -88,14 +90,10 @@ function App() {
       <Route path='chatrooms/:id' element={<Rooms user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout}/>}></Route>
 
      <Route path='*' element={<Page404 />} /></Routes>
-
-
     </BrowserRouter>
+    </UserProvider>
 
     </>
-     
-   
-   
   );
  }
 

@@ -1,8 +1,9 @@
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getRooms } from "../../apis/rooms";
 import { fetchLogoutUser } from "../../apis/users_logout";
+import { UserContext } from "../../providers/UserProvider";
 
 // interface ChatRoom {
 //   chatRoom: {
@@ -32,8 +33,8 @@ import { fetchLogoutUser } from "../../apis/users_logout";
 
 export const ChatRooms = (props:any) => {
 
-  const location = useLocation();
-  console.log(location);
+  const context = useContext(UserContext);
+  console.log(context);
 
   const [loading, setLoading] = useState<boolean>(true)
 //グループチャットを取得？？
@@ -44,7 +45,7 @@ export const ChatRooms = (props:any) => {
 const navigate = useNavigate();
 
   const handleGetChatRooms =  () => {
-    getRooms(location.state.user.id).then((res)=> {
+    getRooms(context.currentUserInfo.data.user.id).then((res)=> {
       console.log(res);
       setChatRooms(res.rooms);
     }).catch((error)=>{
@@ -80,7 +81,7 @@ const navigate = useNavigate();
   chatRooms.map((chatRoom:any) => {
     return (
       <>
-    <Link key={chatRoom.room.id} to={`${chatRoom.room.id}`} state={{userId:location.state.user.id, roomId:chatRoom.room.id} }>
+    <Link key={chatRoom.room.id} to={`${chatRoom.room.id}`} state={{userId:context.currentUserInfo.data.user.id, roomId:chatRoom.room.id} }>
         {chatRoom.other_users[0].name}:  {chatRoom.last_message === null ? "まだメッセージはありません。" : chatRoom.last_message.message.length > 30 ? chatRoom.last_message.message.substr(0, 30) + "..." : chatRoom.last_message.message}
       </Link>
       <br />

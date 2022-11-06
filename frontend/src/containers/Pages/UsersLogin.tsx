@@ -1,20 +1,27 @@
+
+import { userInfo } from "os";
+import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { fetchLogoutUser } from "../../apis/users_logout";
 import { fetchLoginUser } from "../../apis/user_login";
+import { UserContext } from "../../providers/UserProvider";
+
 
 
 
 export const UsersLogin = (props:any) => {
 
   const navigate = useNavigate();
+  const { setCurrentUserInfo } = useContext(UserContext);
+
+
+
 
   const handleSuccessfulAuthentication = (data:any) => {
-    // props.history.push("/dashboard")
-    // navigate()
-    console.log(data)
+    setCurrentUserInfo({ data });
     props.handleLogin(data);
-    navigate(`/chatrooms`,{state:data})
+    navigate(`/chatrooms`)
 }
 
   const { register, handleSubmit, formState: { errors } } = useForm();     
@@ -30,6 +37,7 @@ export const UsersLogin = (props:any) => {
       if (data.status === 'created' ) {
         
           handleSuccessfulAuthentication(data)
+          
           
           // console.log(props.loggedInStatus)
         
