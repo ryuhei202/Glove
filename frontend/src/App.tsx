@@ -14,7 +14,7 @@ import { usersLoggedin } from './urls';
 import { Groupchat } from './containers/Pages/Groupchat';
 import { ChatRooms } from './containers/Pages/ChatRooms';
 import { Rooms } from './containers/Pages/Rooms';
-import { UserContext, UserProvider } from './providers/UserProvider';
+import { UserContext } from './providers/UserProvider';
 
 
 function App() {
@@ -22,19 +22,19 @@ function App() {
   //ユーザーのログイン情報
    const [loggedInStatus, setLoggedInStatus] = useState<string>("未ログイン")
   const [user, setUser] = useState({})
-  const setUserInfo:any = useContext(UserContext);
-  const userInfo:any = useContext(UserContext);
+
+  const { setCurrentUserInfo } = useContext(UserContext);
 
   //ログイン機能
    const handleLogin = (data:any) => {
-    setLoggedInStatus("ログインなう")
-    setUser(data.user)
+    setLoggedInStatus("ログインなう");
+    setCurrentUserInfo({ data });
     
   }
   //ログアウト機能
   const handleLogout = () => {
     setLoggedInStatus("未ログイン")
-    setUser({})
+    setCurrentUserInfo({});
   }
  
 //ログイン状態をチェックできるサイクルを作成
@@ -68,30 +68,30 @@ function App() {
 
   return (
     <>
-    <UserProvider>
+   
     <BrowserRouter>
      <Routes>
-      <Route path='/' element={<Top user={user} loggedInStatus={loggedInStatus} />}/>
+      <Route path='/' element={<Top  loggedInStatus={loggedInStatus} />}/>
 
-      <Route path='users' element={<Users user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout}/>}/>
+      <Route path='users' element={<Users  loggedInStatus={loggedInStatus} handleLogout={handleLogout}/>}/>
 
-      <Route path='users/:id' element={<UsersShow user={user}loggedInStatus={loggedInStatus} />}/>
+      <Route path='users/:id' element={<UsersShow loggedInStatus={loggedInStatus} />}/>
 
-      <Route path='signup' element={<UsersSignUp user={user} loggedInStatus={loggedInStatus} handleLogin={handleLogin} />}/>
+      <Route path='signup' element={<UsersSignUp  loggedInStatus={loggedInStatus} handleLogin={handleLogin} />}/>
 
-      <Route path='login' element={<UsersLogin user={user} loggedInStatus={loggedInStatus} handleLogin={handleLogin} handleLogout={handleLogout}/>}/>
+      <Route path='login' element={<UsersLogin  loggedInStatus={loggedInStatus} handleLogin={handleLogin} handleLogout={handleLogout}/>}/>
 
-      <Route path='users/:id/edit' element={<UsersEdit user={user}loggedInStatus={loggedInStatus} />} />
+      <Route path='users/:id/edit' element={<UsersEdit loggedInStatus={loggedInStatus} />} />
 
-      <Route path='groupchat' element={<Groupchat user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout} />} />
+      <Route path='groupchat' element={<Groupchat loggedInStatus={loggedInStatus} handleLogout={handleLogout} />} />
 
-      <Route path='chatrooms' element={<ChatRooms user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout}/>}></Route>
+      <Route path='chatrooms' element={<ChatRooms loggedInStatus={loggedInStatus} handleLogout={handleLogout}/>}></Route>
       
-      <Route path='chatrooms/:id' element={<Rooms user={user} loggedInStatus={loggedInStatus} handleLogout={handleLogout}/>}></Route>
+      <Route path='chatrooms/:id' element={<Rooms loggedInStatus={loggedInStatus} handleLogout={handleLogout}/>}></Route>
 
      <Route path='*' element={<Page404 />} /></Routes>
     </BrowserRouter>
-    </UserProvider>
+
 
     </>
   );

@@ -13,13 +13,13 @@ import { UserContext } from "../../providers/UserProvider";
 export const UsersLogin = (props:any) => {
 
   const navigate = useNavigate();
-  const { setCurrentUserInfo } = useContext(UserContext);
+
 
 
 
 
   const handleSuccessfulAuthentication = (data:any) => {
-    setCurrentUserInfo({ data });
+    // setCurrentUserInfo({ data });
     props.handleLogin(data);
     navigate(`/chatrooms`)
 }

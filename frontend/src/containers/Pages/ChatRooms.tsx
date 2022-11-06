@@ -76,7 +76,7 @@ const navigate = useNavigate();
     
  <p>chatroom一覧です。</p>
  <h2>ログイン状態: {props.loggedInStatus}</h2>
- <h2>current_user:{props.user.name} </h2>
+ <h2>current_user:{context.currentUserInfo.data.user.name} </h2>
  {chatRooms.length > 0 ? (
   chatRooms.map((chatRoom:any) => {
     return (
