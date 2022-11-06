@@ -50,10 +50,10 @@ function App() {
         console.log(response);
       if (response.data.logged_in && loggedInStatus === "未ログイン") {
         setLoggedInStatus("ログインなう")
-        setUser(response.data.user)
+        setCurrentUserInfo(response.data.user)
       } else if (!response.data.logged_in && loggedInStatus === "ログインなう") {
         setLoggedInStatus("未ログイン")
-        setUser({})
+        setCurrentUserInfo({})
       }
     }
     ).catch(error => {

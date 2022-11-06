@@ -1,8 +1,10 @@
 // import { match } from "assert";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { createRoom } from "../../apis/createroom";
 import { fetchUsersShow } from "../../apis/users_id";
 import { fetchUserDelete } from "../../apis/user_delete";
+import { UserContext } from "../../providers/UserProvider";
 
 
 type Userstype = {
@@ -23,6 +25,8 @@ type Userstype = {
 export const UsersShow = (props:any) => {
 
   const navigate = useNavigate();
+  const context = useContext(UserContext);
+  console.log(context.currentUserInfo.id);
 
 
 
@@ -43,6 +47,19 @@ export const UsersShow = (props:any) => {
       navigate('/')
     }    )
 
+  }
+
+  const onClickCreateChatRoom = () => {
+    createRoom({
+      userid:context.currentUserInfo.id,
+      other_userid:id
+    }).then(res => {
+      console.log(res)
+      
+      navigate(`/chatrooms/${res.room.id}`,{ state: { roomId:res.room.id, userId:context.currentUserInfo.id} })
+    }).catch((error) => {
+      console.log(error)
+    })
   }
   
 
@@ -73,6 +90,7 @@ export const UsersShow = (props:any) => {
 
     <button onClick={onClickEdit}>編集する</button>
     <button onClick={onClickDelete}>ログアウトする</button>
+    <button onClick={onClickCreateChatRoom}>チャットする</button>
   
      
     </>

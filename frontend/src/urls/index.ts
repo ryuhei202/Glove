@@ -9,6 +9,7 @@ export const usersLoggedin: string = `${DEFAULT_API_LOCALHOST}/logged_in`;
 
 export const groupChat = (language: any)  => `${DEFAULT_API_LOCALHOST}/message/${language}`;
 export const roomsIndex = `${DEFAULT_API_LOCALHOST}/rooms`;
+export const roomsCreateIndex = `${DEFAULT_API_LOCALHOST}/rooms`;
 export const eachRoomsIndex = (userid: number) => `${DEFAULT_API_LOCALHOST}/rooms/${userid}`;
 
 export const messageIndex: string = `${DEFAULT_API_LOCALHOST}/messages`;
