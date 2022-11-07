@@ -2,6 +2,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { fetchpostUsers } from "../../apis/users_signup";
+import { Header } from "../Templetes/Header";
 
 
   
@@ -47,8 +48,7 @@ export const UsersSignUp = (props:any) => {
   return (
     
     <>
-   <p>ユーザー登録ページです</p>
-   <h2>ログイン状態: {props.loggedInStatus}</h2>
+  <Header>ユーザー登録ページです</Header>
     <form onSubmit={handleSubmit(onSubmit)}>
         <h4>Name: </h4>
         <input {...register('name', { required: true })} />
@@ -102,7 +102,7 @@ export const UsersSignUp = (props:any) => {
         { errors.email && <span>Emailを入力してください</span> } 
 
         <h4>password: </h4>
-        <input { ...register('password', { required: true,minLength: 6 })} />
+        <input { ...register('password', { required: true,minLength: 6 })} type="password"/>
         { errors.password && <span>6文字以上のPasswordを入力してください</span> } 
         
         {/* <h4>password_confirmation: </h4>

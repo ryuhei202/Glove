@@ -6,20 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { fetchLogoutUser } from "../../apis/users_logout";
 import { fetchLoginUser } from "../../apis/user_login";
 import { UserContext } from "../../providers/UserProvider";
-
-
-
+import { Header } from "../Templetes/Header";
 
 export const UsersLogin = (props:any) => {
 
   const navigate = useNavigate();
 
-
-
-
-
   const handleSuccessfulAuthentication = (data:any) => {
-    // setCurrentUserInfo({ data });
     props.handleLogin(data);
     navigate(`/chatrooms`)
 }
@@ -33,34 +26,25 @@ export const UsersLogin = (props:any) => {
       password:data.password,
     }).then(data => {
       console.log(data)
-      //ユーザ-ログインに成功した後の処理
       if (data.status === 'created' ) {
-        
-          handleSuccessfulAuthentication(data)
-          
-          
-          // console.log(props.loggedInStatus)
-        
+        handleSuccessfulAuthentication(data) 
       }
-
   }).catch(error => {
     console.log("registration error", error)
 })
   }
 
-  
 
   return (
     <>
-  <p>ログインページです</p>
-  <h2>ログイン状態: {props.loggedInStatus}</h2>
+   <Header>ログインページです</Header>
   <form onSubmit={handleSubmit(onSubmit)}>
         <h4>Email: </h4>
         <input {...register('email', { required: true })} />
         { errors.email && <span>email1文字以上</span> }
 
         <h4>Password: </h4>
-        <input {...register('password', { required: true })} />
+        <input  {...register('password', { required: true })}  type="password"/>
         { errors.password && <span>パスワードは1文字以上</span> }
  
     <br />

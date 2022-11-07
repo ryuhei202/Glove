@@ -10,6 +10,7 @@ import {
   usersActionTypes,
   usersReducer,
 } from '../../reducers/users';
+import { Header } from "../Templetes/Header";
 
 export const Users = (props:any) => {
 
@@ -49,8 +50,7 @@ const navigate = useNavigate();
 
     
   <>
-    <p>ユーザー一覧ページです</p>
-    <h2>ログイン状態: {props.loggedInStatus}</h2>
+   <Header>ユーザー一覧ページです</Header>
 
     {
       state.usersList.map((user: any) =>

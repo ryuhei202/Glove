@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './providers/UserProvider';
 import { ChatRoomsProvider } from './providers/ChatRoomsProvider';
+import { LoggedInStatesProvider } from './providers/LoggedInStatesProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,11 +13,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
      <UserProvider>    
+     <LoggedInStatesProvider>
      <ChatRoomsProvider>
 
       <App />
      
      </ChatRoomsProvider>
+     </LoggedInStatesProvider>
      </UserProvider>
   </React.StrictMode>
 );

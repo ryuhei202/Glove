@@ -5,6 +5,7 @@ import { createRoom } from "../../apis/createroom";
 import { fetchUsersShow } from "../../apis/users_id";
 import { fetchUserDelete } from "../../apis/user_delete";
 import { UserContext } from "../../providers/UserProvider";
+import { Header } from "../Templetes/Header";
 
 
 type Userstype = {
@@ -26,7 +27,7 @@ export const UsersShow = (props:any) => {
 
   const navigate = useNavigate();
   const context = useContext(UserContext);
-  console.log(context.currentUserInfo.id);
+  console.log(context.currentUserInfo);
 
 
 
@@ -50,6 +51,7 @@ export const UsersShow = (props:any) => {
   }
 
   const onClickCreateChatRoom = () => {
+
     createRoom({
       userid:context.currentUserInfo.id,
       other_userid:id
@@ -79,8 +81,7 @@ export const UsersShow = (props:any) => {
 
   return (
     <>
-    <p>showページです</p>
-    <h2>ログイン状態: {props.loggedInStatus}</h2>
+    <Header>showページです</Header>
     <ul>
       <li>name:{state?.name}</li>
       <li>email:{state?.email}</li>

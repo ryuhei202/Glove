@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { updateUser } from "../../apis/users_update";
+import { Header } from "../Templetes/Header";
 
 
 export const UsersEdit= (props:any) => {
@@ -38,8 +39,7 @@ console.log(state)
 
   return (
     <>
-    <p>{state}の編集ページです</p>
-    <h2>ログイン状態: {props.loggedInStatus}</h2>
+      <Header>編集ページです</Header>
     <form onSubmit={handleSubmit(onSubmit)}>
         <h4>Name: </h4>
         <input {...register('name', { required: true })} />

@@ -1,64 +1,34 @@
 
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getRooms } from "../../apis/rooms";
 import { fetchLogoutUser } from "../../apis/users_logout";
 import { ChatRoomsContext, ChatRoomsProvider } from "../../providers/ChatRoomsProvider";
+import { LoggedInStatesContext } from "../../providers/LoggedInStatesProvider";
 
 import { UserContext } from "../../providers/UserProvider";
-
-// interface ChatRoom {
-//   chatRoom: {
-//     id: number
-//   }
-//   otherUsers: {
-//     id: number
-//     name: string
-//     gender: string
-//     email: string
-//     password_digest: string
-//     self_introduction?: string
-//     profile_image?: any
-//     createdAt?: Date
-//     updatedAt?: Date
-//   }
-//   lastMessage: {
-//     chatRoomId: number
-//     userId: number | undefined
-//     message: string
-//     createdAt?: Date
-//   }
-// }
-
-
-
+import { Header } from "../Templetes/Header";
 
 export const ChatRooms = (props:any) => {
-  
+
   const navigate = useNavigate();
+
   const { setChatRooms } = useContext(ChatRoomsContext);
   const chatcontext = useContext(ChatRoomsContext);
-  const context = useContext(UserContext);
+  console.log(chatcontext);
 
-  console.log(chatcontext.chatRooms.length);
-  console.log(context);
-
- 
-  
-
+  const current_user = useContext(UserContext);
+  console.log(current_user);
 
   const [loading, setLoading] = useState<boolean>(true)
 
 
-  //個人チャットを取得
-
-
-
+  //チャット一覧を取得
   const handleGetChatRooms =  () => {
-    getRooms(context.currentUserInfo.data.user.id).then((res)=> {
+    if (!current_user.currentUserInfo?.data.user.id) return;
+    getRooms(current_user.currentUserInfo?.data.user.id).then((res)=> {
       console.log(res);
       setChatRooms(res.rooms);
-      
     }).catch((error)=>{
       console.log(error)
     })
@@ -77,32 +47,31 @@ export const ChatRooms = (props:any) => {
 
   useEffect(() => {
     handleGetChatRooms()
-  }, []);
+  }, [current_user]);
 
-  // console.log(props.user)
+  console.log("test", chatcontext)
 
   return (
     <>
     
- <p>chatroom一覧です。</p>
- <h2>ログイン状態: {props.loggedInStatus}</h2>
- <h2>current_user:{context.currentUserInfo.data.user.name} </h2>
-  {chatcontext.chatRooms.length > 0 ? (
-  chatcontext.chatRooms.map((chatRoom:any) => {
+    <Header>chatroom一覧です</Header>
+ <h2>current_user:{current_user.currentUserInfo?.data?.user.name} </h2>
+     {chatcontext.chatRooms ? (
+  chatcontext.chatRooms?.map((chatRoom:any, index:number) => {
     return (
-      <>
-    <Link key={chatRoom.room.id} to={`${chatRoom.room.id}`} state={{userId:context.currentUserInfo.data.user.id, roomId:chatRoom.room.id} }>
+      <React.Fragment key={index}>   
+    <Link  to={`${chatRoom.room.id}`} state={{userId:current_user.currentUserInfo.data.user.id, roomId:chatRoom.room.id} }>
         {chatRoom.other_users[0].name}:  {chatRoom.last_message === null ? "まだメッセージはありません。" : chatRoom.last_message.message.length > 30 ? chatRoom.last_message.message.substr(0, 30) + "..." : chatRoom.last_message.message}
-      </Link>
-      <br />
-    </>
+    </Link>
+      <br /> 
+    </React.Fragment>
     )
   } ) ): (
     <p>トークルームがありません</p>
   )} 
  
 
-<br />
+<br /> 
  <button onClick={handleLogoutClick}>ログアウトする</button>
     
    

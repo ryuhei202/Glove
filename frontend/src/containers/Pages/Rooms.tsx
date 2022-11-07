@@ -3,6 +3,7 @@ import { memo, useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getEachRooms } from "../../apis/eachrooms";
 import { createMessage } from "../../apis/messages";
+import { Header } from "../Templetes/Header";
 
 export const Rooms = memo((props:any) => {
 
@@ -18,6 +19,7 @@ const [messages, setMessages] = useState<any>([]);
 
 const onSubmit = () => {
   // alert(content);
+  //↓リファクタリング必要（user＿idをuseContextのcurrent_userのidにする)前ページのlinkも変更する
   createMessage({
     user_id:location.state.userId,
     room_id:location.state.roomId,
@@ -52,8 +54,7 @@ console.log(messages);
 
   return (
     <>
-    <p>{otherUser.name}とのchatroomです</p>
-    <h2>ログイン状態: {props.loggedInStatus}</h2>
+    <Header>{otherUser.name}とのchatroomです</Header>
     {messages.map((m:any,index:number)=>{
       if(m.user_id === otherUser.id){
         return(

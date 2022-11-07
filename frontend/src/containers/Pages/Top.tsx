@@ -1,12 +1,15 @@
 
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { LoggedInStatesContext } from "../../providers/LoggedInStatesProvider";
+import { Header } from "../Templetes/Header";
 
 
 export const Top = (props:any) => {
+
   return (
     <>
-    <p>topページです</p>
-    <h2>ログイン状態: {props.loggedInStatus}</h2>
+    <Header>topページです</Header>
     <Link to="/users">ユーザー一覧ページです</Link>
     <br />
     <Link to="/signup">ユーザー登録ページです</Link>
