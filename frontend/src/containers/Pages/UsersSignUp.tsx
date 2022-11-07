@@ -2,6 +2,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { fetchpostUsers } from "../../apis/users_signup";
+import { SignUpData } from "../../interfaces";
 import { Header } from "../Templetes/Header";
 
 
@@ -23,7 +24,7 @@ export const UsersSignUp = (props:any) => {
 
   const { register, handleSubmit, formState: { errors } } = useForm();     
 
-  const onSubmit:SubmitHandler<any> = (data) => { 
+  const onSubmit:SubmitHandler<any> = (data:SignUpData) => { 
     fetchpostUsers({
       name: data.name,
       gender: data.gender,
@@ -31,15 +32,12 @@ export const UsersSignUp = (props:any) => {
       email: data.email,
       password: data.password
     }).then(data => {
-
       //ユーザー作成に成功した後の処理
       // console.log(data)
       if (data.status === 'created' ) {
           handleSuccessfulAuthentication(data)
-        
-      }
-
-  }).catch(error => {
+           }
+}).catch(error => {
     console.log("registration error", error)
 })
   

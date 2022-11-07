@@ -25,7 +25,11 @@ module Api
       #logout機能
       def destroy
         log_out 
-        render json: { status: 200, logged_out: true }
+        render json: { 
+          logged_in: false,
+          user: nil,
+          status: 200,
+        }
       end
 
       def logged_in?

@@ -21,7 +21,7 @@ const navigate = useNavigate();
   const handleLogoutClick = () => {
     fetchLogoutUser().then(res => {
       console.log(res)
-      props.handleLogout()
+      props.handleLogout(res)
       navigate("/")
       
     }).catch(error => {

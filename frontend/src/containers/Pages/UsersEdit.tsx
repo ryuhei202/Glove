@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { updateUser } from "../../apis/users_update";
 import { Header } from "../Templetes/Header";
+import { UpDateUser } from "../../interfaces";
 
 
 export const UsersEdit= (props:any) => {
@@ -19,13 +20,11 @@ export const UsersEdit= (props:any) => {
   //idを取得
   const  { id } = useParams<{ id: any }>();
 
-  const onSubmit:SubmitHandler<any>  = (data) => {
+  const onSubmit:SubmitHandler<any>  = (data:UpDateUser) => {
     //ボタンが押されたときの処理。patchリクエストを送る
   updateUser(id,{
     name: data.name,
     gender: data.gender,
-    // email: data.email,
-    // password: data.password,
     self_introduction: data.self_introduction
 
   }).then(() => navigate(`/users/${id}`))

@@ -1,10 +1,9 @@
-
-import { userInfo } from "os";
 import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { fetchLogoutUser } from "../../apis/users_logout";
 import { fetchLoginUser } from "../../apis/user_login";
+import { LogIn } from "../../interfaces";
 import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
 
@@ -12,14 +11,14 @@ export const UsersLogin = (props:any) => {
 
   const navigate = useNavigate();
 
-  const handleSuccessfulAuthentication = (data:any) => {
+  const handleSuccessfulAuthentication = (data:LogIn) => {
     props.handleLogin(data);
     navigate(`/chatrooms`)
 }
 
   const { register, handleSubmit, formState: { errors } } = useForm();     
 
-  const onSubmit:SubmitHandler<any> = (data) => {
+  const onSubmit:SubmitHandler<any> = (data:LogIn) => {
 
     fetchLoginUser({
       email:data.email,

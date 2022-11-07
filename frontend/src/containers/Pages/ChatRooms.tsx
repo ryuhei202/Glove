@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getRooms } from "../../apis/rooms";
 import { fetchLogoutUser } from "../../apis/users_logout";
+import { ChatRoom, CurrentUser, Room } from "../../interfaces";
 import { ChatRoomsContext, ChatRoomsProvider } from "../../providers/ChatRoomsProvider";
 import { LoggedInStatesContext } from "../../providers/LoggedInStatesProvider";
 
@@ -37,7 +38,7 @@ export const ChatRooms = (props:any) => {
   const handleLogoutClick = () => {
     fetchLogoutUser().then(res => {
       console.log(res)
-      props.handleLogout()
+      props.handleLogout(res)
       navigate("/")
       
     }).catch(error => {
@@ -57,13 +58,14 @@ export const ChatRooms = (props:any) => {
     <Header>chatroom一覧です</Header>
  <h2>current_user:{current_user.currentUserInfo?.data?.user.name} </h2>
      {chatcontext.chatRooms ? (
-  chatcontext.chatRooms?.map((chatRoom:any, index:number) => {
+  chatcontext.chatRooms?.map((chatRoom:ChatRoom, index:number) => {
     return (
       <React.Fragment key={index}>   
     <Link  to={`${chatRoom.room.id}`} state={{userId:current_user.currentUserInfo.data.user.id, roomId:chatRoom.room.id} }>
         {chatRoom.other_users[0].name}:  {chatRoom.last_message === null ? "まだメッセージはありません。" : chatRoom.last_message.message.length > 30 ? chatRoom.last_message.message.substr(0, 30) + "..." : chatRoom.last_message.message}
     </Link>
       <br /> 
+
     </React.Fragment>
     )
   } ) ): (

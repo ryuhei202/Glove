@@ -1,16 +1,11 @@
 import axios from "axios";
+import { SignUpData } from "../interfaces";
 import { usersSignUp } from "../urls";
 
-type Inputs = {
-  name: string;
-  gender: string;
-  language: string;
-  email: string;
-  password: string;
-};
 
 
-export const fetchpostUsers =(params:Inputs) => {
+
+export const fetchpostUsers =(params:SignUpData) => {
   return axios.post(usersSignUp,
     {
       name: params.name,

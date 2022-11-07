@@ -1,12 +1,10 @@
 import axios from 'axios';
+import { LogIn } from '../interfaces';
 import { usersLogin } from '../urls/index'
 
-type Inputs = {
-  email:string;
-  password:string;
-}
 
-export const fetchLoginUser =(params:Inputs) => {
+
+export const fetchLoginUser =(params:LogIn) => {
   return axios.post(usersLogin, { 
     email:params.email,
     password:params.password,

@@ -17,6 +17,7 @@ import { Rooms } from './containers/Pages/Rooms';
 import { UserContext } from './providers/UserProvider';
 import { ChatRoomsProvider } from './providers/ChatRoomsProvider';
 import { LoggedInStatesContext } from './providers/LoggedInStatesProvider';
+import { LogIn, LogOut } from './interfaces';
 
 
 function App() {
@@ -33,16 +34,17 @@ function App() {
   console.log(localStorage.getItem("current_user"));
 
   //ログイン機能
-   const handleLogin = (data:any) => {
+   const handleLogin = (data:LogIn) => {
     // setLoggedInStatus("ログインなう")
     setCurrentUserInfo({ data });
     localStorage.setItem("current_user",JSON.stringify({data}));
   }
   //ログアウト機能
-  const handleLogout = () => {
+  const handleLogout = (data:LogOut) => {
     // setLoggedInStatus("未ログイン")
-    setCurrentUserInfo({});
+    setCurrentUserInfo({data});
   }
+  console.log(current_user.currentUserInfo)
 
 
 
