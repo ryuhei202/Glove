@@ -3,6 +3,8 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getRooms } from "../../apis/rooms";
 import { fetchLogoutUser } from "../../apis/users_logout";
+import { ChatRoomsContext, ChatRoomsProvider } from "../../providers/ChatRoomsProvider";
+
 import { UserContext } from "../../providers/UserProvider";
 
 // interface ChatRoom {
@@ -32,22 +34,31 @@ import { UserContext } from "../../providers/UserProvider";
 
 
 export const ChatRooms = (props:any) => {
-
+  
+  const navigate = useNavigate();
+  const { setChatRooms } = useContext(ChatRoomsContext);
+  const chatcontext = useContext(ChatRoomsContext);
   const context = useContext(UserContext);
+
+  console.log(chatcontext.chatRooms.length);
   console.log(context);
 
-  const [loading, setLoading] = useState<boolean>(true)
-//グループチャットを取得？？
-  const [groupChatRooms, setGroupEachChatRooms] = useState()
-  //個人チャットを取得
-  const [chatRooms, setChatRooms] = useState([])
+ 
+  
 
-const navigate = useNavigate();
+
+  const [loading, setLoading] = useState<boolean>(true)
+
+
+  //個人チャットを取得
+
+
 
   const handleGetChatRooms =  () => {
     getRooms(context.currentUserInfo.data.user.id).then((res)=> {
       console.log(res);
       setChatRooms(res.rooms);
+      
     }).catch((error)=>{
       console.log(error)
     })
@@ -68,7 +79,6 @@ const navigate = useNavigate();
     handleGetChatRooms()
   }, []);
 
-  console.log(chatRooms);
   // console.log(props.user)
 
   return (
@@ -77,8 +87,8 @@ const navigate = useNavigate();
  <p>chatroom一覧です。</p>
  <h2>ログイン状態: {props.loggedInStatus}</h2>
  <h2>current_user:{context.currentUserInfo.data.user.name} </h2>
- {chatRooms.length > 0 ? (
-  chatRooms.map((chatRoom:any) => {
+  {chatcontext.chatRooms.length > 0 ? (
+  chatcontext.chatRooms.map((chatRoom:any) => {
     return (
       <>
     <Link key={chatRoom.room.id} to={`${chatRoom.room.id}`} state={{userId:context.currentUserInfo.data.user.id, roomId:chatRoom.room.id} }>
@@ -89,7 +99,7 @@ const navigate = useNavigate();
     )
   } ) ): (
     <p>トークルームがありません</p>
-  )}
+  )} 
  
 
 <br />

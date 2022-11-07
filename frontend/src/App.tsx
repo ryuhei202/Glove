@@ -15,13 +15,13 @@ import { Groupchat } from './containers/Pages/Groupchat';
 import { ChatRooms } from './containers/Pages/ChatRooms';
 import { Rooms } from './containers/Pages/Rooms';
 import { UserContext } from './providers/UserProvider';
+import { ChatRoomsProvider } from './providers/ChatRoomsProvider';
 
 
 function App() {
 
   //ユーザーのログイン情報
    const [loggedInStatus, setLoggedInStatus] = useState<string>("未ログイン")
-  const [user, setUser] = useState({})
 
   const { setCurrentUserInfo } = useContext(UserContext);
 
@@ -91,8 +91,7 @@ function App() {
 
      <Route path='*' element={<Page404 />} /></Routes>
     </BrowserRouter>
-
-
+    
     </>
   );
  }
