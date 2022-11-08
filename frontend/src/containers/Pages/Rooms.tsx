@@ -1,5 +1,6 @@
 import { getValue } from "@testing-library/user-event/dist/utils";
 import { memo, useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { getEachRooms } from "../../apis/eachrooms";
 import { createMessage } from "../../apis/messages";
@@ -76,7 +77,10 @@ console.log(messages);
       <button onClick={onSubmit} type="button">送信</button>
   </form>
 
-    
+  <Link to="/users">ユーザー一覧ページです</Link>
+
+  <br />
+    <Link to="/chatrooms">chatroom</Link>
     </>
   )
 });

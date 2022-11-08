@@ -1,9 +1,13 @@
 // import { match } from "assert";
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 import { createRoom } from "../../apis/createroom";
+import { getRooms } from "../../apis/rooms";
 import { fetchUsersShow } from "../../apis/users_id";
 import { fetchUserDelete } from "../../apis/user_delete";
+import { CurrentUser } from "../../interfaces";
+import { ChatRoomsContext } from "../../providers/ChatRoomsProvider";
 import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
 
@@ -26,10 +30,18 @@ type Userstype = {
 export const UsersShow = (props:any) => {
 
   const navigate = useNavigate();
-  const context = useContext(UserContext);
-  console.log(context.currentUserInfo);
+  const usercontext:CurrentUser = useContext(UserContext).currentUserInfo;
+  console.log(usercontext);
 
+  const chatcontext = useContext(ChatRoomsContext);
+  console.log(chatcontext.chatRooms);
 
+  const current_user = useContext(UserContext);
+  console.log(current_user);
+
+  
+
+  const { setChatRooms } = useContext(ChatRoomsContext);
 
   const [state, setState] = useState<Userstype | null>(null);
 
@@ -50,19 +62,63 @@ export const UsersShow = (props:any) => {
 
   }
 
+  const handleGetChatRooms =  () => {
+    if (!current_user.currentUserInfo?.data.user.id) return;
+    getRooms(current_user.currentUserInfo?.data.user.id).then((res)=> {
+      console.log(res);
+      setChatRooms(res.rooms);
+    }).catch((error)=>{
+      console.log(error)
+    })
+  };
+
+  // const roomsHave = () => {
+  //   chatcontext.chatRooms.include((room:any)=>{
+  //     room.other_users[0].id === id
+  //   })
+  // }
+
+  const findObjById = (chatrooms:any, roomid:number) => {
+    
+    for (let i = 0; i < chatrooms.length; i++) {
+      if (chatrooms[i].other_users[0]?.id == roomid) {
+        return chatrooms[i].room.id;
+      }
+    }
+    return false;
+  }
+  
   const onClickCreateChatRoom = () => {
 
+     if(findObjById(chatcontext.chatRooms,id)){
+      console.log(findObjById(chatcontext.chatRooms,id))
+      navigate(`/chatrooms/${findObjById(chatcontext.chatRooms,id)}`, { state: {userId:current_user.currentUserInfo.data.user.id, roomId:findObjById(chatcontext.chatRooms,id)} })
+    }else{
+
     createRoom({
-      userid:context.currentUserInfo.id,
+      userid:usercontext.data.user.id,
       other_userid:id
     }).then(res => {
       console.log(res)
       
-      navigate(`/chatrooms/${res.room.id}`,{ state: { roomId:res.room.id, userId:context.currentUserInfo.id} })
+      navigate(`/chatrooms/${res.room.id}`,{ state: { roomId:res.room.id, userId:usercontext.data.user.id} })
     }).catch((error) => {
       console.log(error)
     })
-  }
+    }}
+    
+
+  //   // createRoom({
+  //   //   userid:usercontext.data.user.id,
+  //   //   other_userid:id
+  //   // }).then(res => {
+  //   //   console.log(res)
+      
+  //   //   navigate(`/chatrooms/${res.room.id}`,{ state: { roomId:res.room.id, userId:usercontext.data.user.id} })
+  //   // }).catch((error) => {
+  //   //   console.log(error)
+  //   // })
+  // }
   
 
   useEffect(() => {
@@ -74,6 +130,11 @@ export const UsersShow = (props:any) => {
     )
   }, []);
 
+  useEffect(() => {
+    handleGetChatRooms()
+  }, [current_user]);
+
+ 
 
  
 
@@ -92,6 +153,8 @@ export const UsersShow = (props:any) => {
     <button onClick={onClickEdit}>編集する</button>
     <button onClick={onClickDelete}>ログアウトする</button>
     <button onClick={onClickCreateChatRoom}>チャットする</button>
+    <br />
+    <Link to="/chatrooms">chatroom</Link>
   
      
     </>

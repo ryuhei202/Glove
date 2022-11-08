@@ -50,8 +50,6 @@ export const ChatRooms = (props:any) => {
     handleGetChatRooms()
   }, [current_user]);
 
-  console.log("test", chatcontext)
-
   return (
     <>
     
@@ -62,7 +60,7 @@ export const ChatRooms = (props:any) => {
     return (
       <React.Fragment key={index}>   
     <Link  to={`${chatRoom.room.id}`} state={{userId:current_user.currentUserInfo.data.user.id, roomId:chatRoom.room.id} }>
-        {chatRoom.other_users[0].name}:  {chatRoom.last_message === null ? "まだメッセージはありません。" : chatRoom.last_message.message.length > 30 ? chatRoom.last_message.message.substr(0, 30) + "..." : chatRoom.last_message.message}
+        {chatRoom.other_users[0]?.name}:  {chatRoom.last_message === null ? "まだメッセージはありません。" : chatRoom.last_message.message.length > 30 ? chatRoom.last_message.message.substr(0, 30) + "..." : chatRoom.last_message.message}
     </Link>
       <br /> 
 
@@ -75,6 +73,7 @@ export const ChatRooms = (props:any) => {
 
 <br /> 
  <button onClick={handleLogoutClick}>ログアウトする</button>
+ <Link to="/users">ユーザー一覧ページです</Link>
     
    
     

@@ -61,6 +61,8 @@ const navigate = useNavigate();
         </div>
       )
     }
+      <br />
+    <Link to="/chatrooms">chatroom</Link>
     <button onClick={handleLogoutClick}>ログアウトする</button>
     </>
   )

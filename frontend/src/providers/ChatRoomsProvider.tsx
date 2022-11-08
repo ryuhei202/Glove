@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Room } from "../interfaces";
+import {  Room } from "../interfaces";
 
 export const ChatRoomsContext = createContext<any>({});
 
