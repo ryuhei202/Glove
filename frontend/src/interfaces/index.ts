@@ -41,6 +41,10 @@ export interface User {
   updated_at?: Date
 }
 
+export interface OtherUser {
+  other_user:User
+}
+
 // 現在のユーザー
 export interface CurrentUser {
   data: {

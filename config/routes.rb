@@ -12,8 +12,8 @@ Rails.application.routes.draw do
         get '/logged_in', to: 'sessions#logged_in?'
         get '/message/:language', to: 'messages#show'
 
-        get '/rooms/:language', to: 'rooms#groupshow'
         resources :rooms, only: %i[index show create]
+        get '/rooms/groupchat/:language', to: 'rooms#groupshow'
 
         resources :messages, only: %i[create]
       
