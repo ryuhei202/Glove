@@ -1,9 +1,9 @@
 
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { getEachRooms } from "../../apis/eachrooms";
 import { getGroupChats } from "../../apis/groupchats";
-import { OtherUser } from "../../interfaces";
+import { Message, User } from "../../interfaces";
 import { LoggedInStatesContext } from "../../providers/LoggedInStatesProvider";
 import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
@@ -14,38 +14,47 @@ export const GroupChatRoom = (props:any) => {
   const current_user = useContext(UserContext);
   console.log(current_user);
 
-  const [otherUser, setOtherUser] = useState<OtherUser[]>([]);
-const [messages, setMessages] = useState<any>([]);
+  const [otherUser, setOtherUser] = useState<User[]>([]);
+const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(()=>{
     //ここでotheruserのメッセージを取得する関数を実行する。
     if (!current_user.currentUserInfo?.data.user.id) return;
     getGroupChats(current_user.currentUserInfo?.data.user.language, current_user.currentUserInfo?.data.user.id).then((data)=>{
       console.log(data);
-      // setOtherUser(data.)
+      setOtherUser(data.other_user)
+      setMessages(data.messages)
     }).catch(error => {
       console.log(error);
     });
   },[current_user])
-
-
-    // getEachRooms(location.state.roomId,location.state.userId).then((data)=>{
-    //   console.log(data.messages)
-    //   // console.log(data.other_user[0].name)
-    //   setOtherUser(data.other_user)
-    
-    //   setMessages(data.messages)
-    
-    
-    
-
-
+  console.log(otherUser);
+  console.log(messages);
+  
 
   return (
     <>
-    <Header>groupchatページです</Header>
+    <Header>{current_user.currentUserInfo?.data.user.language}ページです</Header>
+    {messages.map((message:Message,index:number)=>{
+        for (let i = 0; i < otherUser.length; i++) {
+          if (otherUser[i].id == message.user_id) {
+              return (
+
+                <p key={index}>{otherUser[i].name}:{message.message}</p>
+              )
+              
+          }
+                                                    }
+
+                                          }
+                  )
+      }
+    
+      
     <br />
     <Link to="/chatrooms">chatrooms</Link>
+    <br />
+    <Link to="/users">ユーザー一覧ページです</Link>
      
     </>
   )
