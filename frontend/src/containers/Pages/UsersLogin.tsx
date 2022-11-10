@@ -11,8 +11,12 @@ export const UsersLogin = (props:any) => {
 
   const navigate = useNavigate();
 
+  const current_user = useContext(UserContext);
+  console.log(current_user);
+
   const handleSuccessfulAuthentication = (res:LogInback) => {
     props.handleLogin(res);
+
     navigate(`/groupchat/${res.user.language}`)
 }
 

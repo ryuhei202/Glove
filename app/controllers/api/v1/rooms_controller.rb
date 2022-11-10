@@ -4,6 +4,7 @@ module Api
 
     
       before_action :set_chat_room, only: %i[show]
+      before_action :set_groupchat_room, only: %i[groupshow]
       # before_action :set_current_user
 
 
@@ -36,6 +37,15 @@ module Api
         render json: { status: 200, other_user: other_user, messages: messages, room: @room }
       end
 
+      def groupshow
+        user = User.find(params[:userId])
+        
+        other_user = @group_room.users.where.not(id: user.id)
+        messages = @group_room.messages.order("created_at ASC")
+    
+        render json: { status: 200, other_user: other_user, messages: messages, room: @group_room }
+      end
+
       def create
 
         user = User.find(params[:userId])
@@ -56,6 +66,10 @@ module Api
     
         def set_chat_room
           @room = Room.find(params[:id])
+        end
+
+        def set_groupchat_room
+          @group_room = Room.find_by(language: params[:language])
         end
         
         # def set_current_user

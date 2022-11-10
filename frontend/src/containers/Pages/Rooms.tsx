@@ -38,9 +38,9 @@ useEffect(()=>{
 //ここでotheruserのメッセージを取得する関数を実行する。
 getEachRooms(location.state.roomId,location.state.userId).then((data)=>{
   console.log(data.messages)
-  console.log(data.other_user[0].name)
+  // console.log(data.other_user[0].name)
   setOtherUser(data.other_user[0])
-  // console.log(otherUser)
+
   setMessages(data.messages)
 
 
@@ -48,7 +48,7 @@ getEachRooms(location.state.roomId,location.state.userId).then((data)=>{
 },[])
 
 
-console.log(messages);
+console.log(otherUser)
 
 
   

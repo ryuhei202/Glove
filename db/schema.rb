@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_10_013459) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_10_044410) do
   create_table "group_rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "groupname", null: false
     t.datetime "created_at", null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_013459) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "room_name"
+    t.string "language"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

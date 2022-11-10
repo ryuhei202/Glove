@@ -24,9 +24,10 @@ module Api
 
       def create
         @user = User.new(user_params)
+        @group_room = Room.find_by(language:params[:language])
         if @user.save!
           login @user
-          
+          @group_room.members.create!(user_id: @user.id)
           render json: {
             user: current_user,
             status: :created,
