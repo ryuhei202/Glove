@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './providers/UserProvider';
 import { ChatRoomsProvider } from './providers/ChatRoomsProvider';
 import { LoggedInStatesProvider } from './providers/LoggedInStatesProvider';
+import { BrowserRouter, Routes } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,9 +17,10 @@ root.render(
      <LoggedInStatesProvider>
      <ChatRoomsProvider>
 
+
       <App />
-     
-     </ChatRoomsProvider>
+
+    </ChatRoomsProvider>
      </LoggedInStatesProvider>
      </UserProvider>
   </React.StrictMode>

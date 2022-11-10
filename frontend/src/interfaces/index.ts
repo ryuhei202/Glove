@@ -13,6 +13,13 @@ export interface LogIn {
   password: string
 }
 
+export interface LogInback {
+  logged_in:boolean
+  status:string
+  user:User
+}
+
+
 //ログアウト
 export interface LogOut {
   logged_in: boolean

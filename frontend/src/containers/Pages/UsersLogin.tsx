@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { fetchLogoutUser } from "../../apis/users_logout";
 import { fetchLoginUser } from "../../apis/user_login";
-import { LogIn } from "../../interfaces";
+import { LogIn, LogInback } from "../../interfaces";
 import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
 
@@ -11,9 +11,9 @@ export const UsersLogin = (props:any) => {
 
   const navigate = useNavigate();
 
-  const handleSuccessfulAuthentication = (data:LogIn) => {
-    props.handleLogin(data);
-    navigate(`/chatrooms`)
+  const handleSuccessfulAuthentication = (res:LogInback) => {
+    props.handleLogin(res);
+    navigate(`/groupchat/${res.user.language}`)
 }
 
   const { register, handleSubmit, formState: { errors } } = useForm();     
@@ -23,10 +23,11 @@ export const UsersLogin = (props:any) => {
     fetchLoginUser({
       email:data.email,
       password:data.password,
-    }).then(data => {
-      console.log(data)
-      if (data.status === 'created' ) {
-        handleSuccessfulAuthentication(data) 
+    }).then((res:LogInback) => {
+      console.log(res)
+      if (res.status === 'created' ) {
+      console.log(res);
+        handleSuccessfulAuthentication(res) 
       }
   }).catch(error => {
     console.log("registration error", error)

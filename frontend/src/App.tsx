@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes,  } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate,  } from 'react-router-dom';
 import { Users } from './containers/Pages/Users';
 import { UsersShow } from './containers/Pages/UsersShow '
 
@@ -11,20 +11,20 @@ import { UsersLogin } from './containers/Pages/UsersLogin';
 import { Page404 } from './containers/Pages/Page404';
 import axios from 'axios';
 import { usersLoggedin } from './urls';
-import { Groupchat } from './containers/Pages/Groupchat';
+import { GroupChatRoom } from './containers/Pages/Groupchat';
 import { ChatRooms } from './containers/Pages/ChatRooms';
 import { Rooms } from './containers/Pages/Rooms';
 import { UserContext } from './providers/UserProvider';
 import { ChatRoomsProvider } from './providers/ChatRoomsProvider';
 import { LoggedInStatesContext } from './providers/LoggedInStatesProvider';
-import { LogIn, LogOut } from './interfaces';
+import { LogIn, LogInback, LogOut } from './interfaces';
 
 
 function App() {
 
   //ユーザーのログイン情報
  
-
+  // const navigate = useNavigate()
   const { setLoggedInStatus } = useContext(LoggedInStatesContext);
   const loggedincontext = useContext(LoggedInStatesContext);
 
@@ -34,10 +34,11 @@ function App() {
   console.log(localStorage.getItem("current_user"));
 
   //ログイン機能
-   const handleLogin = (data:LogIn) => {
-    // setLoggedInStatus("ログインなう")
+   const handleLogin = (data:LogInback) => {
+    setLoggedInStatus("ログインなう")
     setCurrentUserInfo({ data });
     localStorage.setItem("current_user",JSON.stringify({data}));
+    // navigate(`/groupchat/${data.user.language}`)
   }
   //ログアウト機能
   const handleLogout = (data:LogOut) => {
@@ -82,7 +83,6 @@ function App() {
 
   return (
     <>
-   <ChatRoomsProvider>
     <BrowserRouter>
      <Routes>
       <Route path='/' element={<Top   />}/>
@@ -97,15 +97,15 @@ function App() {
 
       <Route path='users/:id/edit' element={<UsersEdit  />} />
 
-      <Route path='groupchat' element={<Groupchat  handleLogout={handleLogout} />} />
+      <Route path='groupchat/:language' element={<GroupChatRoom handleLogout={handleLogout} />} />
 
       <Route path='chatrooms' element={<ChatRooms  handleLogout={handleLogout}/>}></Route>
       
       <Route path='chatrooms/:id' element={<Rooms  handleLogout={handleLogout}/>}></Route>
 
-     <Route path='*' element={<Page404 />} /></Routes>
+     <Route path='*' element={<Page404 />} />
+     </Routes>
     </BrowserRouter>
-    </ChatRoomsProvider>
     </>
   );
  }
