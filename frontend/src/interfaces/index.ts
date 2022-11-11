@@ -65,9 +65,11 @@ export interface ChatRoom {
   last_message: Message
 }
 
+
 export interface  Room {
   id:number
   room_name?:string
+  language?:string
   created_at?: Date
   updated_at?: Date
 } 

@@ -1,10 +1,9 @@
 import { createContext, useState } from "react";
-import {  Room } from "../interfaces";
 
 export const ChatRoomsContext = createContext<any>({});
 
 export const  ChatRoomsProvider = (props:any) => {
-  const [ chatRooms, setChatRooms ] = useState<Room[]>([]);
+  const [ chatRooms, setChatRooms ] = useState<any>();
 
   return(
     <ChatRoomsContext.Provider value={ { chatRooms, setChatRooms } }>

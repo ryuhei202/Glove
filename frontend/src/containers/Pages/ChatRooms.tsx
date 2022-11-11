@@ -17,6 +17,10 @@ export const ChatRooms = (props:any) => {
   const { setChatRooms } = useContext(ChatRoomsContext);
   const chatcontext = useContext(ChatRoomsContext);
   console.log(chatcontext);
+  const direct_rooms = chatcontext.chatRooms?.rooms
+  const group_room = chatcontext.chatRooms?.grouproom
+  console.log(direct_rooms);
+  console.log(group_room);
 
   const current_user = useContext(UserContext);
   console.log(current_user);
@@ -24,12 +28,13 @@ export const ChatRooms = (props:any) => {
   const [loading, setLoading] = useState<boolean>(true)
 
 
+
   //チャット一覧を取得
   const handleGetChatRooms =  () => {
     if (!current_user.currentUserInfo?.data.user.id) return;
     getRooms(current_user.currentUserInfo?.data.user.id).then((res)=> {
       console.log(res);
-      setChatRooms(res.rooms);
+      setChatRooms(res);
     }).catch((error)=>{
       console.log(error)
     })
@@ -50,13 +55,17 @@ export const ChatRooms = (props:any) => {
     handleGetChatRooms()
   }, [current_user]);
 
+
+
   return (
     <>
     
     <Header>chatroom一覧です</Header>
  <h2>current_user:{current_user.currentUserInfo?.data?.user.name} </h2>
-     {chatcontext.chatRooms ? (
-  chatcontext.chatRooms?.map((chatRoom:ChatRoom, index:number) => {
+ <Link to={`/groupchat/${group_room?.language}`}>グループチャットへ</Link>
+ <br />
+     {direct_rooms ? (
+ direct_rooms?.map((chatRoom:ChatRoom, index:number) => {
     return (
       <React.Fragment key={index}>   
     <Link  to={`${chatRoom.room.id}`} state={{userId:current_user.currentUserInfo.data.user.id, roomId:chatRoom.room.id} }>

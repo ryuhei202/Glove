@@ -16,8 +16,10 @@ module Api
         rooms = []
         
         user = User.find(params[:userId])
+        grouproom =user.rooms.find_by(language: user.language)
+        directrooms= user.rooms.where.not(id: grouproom.id)
     
-          user.rooms.order("created_at DESC").each do |room|
+          directrooms.order("created_at DESC").each do |room|
             # 部屋の情報（相手のユーザーは誰か、最後に送信されたメッセージはどれか）をJSON形式で作成
             rooms << {
               room: room,
@@ -25,7 +27,7 @@ module Api
               last_message: room.messages[-1]
             }
           end
-        render json: { status: 200, rooms: rooms } 
+        render json: { status: 200, rooms: rooms, grouproom: grouproom } 
       end
     
       def show
