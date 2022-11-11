@@ -34,7 +34,8 @@ function App() {
   console.log(localStorage.getItem("current_user"));
 
   //ログイン機能
-   const handleLogin = (data:LogInback) => {
+   const handleLogin = (data:any) => {
+    console.log(data)
     setLoggedInStatus("ログインなう")
     setCurrentUserInfo({ data });
     localStorage.setItem("current_user",JSON.stringify({data}));
@@ -56,29 +57,6 @@ function App() {
     setCurrentUserInfo(JSON.parse(currentUser))
   },[])
  
-//ログイン状態をチェックできるサイクルを作成
-  // useEffect(() => {
-  //   checkLoginStatus()
-  // },[])
-
-
-
-  //  const checkLoginStatus = () => {
-  //   axios.get(usersLoggedin, { withCredentials: true }).then(
-  //     response => {
-  //       console.log(response);
-  //     if (response.data.logged_in && loggedInStatus === "未ログイン") {
-  //       setLoggedInStatus("ログインなう")
-  //       setCurrentUserInfo(response.data.user)
-  //     } else if (!response.data.logged_in && loggedInStatus === "ログインなう") {
-  //       setLoggedInStatus("未ログイン")
-  //       setCurrentUserInfo({})
-  //     }
-  //   }
-  //   ).catch(error => {
-  //     console.log("ログインエラー", error)
-  //   })
-  // }
     
 
   return (

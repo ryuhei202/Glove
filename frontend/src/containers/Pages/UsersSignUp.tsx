@@ -16,8 +16,9 @@ export const UsersSignUp = (props:any) => {
   const handleSuccessfulAuthentication = (data:any) => {
     // props.history.push("/dashboard")
     // navigate()
+    console.log(data)
     props.handleLogin(data);
-    navigate('/users');
+    navigate(`/groupchat/${data.user.language}`)
 
 
 }

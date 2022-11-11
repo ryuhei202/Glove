@@ -29,11 +29,13 @@ module Api
           login @user
           @group_room.members.create!(user_id: @user.id)
           render json: {
+            logged_in: true,
             user: current_user,
             status: :created,
           }
         else
           render json: {
+            logged_in: false,
             errors: @user.errors
           }, status: 422
         end
