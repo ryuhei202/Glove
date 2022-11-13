@@ -41,11 +41,11 @@ function App() {
     localStorage.setItem("current_user",JSON.stringify({data}));
     // navigate(`/groupchat/${data.user.language}`)
   }
-  //ログアウト機能
+  // ログアウト機能
   const handleLogout = (data:LogOut) => {
-    // setLoggedInStatus("未ログイン")
     setCurrentUserInfo({data});
   }
+  
   console.log(current_user.currentUserInfo)
 
 
@@ -65,21 +65,21 @@ function App() {
      <Routes>
       <Route path='/' element={<Top   />}/>
 
-      <Route path='users' element={<Users   handleLogout={handleLogout}/>}/>
+      <Route path='users' element={<Users   />}/>
 
       <Route path='users/:id' element={<UsersShow  />}/>
 
       <Route path='signup' element={<UsersSignUp   handleLogin={handleLogin} />}/>
 
-      <Route path='login' element={<UsersLogin   handleLogin={handleLogin} handleLogout={handleLogout}/>}/>
+      <Route path='login' element={<UsersLogin   handleLogin={handleLogin} />}/>
 
       <Route path='users/:id/edit' element={<UsersEdit  />} />
 
-      <Route path='groupchat/:language' element={<GroupChatRoom handleLogout={handleLogout} />} />
+      <Route path='groupchat/:language' element={<GroupChatRoom  />} />
 
-      <Route path='chatrooms' element={<ChatRooms  handleLogout={handleLogout}/>}></Route>
+      <Route path='chatrooms' element={<ChatRooms  />}></Route>
       
-      <Route path='chatrooms/:id' element={<Rooms  handleLogout={handleLogout}/>}></Route>
+      <Route path='chatrooms/:id' element={<Rooms  />}></Route>
 
      <Route path='*' element={<Page404 />} />
      </Routes>
