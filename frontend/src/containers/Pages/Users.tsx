@@ -18,17 +18,7 @@ export const Users = (props:any) => {
 const navigate = useNavigate();
   const [state, dispatch] = useReducer(usersReducer, initialState);
 
-  const handleLogoutClick = () => {
-    fetchLogoutUser().then(res => {
-      console.log(res)
-      props.handleLogout(res)
-      navigate("/")
-      
-    }).catch(error => {
-      console.log(error)
-    })
-  }
-
+  
   useEffect(() => {
     dispatch({ type: usersActionTypes.FETCHING });
     fetchUsers()
@@ -63,7 +53,7 @@ const navigate = useNavigate();
     }
       <br />
     <Link to="/chatrooms">chatroom</Link>
-    <button onClick={handleLogoutClick}>ログアウトする</button>
+
     </>
   )
 };

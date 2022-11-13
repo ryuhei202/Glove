@@ -40,16 +40,6 @@ export const ChatRooms = (props:any) => {
     })
   };
 
-  const handleLogoutClick = () => {
-    fetchLogoutUser().then(res => {
-      console.log(res)
-      props.handleLogout(res)
-      navigate("/")
-      
-    }).catch(error => {
-      console.log(error)
-    })
-  }
 
   useEffect(() => {
     handleGetChatRooms()
@@ -81,7 +71,7 @@ export const ChatRooms = (props:any) => {
  
 
 <br /> 
- <button onClick={handleLogoutClick}>ログアウトする</button>
+ 
  <Link to="/users">ユーザー一覧ページです</Link>
     
    

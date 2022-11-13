@@ -72,11 +72,7 @@ export const UsersShow = (props:any) => {
     })
   };
 
-  // const roomsHave = () => {
-  //   chatcontext.chatRooms.include((room:any)=>{
-  //     room.other_users[0].id === id
-  //   })
-  // }
+  
 
   const findObjById = (chatrooms:any, roomid:number) => {
     
@@ -107,18 +103,6 @@ export const UsersShow = (props:any) => {
     })
     }}
     
-
-  //   // createRoom({
-  //   //   userid:usercontext.data.user.id,
-  //   //   other_userid:id
-  //   // }).then(res => {
-  //   //   console.log(res)
-      
-  //   //   navigate(`/chatrooms/${res.room.id}`,{ state: { roomId:res.room.id, userId:usercontext.data.user.id} })
-  //   // }).catch((error) => {
-  //   //   console.log(error)
-  //   // })
-  // }
   
 
   useEffect(() => {
