@@ -4,6 +4,7 @@ import { fetchLogoutUser } from "../../apis/users_logout";
 import { CurrentUser } from "../../interfaces";
 import { UserContext } from "../../providers/UserProvider";
 import { useLogOut } from "../../hooks/useLogOut";
+import { Link } from "react-router-dom";
 
 
 export const Header = (props:any) => {
@@ -23,7 +24,8 @@ export const Header = (props:any) => {
     <p>{props.children}</p>
    { usercontext?.data?.logged_in == true ?
     <>
-      <h2>{user_name}</h2>
+      <Link to={`/users/${usercontext?.data?.user.id}`}>あなた:{user_name}</Link>
+      <br />
       <button onClick={handleLogoutClick}>ログアウトする</button>
     </>
     :
