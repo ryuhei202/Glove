@@ -4,6 +4,7 @@ import React, { useReducer, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchUsers } from "../../apis/users";
 import { fetchLogoutUser } from "../../apis/users_logout";
+import { User } from "../../interfaces";
 import { UserContext } from "../../providers/UserProvider";
 
 import {
@@ -56,15 +57,22 @@ useEffect(()=>{
   <>
    <Header>ユーザー一覧ページです</Header>
 
-    {
-      state.usersList.map((user: any) =>
+   {
+      state.usersList.map((user: User) =>{
+        if(user.id !== current_user.currentUserInfo?.data?.user.id){
+          return(
         <div key={user.id}>
           {user.name}
           <Link to={`${user.id}`}>詳細</Link>
           <Link to={`${user.id}/edit/`}>編集</Link>
         </div>
+          )
+        }
+      }
       )
     }
+      
+    
       <br />
     <Link to="/chatrooms">chatroom</Link>
 
