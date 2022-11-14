@@ -14,6 +14,7 @@ export const useLogOut = () => {
     fetchLogoutUser().then(res => {
       console.log(res)
       setCurrentUserInfo({res});
+      localStorage.clear()
       navigate("/")      
     }).catch(error => {
       console.log(error)

@@ -1,6 +1,6 @@
 import { getValue } from "@testing-library/user-event/dist/utils";
 import { memo, useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { getEachRooms } from "../../apis/eachrooms";
 import { createMessage } from "../../apis/messages";
@@ -10,6 +10,8 @@ export const Rooms = memo((props:any) => {
 
 const location = useLocation();
 console.log(location);
+ 
+const navigate = useNavigate();
 
 const [content, setContent] = useState<string>("");
 
@@ -45,6 +47,13 @@ getEachRooms(location.state.roomId,location.state.userId).then((data)=>{
 
 
 }).catch();
+},[])
+
+//認可処理
+useEffect(()=>{
+  if (localStorage.getItem("current_user") == null) {
+    navigate('/login')
+  }
 },[])
 
 

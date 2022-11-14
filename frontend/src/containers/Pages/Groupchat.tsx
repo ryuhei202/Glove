@@ -1,6 +1,6 @@
 
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { getEachRooms } from "../../apis/eachrooms";
 import { getGroupChats } from "../../apis/groupchats";
 import { Message, User } from "../../interfaces";
@@ -13,6 +13,8 @@ export const GroupChatRoom = (props:any) => {
 
   const current_user = useContext(UserContext);
   console.log(current_user);
+
+  const navigate = useNavigate();
 
   const [otherUser, setOtherUser] = useState<User[]>([]);
 const [messages, setMessages] = useState<Message[]>([]);
@@ -31,6 +33,12 @@ const [messages, setMessages] = useState<Message[]>([]);
   console.log(otherUser);
   console.log(messages);
   
+//認可処理
+  useEffect(()=>{
+    if (localStorage.getItem("current_user") == null) {
+      navigate('/login')
+    }
+  },[])
 
   return (
     <>

@@ -36,16 +36,10 @@ function App() {
   //ログイン機能
    const handleLogin = (data:any) => {
     console.log(data)
-    setLoggedInStatus("ログインなう")
     setCurrentUserInfo({ data });
     localStorage.setItem("current_user",JSON.stringify({data}));
-    // navigate(`/groupchat/${data.user.language}`)
   }
-  // ログアウト機能
-  const handleLogout = (data:LogOut) => {
-    setCurrentUserInfo({data});
-  }
-  
+
   console.log(current_user.currentUserInfo)
 
 
@@ -57,7 +51,7 @@ function App() {
     setCurrentUserInfo(JSON.parse(currentUser))
   },[])
  
-    
+  
 
   return (
     <>

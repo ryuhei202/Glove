@@ -114,12 +114,19 @@ export const UsersShow = (props:any) => {
     )
   }, []);
 
+
+
   useEffect(() => {
     handleGetChatRooms()
   }, [current_user]);
 
  
-
+//認可処理
+useEffect(()=>{
+  if (localStorage.getItem("current_user") == null) {
+    navigate('/login')
+  }
+},[])
  
 
 

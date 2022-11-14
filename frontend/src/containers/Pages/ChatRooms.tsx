@@ -31,7 +31,7 @@ export const ChatRooms = (props:any) => {
 
   //チャット一覧を取得
   const handleGetChatRooms =  () => {
-    if (!current_user.currentUserInfo?.data.user.id) return;
+    if (!current_user.currentUserInfo?.data?.user.id) return;
     getRooms(current_user.currentUserInfo?.data.user.id).then((res)=> {
       console.log(res);
       setChatRooms(res);
@@ -40,10 +40,17 @@ export const ChatRooms = (props:any) => {
     })
   };
 
+  //認可処理
+  useEffect(()=>{
+   if (localStorage.getItem("current_user") == null) {
+     navigate('/login')
+   }
+ },[])
 
   useEffect(() => {
     handleGetChatRooms()
   }, [current_user]);
+
 
 
 
@@ -58,7 +65,7 @@ export const ChatRooms = (props:any) => {
  direct_rooms?.map((chatRoom:ChatRoom, index:number) => {
     return (
       <React.Fragment key={index}>   
-    <Link  to={`${chatRoom.room.id}`} state={{userId:current_user.currentUserInfo.data.user.id, roomId:chatRoom.room.id} }>
+    <Link  to={`${chatRoom.room.id}`} state={{userId:current_user?.currentUserInfo?.data?.user.id, roomId:chatRoom.room.id} }>
         {chatRoom.other_users[0]?.name}:  {chatRoom.last_message === null ? "まだメッセージはありません。" : chatRoom.last_message.message.length > 30 ? chatRoom.last_message.message.substr(0, 30) + "..." : chatRoom.last_message.message}
     </Link>
       <br /> 

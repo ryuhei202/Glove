@@ -16,6 +16,7 @@ export const Header = (props:any) => {
   console.log(usercontext?.data?.user.name);
   
   const user_name = usercontext?.data?.user.name;
+  
 
   return (
     <>

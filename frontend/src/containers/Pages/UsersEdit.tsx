@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { updateUser } from "../../apis/users_update";
 import { Header } from "../Templetes/Header";
 import { UpDateUser } from "../../interfaces";
+import { useEffect } from "react";
 
 
 export const UsersEdit= (props:any) => {
@@ -32,6 +33,13 @@ export const UsersEdit= (props:any) => {
   console.log(data)
 
   }
+
+  //認可処理
+useEffect(()=>{
+  if (localStorage.getItem("current_user") == null) {
+    navigate('/login')
+  }
+},[])
 
 console.log(state)
 
