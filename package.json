@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/ryuhei202/Glove/issues"
   },
-  "homepage": "https://github.com/ryuhei202/Glove#readme"
+  "homepage": "https://github.com/ryuhei202/Glove#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }

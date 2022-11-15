@@ -37,7 +37,7 @@ module Api
             private
           
               def message_params
-                params.permit(:room_id, :user_id, :message)
+                params.permit(:room_id, :user_id, :message, :image)
               end
         
       

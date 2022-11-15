@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_10_044410) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_14_064247) do
   create_table "group_rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "groupname", null: false
     t.datetime "created_at", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_10_044410) do
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end

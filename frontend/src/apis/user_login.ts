@@ -9,10 +9,10 @@ export const fetchLoginUser =(params:LogIn) => {
     email:params.email,
     password:params.password,
    }, { withCredentials: true })
-  .then(response => {
+  .then((response:any) => {
     return response.data
   })
-  .catch(error => {
+  .catch((error:any) => {
     console.log(error);
   })
 }

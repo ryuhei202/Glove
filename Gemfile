@@ -11,7 +11,7 @@ gem 'bcrypt'
 # gem "rails_same_site_cookie"
 gem "rails_same_site_cookie", "~> 0.1.8"
 
-
+gem 'carrierwave'
 
 # Use mysql as the database for Active Record
 gem "mysql2", "~> 0.5"
