@@ -21,7 +21,7 @@ export const Header = (props:any) => {
 
   return (
     <>
-    <p>{props.children}</p>
+    <p className="mb-10 text-xl text-center font-bold">{props.children}</p>
    { usercontext?.data?.logged_in == true ?
     <>
       <Link to={`/users/${usercontext?.data?.user.id}`}>あなた:{user_name}</Link>
