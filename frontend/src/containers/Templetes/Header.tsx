@@ -21,7 +21,9 @@ export const Header = (props:any) => {
 
   return (
     <>
-    <p className="mb-10 text-xl text-center font-bold">{props.children}</p>
+    <div className="mb-10 text-xl text-center font-bold bg-red-300">
+
+    <p>{props.children}</p>
    { usercontext?.data?.logged_in == true ?
     <>
       <Link to={`/users/${usercontext?.data?.user.id}`}>あなた:{user_name}</Link>
@@ -31,6 +33,7 @@ export const Header = (props:any) => {
     :
       <h2>ログインしていません</h2>
     }
+    </div>
   
     </>
   )

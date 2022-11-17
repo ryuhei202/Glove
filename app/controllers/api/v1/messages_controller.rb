@@ -8,7 +8,7 @@ module Api
               if message.save
                 render json: { status: 200, message: message }
               else
-                render json: { status: 500, message: "作成に失敗しました" }
+                render json: { status: 500, message:message.errors }
               end
             end
           

@@ -9,7 +9,7 @@ export const Top = (props:any) => {
 
   return (
     <>
-    <Header>topページです</Header>
+    <Header>topページ</Header>
     <Link to="/users">ユーザー一覧ページです</Link>
     <br />
     <Link to="/signup">ユーザー登録ページです</Link>

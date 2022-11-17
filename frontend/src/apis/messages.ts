@@ -9,11 +9,13 @@ import { messageIndex } from '../urls/index'
 // }
 
 export const createMessage =(params:any) => {
-  return axios.post(messageIndex,{
-    user_id:params.user_id,
-    room_id:params.room_id,
-    message:params.message
-  })
+  return axios.post(messageIndex,
+   params
+  // ,{
+  //   headers: {
+  //     'content-type': 'multipart/form-data',
+  //   }}
+    )
   .then(res => {
     return res.data
   })
