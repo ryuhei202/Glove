@@ -75,6 +75,7 @@ const uploadImage = useCallback((e:any) => {
 
 
 console.log(otherUser)
+console.log(messages)
 
 
   
@@ -83,19 +84,35 @@ console.log(otherUser)
     <>
     <Header>{otherUser.name}とのchatroomです</Header>
     {messages.map((m:any,index:number)=>{
-      if(m.user_id === otherUser.id){
+      if(m.user_id === otherUser.id && m.image.url){
         return(
           <React.Fragment key={index} >
-          <p key={index}>{otherUser.name}:{m.message}</p>
-          <img src={m?.image.url}  />
+          <p key={index}>{otherUser.name}:{m.message}</p>   
+            <img src={m?.image.url} width={150} height={150}  />
           </React.Fragment>
          
-        )
-      }else{
-        return( 
+        )}else if(m.user_id === otherUser.id){
+          return (
+
           <React.Fragment key={index} >
-          <p >あなた:{m.message}</p>
-          <img src={m?.image.url}  />
+              <p key={index}>{otherUser.name}:{m.message}</p>
+          </React.Fragment>
+          )
+      
+        }
+      else if(m.user_id != otherUser.id && m.image.url){
+        return(
+
+        <React.Fragment key={index} >
+          <p >あなた:{m.message}</p>        
+            <img src={m?.image.url} width={150} height={150}  />        
+          </React.Fragment>
+        )
+      }else if(m.user_id != otherUser.id){
+        return( 
+          
+          <React.Fragment key={index} >
+          <p >あなた:{m.message}</p>                   
           </React.Fragment>
         
         )

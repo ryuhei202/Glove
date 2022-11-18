@@ -101,7 +101,8 @@ export const UsersShow = (props:any) => {
     }).catch((error) => {
       console.log(error)
     })
-    }}
+    }
+  }
     
   
 
@@ -142,7 +143,6 @@ useEffect(()=>{
     </ul>
 
     <button onClick={onClickEdit}>編集する</button>
-    <button onClick={onClickDelete}>ログアウトする</button>
     <button onClick={onClickCreateChatRoom}>チャットする</button>
     <br />
     <Link to="/chatrooms">chatroom</Link>
