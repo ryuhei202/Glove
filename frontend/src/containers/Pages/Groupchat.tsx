@@ -75,47 +75,32 @@ setContent("")
   return formData
 }
 
+console.log(messages);
+
   return (
     <>
     <Header>{current_user.currentUserInfo?.data.user.language}ページです</Header>
     
     {messages.map((message:any,index:number)=>{
-        for (let i = 0; i < otherUser.length; i++) {
-          if (otherUser[i].id == message.user_id && message.image.url) {
-              return (
-                <React.Fragment key={index} >
-                <p key={index}>{otherUser[i].name}:{message.message}</p>
-                <img src={message?.image.url} width={150} height={150}  /> 
-                </React.Fragment>
-              )
-              
-          }else if (otherUser[i].id == message.user_id ){
-            return (
-              <React.Fragment key={index} >
-              <p >{otherUser[i].name}:{message.message}</p>
-              </React.Fragment>
-            )
-          }else if(otherUser[i].id != message.user_id && message.image.url){
-            return (
-              <React.Fragment key={index} >
-              <p >あなた:{message.message}</p>
-              <img src={message?.image.url} width={150} height={150}  /> 
-              </React.Fragment>
-            )
-          }else if(otherUser[i].id != message.user_id){
-            return(
-              <React.Fragment key={index} >
-              <p > あなた:{message.message}
-              </p>
-             
-              </React.Fragment>)
-          }
-            
-            
-          
-                                                    }
-
-                                          }
+      for (let i = 0; i < otherUser.length; i++) {
+          if (otherUser[i].id == message.user_id) {
+           return (
+             <React.Fragment key={index} >
+             <p key={index}>{otherUser[i].name}:{message.message}</p>
+             <img src={message?.image.url} width={150} height={150}  /> 
+             </React.Fragment>
+           )
+           
+       }else if(current_user.currentUserInfo?.data.user.id == message.user_id ){
+         return (
+           <React.Fragment key={index} >
+           <p >あなた:{message.message}</p>
+           <img src={message?.image.url} width={150} height={150}  /> 
+           </React.Fragment>
+         )
+       
+       }}
+           }
                   )
       }
     

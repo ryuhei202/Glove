@@ -1,9 +1,10 @@
 import { getValue } from "@testing-library/user-event/dist/utils";
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { getEachRooms } from "../../apis/eachrooms";
 import { createMessage } from "../../apis/messages";
+import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
 
 export const Rooms = memo((props:any) => {
@@ -12,6 +13,9 @@ const location = useLocation();
 console.log(location);
  
 const navigate = useNavigate();
+
+const current_user = useContext(UserContext);
+  console.log(current_user);
 
 const [content, setContent] = useState<string>("");
 
@@ -84,14 +88,34 @@ console.log(messages)
     <>
     <Header>{otherUser.name}とのchatroomです</Header>
     {messages.map((m:any,index:number)=>{
-      if(m.user_id === otherUser.id && m.image.url){
+    //  if(m.user_id === otherUser.id){
+    //       return (
+    //       <React.Fragment key={index} >
+    //           <p key={index}>{otherUser.name}:{m.message}</p>
+    //           <img src={m?.image.url} width={150} height={150}  />
+    //       </React.Fragment>
+    //       )
+      
+    //     }
+    //  else if(m.user_id != otherUser.id){
+    //     return(          
+    //       <React.Fragment key={index} >
+    //       <p >あなた:{m.message}</p>   
+    //       <img src={m?.image.url} width={150} height={150}  />                
+    //       </React.Fragment>
+        
+    //     )
+       
+    //   }
+    
+       if(m.user_id === otherUser.id && m.image.url){
         return(
           <React.Fragment key={index} >
           <p key={index}>{otherUser.name}:{m.message}</p>   
             <img src={m?.image.url} width={150} height={150}  />
           </React.Fragment>
          
-        )}else if(m.user_id === otherUser.id){
+        )}else if(m.user_id === otherUser.id && !m.image.url){
           return (
           <React.Fragment key={index} >
               <p key={index}>{otherUser.name}:{m.message}</p>
@@ -99,7 +123,7 @@ console.log(messages)
           )
       
         }
-      else if(m.user_id != otherUser.id && m.image.url){
+      else if(m.user_id == current_user.currentUserInfo?.data.user.id && m.image.url){
         return(
 
         <React.Fragment key={index} >
@@ -107,7 +131,7 @@ console.log(messages)
             <img src={m?.image.url} width={150} height={150}  />        
           </React.Fragment>
         )
-      }else if(m.user_id != otherUser.id){
+      }else if(m.user_id == current_user.currentUserInfo?.data.user.id && !m.image.url){
         return(          
           <React.Fragment key={index} >
           <p >あなた:{m.message}</p>                   
@@ -116,7 +140,6 @@ console.log(messages)
         )
        
       }
-    
     })}
 
 <form>

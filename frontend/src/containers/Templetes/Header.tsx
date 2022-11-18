@@ -27,6 +27,7 @@ export const Header = (props:any) => {
     <p>{props.children}</p>
    { usercontext?.data?.logged_in == true ?
     <>
+    <img src={usercontext?.data?.user.profile_image?.url} width={30} height={30}  />
       <Link to={`/users/${usercontext?.data?.user.id}`}>あなた:{user_name}</Link>
       <br />
       <button onClick={handleLogoutClick}>ログアウトする</button>

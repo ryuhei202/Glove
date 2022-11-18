@@ -104,9 +104,7 @@ export const UsersSignUp = (props:any) => {
         <input { ...register('password', { required: true,minLength: 6 })} type="password"/>
         { errors.password && <span>6文字以上のPasswordを入力してください</span> } 
         
-        {/* <h4>password_confirmation: </h4>
-        <input { ...register('password_confirmation', { required: true })} />
-        { errors.password_confirmation && <span>Passwordをもう一度入力してください</span> }  */}
+     
         
         <div>
             <input type="submit" value="Submit"></input>

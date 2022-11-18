@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  mount_uploader :profile_image, ImageUploader
+  mount_uploader :profile_image, ProfileImageUploader
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   has_many :members

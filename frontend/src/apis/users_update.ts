@@ -4,14 +4,10 @@ import { usersShow } from '../urls';
 
 
 
-export const updateUser = (userid: number, params:UpDateUser) => {
+export const updateUser = (userid: number, params:any) => {
 
 return axios.patch(usersShow(userid),
-  {
-    name: params.name,
-    gender: params.gender,
-    self_introduction: params.self_introduction
-  }).then(res => {
+  params).then(res => {
     return res.data
 
   }).catch((e) => {throw e;})

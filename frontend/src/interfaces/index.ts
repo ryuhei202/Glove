@@ -35,12 +35,15 @@ export interface User {
   gender: string
   password: string
   self_introduction?: string
-  profile_image?: string
+  profile_image?: Url
   language: string
   created_at?: Date
   updated_at?: Date
 }
 
+export interface Url {
+  url:string
+}
 
 
 // 現在のユーザー
@@ -57,6 +60,7 @@ export interface UpDateUser  {
   name: string
   gender: string
   self_introduction?: string
+  profile_image?:string
 };
 
 export interface ChatRoom {

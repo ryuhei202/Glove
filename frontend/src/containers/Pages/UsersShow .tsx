@@ -6,24 +6,27 @@ import { createRoom } from "../../apis/createroom";
 import { getRooms } from "../../apis/rooms";
 import { fetchUsersShow } from "../../apis/users_id";
 import { fetchUserDelete } from "../../apis/user_delete";
-import { CurrentUser } from "../../interfaces";
+import { CurrentUser, User } from "../../interfaces";
 import { ChatRoomsContext } from "../../providers/ChatRoomsProvider";
 import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
 
 
-type Userstype = {
-  created_at: string;
-  email: string;
-  gender: string;
-  id: number;
-  name: string;
-  password_digest: string;
-  profile_image: string;
-  self_introduction: string;
-  updated_at: string;
-}
+// type Userstype = {
+//   created_at: string;
+//   email: string;
+//   gender: string;
+//   id: number;
+//   name: string;
+//   password_digest: string;
+//   profile_image: Url;
+//   self_introduction: string;
+//   updated_at: string;
+// }
 
+// interface Url {
+//   url:string;
+// }
 
 
 
@@ -43,7 +46,7 @@ export const UsersShow = (props:any) => {
 
   const { setChatRooms } = useContext(ChatRoomsContext);
 
-  const [state, setState] = useState<Userstype | null>(null);
+  const [state, setState] = useState<User | null>(null);
 
   const  { id } = useParams<{ id: any }>();
 
@@ -109,6 +112,7 @@ export const UsersShow = (props:any) => {
   useEffect(() => {
     fetchUsersShow(id)
     .then((data) =>{
+      console.log(data)
       setState(data.user)
     }
      
@@ -136,6 +140,7 @@ useEffect(()=>{
     <>
     <Header>showページです</Header>
     <ul>
+    <img src={state?.profile_image?.url} width={150} height={150}  />
       <li>name:{state?.name}</li>
       <li>email:{state?.email}</li>
       <li>gender:{state?.gender}</li>
