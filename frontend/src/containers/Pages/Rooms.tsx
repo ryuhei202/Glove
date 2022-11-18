@@ -93,7 +93,6 @@ console.log(messages)
          
         )}else if(m.user_id === otherUser.id){
           return (
-
           <React.Fragment key={index} >
               <p key={index}>{otherUser.name}:{m.message}</p>
           </React.Fragment>
@@ -109,8 +108,7 @@ console.log(messages)
           </React.Fragment>
         )
       }else if(m.user_id != otherUser.id){
-        return( 
-          
+        return(          
           <React.Fragment key={index} >
           <p >あなた:{m.message}</p>                   
           </React.Fragment>

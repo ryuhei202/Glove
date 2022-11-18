@@ -73,10 +73,6 @@ module Api
         def set_groupchat_room
           @group_room = Room.find_by(language: params[:language])
         end
-        
-        # def set_current_user
-        #   @current_user = User.find_by(id: session[:user_id])
-        # end
 
    
     end
