@@ -13,8 +13,9 @@ export const Header = (props:any) => {
 
   const usercontext:CurrentUser = useContext(UserContext).currentUserInfo;
   const navigate = useNavigate();
+  console.log(usercontext);
   console.log(usercontext?.data?.logged_in);
-  console.log(usercontext?.data?.user.name);
+  console.log(usercontext?.data?.user);
   
   const user_name = usercontext?.data?.user.name;
   

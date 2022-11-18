@@ -45,10 +45,12 @@ module Api
         @user = User.find(params[:id])
         if @user.update!(user_params)
           render json: {
+            logged_in: true,
             user: @user
           }
         else
           render json: {
+            logged_in: false,
             errors: @user.errors
           }, status: 422
         end
@@ -68,7 +70,7 @@ module Api
   private
 
     def user_params
-      params.require(:user).permit(:name, :gender, :language, :email, :password, :self_introduction)
+      params.require(:user).permit(:name, :gender, :language, :email, :password, :self_introduction, :profile_image)
           
     end
   end

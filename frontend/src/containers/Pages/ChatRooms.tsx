@@ -58,7 +58,6 @@ export const ChatRooms = (props:any) => {
     <>
     
     <Header>chatroom一覧です</Header>
- <h2>current_user:{current_user.currentUserInfo?.data?.user.name} </h2>
  <Link to={`/groupchat/${group_room?.language}`}>グループチャットへ</Link>
  <br />
      {direct_rooms ? (

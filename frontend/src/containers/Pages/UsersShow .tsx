@@ -63,7 +63,7 @@ export const UsersShow = (props:any) => {
   }
 
   const handleGetChatRooms =  () => {
-    if (!current_user.currentUserInfo?.data.user.id) return;
+    if (!current_user.currentUserInfo?.data?.user.id) return;
     getRooms(current_user.currentUserInfo?.data.user.id).then((res)=> {
       console.log(res);
       setChatRooms(res.rooms);

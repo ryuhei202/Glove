@@ -28,8 +28,11 @@ export const UsersEdit= (props:any) => {
     gender: data.gender,
     self_introduction: data.self_introduction
 
-  }).then(() => navigate(`/users/${id}`))
-
+  }).then((data) => {
+    localStorage.clear();
+    localStorage.setItem("current_user",JSON.stringify({data}));
+    navigate(`/users/${id}`);
+    window.location.reload();})
   console.log(data)
 
   }
