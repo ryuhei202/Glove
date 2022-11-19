@@ -119,11 +119,6 @@ console.log(messages);
       <button onClick={onSubmit} type="button">送信</button>
       <button onClick={onSubmit} type="button">送信</button>
   </form>
-  <br />
-    <Link to="/chatrooms">chatrooms</Link>
-    <br />
-    <Link to="/users">ユーザー一覧ページです</Link>
-     
     </>
   )
 };

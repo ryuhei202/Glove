@@ -170,10 +170,6 @@ console.log(messages)
       <button onClick={onSubmit} type="button">送信</button>
   </form>
 
-  <Link to="/users">ユーザー一覧ページです</Link>
-
-  <br />
-    <Link to="/chatrooms">chatroom</Link>
     </>
   )
 });

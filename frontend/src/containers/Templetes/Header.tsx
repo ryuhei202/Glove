@@ -22,20 +22,27 @@ export const Header = (props:any) => {
 
   return (
     <>
-    <div className="mb-10 text-xl text-center font-bold bg-red-300">
-
-    <p>{props.children}</p>
+    <header className="text-gray-700 border-b border-gray-200" >
+    <div className="container flex mx-auto p-5 flex-col md:flex-row items-center">
+      <div className="font-medium text-gray-900 ">
+    <p className="text-xl">Glove</p>
+    <p className="mb-4 md:mb-0">{props.children}</p>
+    </div>
    { usercontext?.data?.logged_in == true ?
-    <>
+    <nav className="flex md:ml-auto text-base">
+       <Link className="mr-3 hover:text-blue-400 duration-300" to="/users">Users</Link>
+    <Link className="mr-3 hover:text-blue-400 duration-300" to="/chatrooms">Chat</Link>
     <img src={usercontext?.data?.user.profile_image?.url} width={30} height={30}  />
-      <Link to={`/users/${usercontext?.data?.user.id}`}>あなた:{user_name}</Link>
-      <br />
-      <button onClick={handleLogoutClick}>ログアウトする</button>
-    </>
+      <Link className="mr-3 hover:text-blue-400 duration-300" to={`/users/${usercontext?.data?.user.id}`}>{user_name}</Link>
+      <button className="hover:text-blue-400 duration-300 flex text-center" onClick={handleLogoutClick}>Logout</button>
+    
+    </nav>
+   
     :
-      <h2>ログインしていません</h2>
+      <h2 className="flex md:ml-auto text-base">ログインしていません</h2>
     }
     </div>
+    </header>
   
     </>
   )

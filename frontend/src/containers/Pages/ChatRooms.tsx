@@ -73,18 +73,7 @@ export const ChatRooms = (props:any) => {
     )
   } ) ): (
     <p>トークルームがありません</p>
-  )} 
- 
-
-<br /> 
- 
- <Link to="/users">ユーザー一覧ページです</Link>
-    
-   
-    
-    
-    
-    
+  )}    
     </>
   )
 };

@@ -70,10 +70,6 @@ useEffect(()=>{
       }
       )
     }
-      
-    
-      <br />
-    <Link to="/chatrooms">chatroom</Link>
 
     </>
   )
