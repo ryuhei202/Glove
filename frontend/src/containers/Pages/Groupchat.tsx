@@ -80,7 +80,8 @@ console.log(messages);
   return (
     <>
     <Header>{current_user.currentUserInfo?.data.user.language}ページです</Header>
-    
+    <div className="">
+  
     {messages.map((message:any,index:number)=>{
       for (let i = 0; i < otherUser.length; i++) {
           if (otherUser[i].id == message.user_id) {
@@ -103,9 +104,9 @@ console.log(messages);
            }
                   )
       }
-    
-      
-    <br />
+    </div>
+    <div>
+
     <form>
 <h4>Message: </h4>
       <textarea value={content} onChange={(e)=>setContent(e.target.value)}/>
@@ -117,8 +118,9 @@ console.log(messages);
               }}
             />
       <button onClick={onSubmit} type="button">送信</button>
-      <button onClick={onSubmit} type="button">送信</button>
-  </form>
+  </form> 
+  </div>
+
     </>
   )
 };

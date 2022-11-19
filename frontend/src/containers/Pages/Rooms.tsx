@@ -156,9 +156,9 @@ console.log(messages)
       }
     })}
 
-<form>
-<h4>Message: </h4>
-      <textarea value={content} onChange={(e)=>setContent(e.target.value)}/>
+<form className="fixed bottom-0 left-0 right-0" >
+  <div className="flex border-t border-gray-200 p-5">
+      <textarea placeholder="メッセージを入力" className="border" value={content} onChange={(e)=>setContent(e.target.value)}/>
 
       <input
               accept="image/*"
@@ -167,7 +167,10 @@ console.log(messages)
                 uploadImage(e)
               }}
             />
-      <button onClick={onSubmit} type="button">送信</button>
+             <button className="ml-auto" onClick={onSubmit} type="button">送信</button>
+  </div>
+
+     
   </form>
 
     </>
