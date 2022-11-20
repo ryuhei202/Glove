@@ -82,7 +82,7 @@ console.log(messages);
     <>
     <Header >{current_user.currentUserInfo?.data.user.language}ページです</Header>
   
-    <div className="m-2 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 left-0 h-3/4   overflow-auto">
+    <div className="m-2 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 left-0 h-3/4  overflow-auto">
   
     {messages.map((message:any,index:number)=>{
       for (let i = 0; i < otherUser.length; i++) {
@@ -90,12 +90,19 @@ console.log(messages);
            return (
              <React.Fragment key={index} >
               <div className="border mt-1 mb-1">
-                <div>
-            <img src={otherUser[i].profile_image?.url}/>
-             <p className="text-sm text-gray-600">{otherUser[i].name}</p>
-                </div>
-             <p>{message.message}</p>
+
+             {/* ユーザー */}
+              <div className="flex ml-2">
+                <Link to={`/users/${otherUser[i].id}`}><img className="rounded-full" src={otherUser[i].profile_image?.url ? (otherUser[i].profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} /></Link>
+  
+                <Link to={`/users/${otherUser[i].id}`} className="mt-[4px] ml-[2px] text-sm text-gray-600 ">{otherUser[i].name}</Link>
+              </div>
+
+              {/* 吹き出し */}
+              <div className="mb-3">
+             <p className="ml-10 text-xl">{message.message}</p>
              <img src={message?.image.url} width={150} height={150}  /> 
+              </div>
               </div>
              </React.Fragment>
            )
@@ -105,15 +112,19 @@ console.log(messages);
           <React.Fragment key={index} >
             <div className="border mt-1 mb-1">
               {/* ユーザー */}
-              <div className="flex">
+              <div className="flex ml-2">
 
-                <img className="align-middle" src={otherUser[i].profile_image?.url ? (otherUser[i].profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} />
+              <Link to={`/users/${otherUser[i].id}`}><img className="rounded-full" src={otherUser[i].profile_image?.url ? (otherUser[i].profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} /></Link>
                 
-                <p className="mt-[4px] ml-[2px] align-middle text-sm text-gray-600 ">{otherUser[i].name}</p>
+                <Link to={`/users/${otherUser[i].id}`} className="mt-[4px] ml-[2px] text-sm text-gray-600 ">{otherUser[i].name}</Link>
 
             </div>
 
-             <p>{message.message}</p>
+              {/* 吹き出し */}
+              <div className="mb-3">
+             <p className="ml-10 text-xl">{message.message}</p>
+              </div>
+
             </div>
           </React.Fragment>
         )
@@ -123,8 +134,13 @@ console.log(messages);
             
             <div className="flex justify-end border mt-1 mb-1 ">
            <p className="text-sm text-gray-600">あなた</p>
-           <p >{message.message}</p>
-           <img src={message?.image.url} width={150} height={150} className="" /> 
+
+          {/* 吹き出し */}
+          <div className="mb-3">
+             <p className="ml-10 text-xl">{message.message}</p>
+             <img src={message?.image.url} width={150} height={150}  /> 
+              </div>
+              
             </div>
           
            </React.Fragment>
@@ -135,7 +151,11 @@ console.log(messages);
           <React.Fragment key={index} >
             <div className="border mt-1 mb-1 text-right">
             <p className="text-sm text-gray-600">あなた</p>
-           <p >{message.message}</p>
+            
+           {/* 吹き出し */}
+              <div className="mb-3">
+             <p className="ml-10 text-xl">{message.message}</p>
+              </div>
             </div>
           </React.Fragment>
         )
@@ -146,13 +166,14 @@ console.log(messages);
     </div>
     <div>
 
-    <form className="fixed bottom-0 left-0 right-0 h-20">
- <div className="flex border-t border-gray-200 p-5">
+
+    <form className="fixed bottom-0 left-0 right-0 h-20 z-10 rounded-lg">
+ <div className="flex border-t border-gray-200 p-5 bg-green-400 rounded-lg">
 
       <textarea className="border-4 mr-5 w-6/12" placeholder="メッセージを入力"  value={content} onChange={(e)=>setContent(e.target.value)}/>
 
    <label className="shadow-lg px-2 py-1 h-10 w-10 text-xs bg-blue-400  text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition ">
-      img
+      <p>img</p>
       <input className="hidden"
               accept="image/*"
               type="file"
@@ -161,7 +182,7 @@ console.log(messages);
               }}
             />
    </label>
-      <button className="ml-auto shadow-lg px-2 py-1  bg-blue-400 text-lg text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition " onClick={onSubmit} type="button">送信</button>
+      <button className="mr-6 ml-auto shadow-lg px-2 py-1  bg-blue-400 text-lg text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition " onClick={onSubmit} type="button">送信</button>
  </div>
   </form> 
   </div>

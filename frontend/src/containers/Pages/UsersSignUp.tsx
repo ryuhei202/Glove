@@ -49,19 +49,34 @@ export const UsersSignUp = (props:any) => {
     <>
   <Header>ユーザー登録ページです</Header>
     <form onSubmit={handleSubmit(onSubmit)}>
-        <h4>Name: </h4>
-        <input {...register('name', { required: true })} />
-        { errors.name && <span>名前は1文字以上</span> }
 
-        <h4>gender: </h4>
-        <select { ...register('gender', { required: true })} >
+    <div className=" items-center px-5 lg:px-20">
+        <div className="flex flex-col w-full max-w-md p-10 mx-auto my-6 transition duration-500 ease-in-out transform bg-white rounded-lg md:mt-0">
+            <div className="mt-8">
+                <div className="mt-6">
+                <div className="mb-6">
+                    
+                    <h2 className="mt-6 text-3xl font-extrabold text-neutral-600">Sign up.</h2>
+                </div>
+
+                <label className="mt-3 block text-sm font-medium text-neutral-600"> Name </label>
+                <div className="mt-1">
+                  <input placeholder="Your Name" className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" {...register('name', { required: true })} />
+                  { errors.name && <span>名前は1文字以上</span> }
+                </div>
+
+        <label className="mt-3 block text-sm font-medium text-neutral-600"> Gender </label>
+        <div className="mt-1">
+        <select placeholder="Gender" className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" { ...register('gender', { required: true })} >
           <option value="man">Man</option>
           <option value="woman">Woman</option>
         </select>
         { errors.gender && <span>genderを選択してください</span> } 
+        </div>
 
-        <h4>language: </h4>
-        <select { ...register('language', { required: true })} >
+        <label className="mt-3 block text-sm font-medium text-neutral-600"> Language </label>
+        <div className="mt-1">
+        <select placeholder="Your Language" className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" { ...register('language', { required: true })} >
           <option value="japanese">japanese</option>
           <option value="chinese">chinese</option>
           <option value="english">english</option>
@@ -91,24 +106,30 @@ export const UsersSignUp = (props:any) => {
           <option value="italian">italian</option>
         </select>
         { errors.gender && <span>languageを選択してください</span> } 
-{/*          
-        <h4>Nationality: </h4>
-        <input { ...register('nationality', { required: true })} />
-        { errors.email && <span>国籍を選択してください</span> }  */}
+        </div>
 
-        <h4>email: </h4>
-        <input { ...register('email', { required: true })} />
+<label className="mt-3 block text-sm font-medium text-neutral-600"> Email </label>
+      <div className="mt-1">
+        <input placeholder="Your Email" className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" { ...register('email', { required: true })} />
         { errors.email && <span>Emailを入力してください</span> } 
+    </div>
 
-        <h4>password: </h4>
-        <input { ...register('password', { required: true,minLength: 6 })} type="password"/>
+        <label className="mt-3 block text-sm font-medium text-neutral-600"> Password </label>
+        <div className="mt-1">
+        <input placeholder="Password" className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" { ...register('password', { required: true,minLength: 6 })} type="password"/>
         { errors.password && <span>6文字以上のPasswordを入力してください</span> } 
+        </div>
         
      
         
         <div>
-            <input type="submit" value="Submit"></input>
+            <input type="submit" value="Sign up" className="mt-5 flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"></input>
         </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
     </form></>
    
   )
