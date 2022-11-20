@@ -139,17 +139,26 @@ useEffect(()=>{
   return (
     <>
     <Header>showページです</Header>
-    <ul>
-    <img src={state?.profile_image?.url} width={150} height={150}  />
-      <li>name:{state?.name}</li>
-      <li>email:{state?.email}</li>
-      <li>gender:{state?.gender}</li>
-      <li>self_introduction:{state?.self_introduction}</li>
-    </ul>
+   
+<div className="mt-16 flex justify-center">
 
-    <button onClick={onClickEdit}>編集する</button>
-    <button onClick={onClickCreateChatRoom}>チャットする</button>
+    <div className="w-80 bg-white shadow rounded border border-transparent">
+    <div className="h-48 w-full checker-bg flex items-center justify-center p-4 text-blue-500">
+     
+      <img className="rounded-full" src={state?.profile_image?.url ? (state?.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={180} height={180} />
+     
+    </div>
 
+    <div className="p-4 border-t border-gray-200">
+      <ul className="">
+        <li className="text-gray-600 font-medium">{state?.name}</li>
+        <li className="text-gray-600 font-medium">{state?.gender}</li>
+        <li className="text-gray-600 font-medium m-3">{state?.self_introduction}</li>
+      </ul>
+      <button onClick={onClickCreateChatRoom}>チャットする</button>
+    </div>
+  </div>
+  </div>
     </>
   )
 };

@@ -7,6 +7,8 @@ import { Message, User } from "../../interfaces";
 import { LoggedInStatesContext } from "../../providers/LoggedInStatesProvider";
 import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
+import { Users } from "./Users";
+import { UsersRight } from "./UsersRight";
 
 
 export const GroupChatRoom = (props:any) => {
@@ -81,8 +83,9 @@ console.log(messages);
   return (
     <>
     <Header >{current_user.currentUserInfo?.data.user.language}ページです</Header>
-  
-    <div className="mb-3 mt-2 mx-5 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 left-0 h-3/4  overflow-auto">
+
+
+    <div className="mb-3 mt-2 mx-5 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 md:right-1/4 left-0 h-3/4  overflow-auto">
   
     {messages.map((message:any,index:number)=>{
       for (let i = 0; i < otherUser.length; i++) {
@@ -164,7 +167,12 @@ console.log(messages);
                   )
       }
     </div>
-    <div>
+
+ <div className="mb-3 mt-2 mx-1 p-3 border border-red-600 fixed top-28 right-0  left-3/4 h-3/4 rounded-3xl overflow-auto hidden md:block">
+  <UsersRight></UsersRight>
+ </div>
+
+
 
 
     <form className="fixed bottom-0 left-0 right-0 h-20 z-10 rounded-lg">
@@ -185,7 +193,7 @@ console.log(messages);
       <button className="mr-6 ml-auto shadow-lg px-2 py-1  bg-blue-400 text-lg text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition " onClick={onSubmit} type="button">送信</button>
  </div>
   </form> 
-  </div>
+
 
     </>
   )

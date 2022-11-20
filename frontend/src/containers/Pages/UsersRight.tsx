@@ -13,7 +13,7 @@ import {
 } from '../../reducers/users';
 import { Header } from "../Templetes/Header";
 
-export const Users = (props:any) => {
+export const UsersRight = (props:any) => {
 
   const current_user = useContext(UserContext);
   console.log(current_user);
@@ -52,13 +52,13 @@ useEffect(()=>{
 
     
   <>
-   <Header>ユーザー一覧ページです</Header>
+  
 
    {
       state.usersList.map((user: User) =>{
         if(user.id !== current_user.currentUserInfo?.data?.user.id){
           return(
-        <div key={user.id} className="flex justify-center m-5">
+        <div key={user.id} className="flex  m-5">
     
 
           <Link className="" to={`/users/${user.id}`}><img className="rounded-full" src={user.profile_image?.url ? (user.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} /></Link>
