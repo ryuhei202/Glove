@@ -82,7 +82,7 @@ console.log(messages);
     <>
     <Header >{current_user.currentUserInfo?.data.user.language}ページです</Header>
   
-    <div className="m-2 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 left-0 h-3/4  overflow-auto">
+    <div className="mb-3 mt-2 mx-5 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 left-0 h-3/4  overflow-auto">
   
     {messages.map((message:any,index:number)=>{
       for (let i = 0; i < otherUser.length; i++) {

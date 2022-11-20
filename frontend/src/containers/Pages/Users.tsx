@@ -24,7 +24,8 @@ const navigate = useNavigate();
   
   useEffect(() => {
     dispatch({ type: usersActionTypes.FETCHING });
-    fetchUsers()
+    if (!current_user.currentUserInfo?.data?.user.id) return;
+    fetchUsers(current_user.currentUserInfo?.data.user.id)
     .then((data) =>{
       console.log(data);
       dispatch({
@@ -46,10 +47,7 @@ useEffect(()=>{
   }
 },[])
 
-
-  
   console.log(state)
-
   return (
 
     

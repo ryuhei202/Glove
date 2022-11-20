@@ -3,8 +3,8 @@ module Api
     class UsersController < ApplicationController
 
       def index
-        users = User.all
-        
+        user = User.find(params[:userId])
+        users = User.where(language:user.language)
 
         render json: {
           users: users,
