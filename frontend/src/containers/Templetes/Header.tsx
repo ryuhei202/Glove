@@ -35,9 +35,8 @@ export const Header = (props:any) => {
         <Link className="mr-3 hover:text-blue-400 duration-300" to="/users">Users</Link>
         <Link className="mr-3 hover:text-blue-400 duration-300" to="/chatrooms">Chat</Link>
        
-       <Link to={`/users/${usercontext?.data?.user.id}`}>
-            <img src={usercontext?.data?.user.profile_image?.url ? (usercontext?.data?.user.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} />
-      
+       <Link  to={`/users/${usercontext?.data?.user.id}`}>
+            <img className="rounded-full mr-1" src={usercontext?.data?.user.profile_image?.url ? (usercontext?.data?.user.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} />
        </Link>
         
         <Link className="mr-3 hover:text-blue-400 duration-300" to={`/users/${usercontext?.data?.user.id}`}>{user_name}</Link>

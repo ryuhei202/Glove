@@ -14,9 +14,10 @@ module Api
       #個別チャット一覧
       def index
         rooms = []
-        
+
         user = User.find(params[:userId])
-        grouproom =user.rooms.find_by(language: user.language)
+        grouproom = user.rooms.find_by(language: user.language)
+        grlastmessage = grouproom.messages[-1]
         directrooms= user.rooms.where.not(id: grouproom.id)
     
           directrooms.order("created_at DESC").each do |room|
@@ -27,7 +28,7 @@ module Api
               last_message: room.messages[-1]
             }
           end
-        render json: { status: 200, rooms: rooms, grouproom: grouproom } 
+        render json: { status: 200, rooms: rooms, grouproom: grouproom, grlastmessage: grlastmessage } 
       end
     
       def show
