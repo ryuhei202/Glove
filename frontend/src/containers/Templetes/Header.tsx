@@ -24,9 +24,9 @@ export const Header = (props:any) => {
     <>
     <header className="text-gray-700 border-b border-gray-200" >
 
-      <div className="container flex mx-auto p-5 flex-col md:flex-row items-center">
-        <div className="font-medium text-gray-900 ">
-          <p className="text-xl">Glove</p>
+      <div className="container h-28 flex mx-auto p-5 flex-col md:flex-row items-center">
+        <div className="flex md:flex-col font-medium text-gray-900 ">
+          <p className="text-xl mr-5">Glove</p>
           <p className="mb-4 md:mb-0">{props.children}</p>
         </div>
    { usercontext?.data?.logged_in == true ?

@@ -90,26 +90,9 @@ console.log(messages)
   return (
     <>
     <Header>{otherUser?.name}とのchatroomです</Header>
+    
     {messages.map((m:any,index:number)=>{
-    //  if(m.user_id === otherUser.id){
-    //       return (
-    //       <React.Fragment key={index} >
-    //           <p key={index}>{otherUser.name}:{m.message}</p>
-    //           <img src={m?.image.url} width={150} height={150}  />
-    //       </React.Fragment>
-    //       )
-      
-    //     }
-    //  else if(m.user_id != otherUser.id){
-    //     return(          
-    //       <React.Fragment key={index} >
-    //       <p >あなた:{m.message}</p>   
-    //       <img src={m?.image.url} width={150} height={150}  />                
-    //       </React.Fragment>
-        
-    //     )
-       
-    //   }
+   
     
        if(m.user_id === otherUser?.id && m.image.url){
         return(
@@ -167,7 +150,7 @@ console.log(messages)
                 uploadImage(e)
               }}
             />
-             <button className="ml-auto" onClick={onSubmit} type="button">送信</button>
+             <button className="ml-auto shadow-lg px-2 py-1  bg-blue-400 text-lg text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition " onClick={onSubmit} type="button">送信</button>
   </div>
 
      

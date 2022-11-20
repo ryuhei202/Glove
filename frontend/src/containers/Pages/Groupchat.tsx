@@ -13,6 +13,7 @@ export const GroupChatRoom = (props:any) => {
 
   const current_user = useContext(UserContext);
   console.log(current_user);
+  
 
   const navigate = useNavigate();
 
@@ -79,27 +80,65 @@ console.log(messages);
 
   return (
     <>
-    <Header>{current_user.currentUserInfo?.data.user.language}ページです</Header>
-    <div className="">
+    <Header >{current_user.currentUserInfo?.data.user.language}ページです</Header>
+  
+    <div className="m-2 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 left-0 h-3/4   overflow-auto">
   
     {messages.map((message:any,index:number)=>{
       for (let i = 0; i < otherUser.length; i++) {
-          if (otherUser[i].id == message.user_id) {
+          if (otherUser[i].id == message.user_id && message.image.url) {
            return (
              <React.Fragment key={index} >
-             <p key={index}>{otherUser[i].name}:{message.message}</p>
+              <div className="border mt-1 mb-1">
+                <div>
+            <img src={otherUser[i].profile_image?.url}/>
+             <p className="text-sm text-gray-600">{otherUser[i].name}</p>
+                </div>
+             <p>{message.message}</p>
              <img src={message?.image.url} width={150} height={150}  /> 
+              </div>
              </React.Fragment>
            )
            
-       }else if(current_user.currentUserInfo?.data.user.id == message.user_id ){
+       }else if(otherUser[i].id == message.user_id && !message.image.url){
+        return (
+          <React.Fragment key={index} >
+            <div className="border mt-1 mb-1">
+              {/* ユーザー */}
+              <div className="flex">
+
+                <img className="align-middle" src={otherUser[i].profile_image?.url ? (otherUser[i].profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} />
+                
+                <p className="mt-[4px] ml-[2px] align-middle text-sm text-gray-600 ">{otherUser[i].name}</p>
+
+            </div>
+
+             <p>{message.message}</p>
+            </div>
+          </React.Fragment>
+        )
+       }else if(current_user.currentUserInfo?.data.user.id == message.user_id && message.image.url){
          return (
            <React.Fragment key={index} >
-           <p >あなた:{message.message}</p>
-           <img src={message?.image.url} width={150} height={150}  /> 
+            
+            <div className="flex justify-end border mt-1 mb-1 ">
+           <p className="text-sm text-gray-600">あなた</p>
+           <p >{message.message}</p>
+           <img src={message?.image.url} width={150} height={150} className="" /> 
+            </div>
+          
            </React.Fragment>
          )
        
+       }else if(current_user.currentUserInfo?.data.user.id == message.user_id && !message.image.url){
+        return (
+          <React.Fragment key={index} >
+            <div className="border mt-1 mb-1 text-right">
+            <p className="text-sm text-gray-600">あなた</p>
+           <p >{message.message}</p>
+            </div>
+          </React.Fragment>
+        )
        }}
            }
                   )
@@ -107,17 +146,23 @@ console.log(messages);
     </div>
     <div>
 
-    <form>
-<h4>Message: </h4>
-      <textarea value={content} onChange={(e)=>setContent(e.target.value)}/>
-      <input
+    <form className="fixed bottom-0 left-0 right-0 h-20">
+ <div className="flex border-t border-gray-200 p-5">
+
+      <textarea className="border-4 mr-5 w-6/12" placeholder="メッセージを入力"  value={content} onChange={(e)=>setContent(e.target.value)}/>
+
+   <label className="shadow-lg px-2 py-1 h-10 w-10 text-xs bg-blue-400  text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition ">
+      img
+      <input className="hidden"
               accept="image/*"
               type="file"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 uploadImage(e)
               }}
             />
-      <button onClick={onSubmit} type="button">送信</button>
+   </label>
+      <button className="ml-auto shadow-lg px-2 py-1  bg-blue-400 text-lg text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition " onClick={onSubmit} type="button">送信</button>
+ </div>
   </form> 
   </div>
 
