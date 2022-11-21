@@ -17,7 +17,7 @@ export const UsersEdit= (props:any) => {
   console.log(usercontext);
 
   //showページのuseNvigateからstateを引き継ぐ
-  const { state } = useLocation();
+
   const [image, setImage] = useState<File>()
   
   //useFormを利用
@@ -50,13 +50,11 @@ useEffect(()=>{
   }
 },[])
 //currentuser以外が他のuserの編集画面にアクセスした時
-useEffect(()=>{
-  if( id != usercontext?.data.user.id ){
- navigate("/")
-  }
-})
-
-console.log(state)
+// useEffect(()=>{
+//   if( id != usercontext?.data.user.id ){
+//  navigate("/")
+//   }
+// })
 
 const uploadImage = useCallback((e:any) => {
   const file = e.target.files[0]
@@ -73,12 +71,15 @@ const uploadImage = useCallback((e:any) => {
 
   return formData
 }
+
+console.log(usercontext?.data?.user.profile_image?.url)
  
 
   return (
     <>
       <Header>編集ページです</Header>
    
+  
 
       {/* ここから */}
 
@@ -87,10 +88,12 @@ const uploadImage = useCallback((e:any) => {
 
 <div className="w-80 bg-white shadow rounded border border-transparent">
 <div className="h-48 w-full checker-bg flex items-center justify-center p-4 text-blue-500">
- 
-  <img className="rounded-full" src={usercontext.data?.user.profile_image?.url ? (usercontext.data?.user.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={180} height={180} />
- 
-</div>
+     
+      <img className="rounded-full" src={
+        usercontext?.data?.user.profile_image?.url ? (usercontext?.data?.user.profile_image?.url) : ("../../icon/kkrn_icon_user_3.png")
+        } width={180} height={180} />
+     
+    </div>
 
 <div className="p-4 border-t border-gray-200">
   <form onSubmit={handleSubmit(onSubmit)}>

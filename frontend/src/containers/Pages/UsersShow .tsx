@@ -36,7 +36,7 @@ export const UsersShow = (props:any) => {
 
 //編集ボタンを押した際のアクション
   const onClickEdit = () => {
-    navigate('edit', {state: id})
+    navigate('edit')
   }
 
   //消去ボタンを押した際のアクション

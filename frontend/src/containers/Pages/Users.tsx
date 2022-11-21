@@ -36,7 +36,7 @@ const navigate = useNavigate();
       })
     }
     )
-  }, [])
+  }, [current_user])
 
 
   
