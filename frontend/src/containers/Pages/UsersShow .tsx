@@ -123,6 +123,7 @@ useEffect(()=>{
   return (
     <>
     <Header>showページです</Header>
+    
    
 <div className="mt-16 flex justify-center">
 

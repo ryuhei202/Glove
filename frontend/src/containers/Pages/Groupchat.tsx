@@ -7,6 +7,7 @@ import { Message, User } from "../../interfaces";
 import { LoggedInStatesContext } from "../../providers/LoggedInStatesProvider";
 import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
+import { MessageForm } from "../Templetes/MessageForm";
 import { Users } from "./Users";
 import { UsersRight } from "./UsersRight";
 
@@ -79,6 +80,10 @@ setContent("")
 }
 
 console.log(messages);
+
+const onChangeTextare = (e:any) => {
+  setContent(e.target.value)
+}
 
   return (
     <>
@@ -173,26 +178,7 @@ console.log(messages);
  </div>
 
 
-
-
-    <form className="fixed bottom-0 left-0 right-0 h-20 z-10 rounded-lg">
- <div className="flex border-t border-gray-200 p-5 bg-green-400 rounded-lg">
-
-      <textarea className="border-4 mr-5 w-6/12" placeholder="メッセージを入力"  value={content} onChange={(e)=>setContent(e.target.value)}/>
-
-   <label className="shadow-lg px-2 py-1 h-10 w-10 text-xs bg-blue-400  text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition ">
-      <p>img</p>
-      <input className="hidden"
-              accept="image/*"
-              type="file"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                uploadImage(e)
-              }}
-            />
-   </label>
-      <button className="mr-6 ml-auto shadow-lg px-2 py-1  bg-blue-400 text-lg text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition " onClick={onSubmit} type="button">送信</button>
- </div>
-  </form> 
+  <MessageForm content={content} onChangeTextare={onChangeTextare} uploadImage={uploadImage} onSubmit={onSubmit} />
 
 
     </>

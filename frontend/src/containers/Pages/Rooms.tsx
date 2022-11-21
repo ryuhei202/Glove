@@ -7,6 +7,7 @@ import { createMessage } from "../../apis/messages";
 import { User } from "../../interfaces";
 import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
+import { MessageForm } from "../Templetes/MessageForm";
 
 export const Rooms = memo((props:any) => {
 
@@ -84,36 +85,61 @@ console.log(messages)
 
 
 
-
+const onChangeTextare = (e:any) => {
+  setContent(e.target.value)
+}
   
 
   return (
     <>
     <Header>{otherUser?.name}とのchatroomです</Header>
     
+    <div className="mb-3 mt-2 mx-5 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 left-0 md:right-1/4 md:left-1/4 h-3/4  overflow-auto">
     {messages.map((m:any,index:number)=>{
    
     
        if(m.user_id === otherUser?.id && m.image.url){
         return(
           <React.Fragment key={index} >
-            <div>
-            <img src={otherUser?.profile_image?.url} width={30} height={30}  />
-            {otherUser?.name}:
-            </div>
-          <p key={index}> {m.message}</p>   
-            <img src={m?.image.url} width={150} height={150}  />
+              <div className="mt-1 mb-1 w-2/3 break-words">
+
+            {/* ユーザー */}
+            <div className="flex ml-2">
+                <Link to={`/users/${otherUser?.id}`}><img className="rounded-full" src={otherUser?.profile_image?.url ? (otherUser?.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} /></Link>
+  
+                <Link to={`/users/${otherUser?.id}`} className="mt-[4px] ml-[2px] text-sm text-gray-600 ">{otherUser?.name}</Link>
+              </div>
+          
+              {/* 吹き出し */}
+              <div className="mb-3">
+             <p className="ml-10 text-xl">{m?.message}</p>
+             <img className="rounded-md ml-10" src={m?.image.url} width={150} height={150}  /> 
+              </div>
+              </div>
+
           </React.Fragment>
          
         )}else if(m.user_id === otherUser?.id && !m.image.url){
           return (
             
           <React.Fragment key={index} >
-            <div>
+             <div className=" mt-1 mb-1 w-2/3 break-words">
+             {/* ユーザー */}
+             <div className="flex ml-2">
+                <Link to={`/users/${otherUser?.id}`}><img className="rounded-full" src={otherUser?.profile_image?.url ? (otherUser?.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} /></Link>
+  
+                <Link to={`/users/${otherUser?.id}`} className="mt-[4px] ml-[2px] text-sm text-gray-600 ">{otherUser?.name}</Link>
+              </div>
+
+              <div className="mb-3">
+             <p className="ml-10 text-xl">{m?.message}</p>
+              </div>
+              </div>
+            {/* <div>
             <img src={otherUser?.profile_image?.url} width={30} height={30}  />
             {otherUser?.name}:
-            </div>
-              <p key={index}>{m.message}</p>
+            </div> */}
+              {/* <p key={index}>{m.message}</p> */}
           </React.Fragment>
           )
       
@@ -122,40 +148,37 @@ console.log(messages)
         return(
 
         <React.Fragment key={index} >
-         <img src={current_user.currentUserInfo.data?.user.profile_image?.url} width={30} height={30}  />
-          <p >あなた:{m.message}</p>        
-            <img src={m?.image.url} width={150} height={150}  />        
+   <div className="text-right mt-1 mb-1 ml-64">
+  <p className="text-sm text-gray-600 mr-4">あなた</p>      
+           {/* 吹き出し */}
+           <div className="my-3">
+             <img className="ml-auto rounded-md mr-4" src={m?.image.url} width={150} height={150}  /> 
+             <p className="text-xl mr-4">{m.message}</p>
+              </div>      
+              </div>      
+
           </React.Fragment>
         )
       }else if(m.user_id == current_user.currentUserInfo?.data.user.id && !m.image.url){
         return(          
           <React.Fragment key={index} >
-           <img src={current_user.currentUserInfo.data?.user.profile_image?.url} width={30} height={30}  />
-          <p >あなた:{m.message}</p>                   
+     <div className="text-right mt-1 mb-1 ml-64">
+    <p className="text-sm text-gray-600 mr-4">あなた</p>   
+        {/* 吹き出し */}
+        <div className="my-3">
+          
+             <p className="text-xl mr-4">{m.message}</p>
+              </div>         
+              </div>        
           </React.Fragment>
         
         )
        
       }
     })}
+    </div>
 
-<form className="fixed bottom-0 left-0 right-0" >
-  <div className="flex border-t border-gray-200 p-5">
-      <textarea placeholder="メッセージを入力" className="border" value={content} onChange={(e)=>setContent(e.target.value)}/>
-
-      <input
-              accept="image/*"
-              type="file"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                uploadImage(e)
-              }}
-            />
-             <button className="ml-auto shadow-lg px-2 py-1  bg-blue-400 text-lg text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition " onClick={onSubmit} type="button">送信</button>
-  </div>
-
-     
-  </form>
-
+<MessageForm content={content} onChangeTextare={onChangeTextare} uploadImage={uploadImage} onSubmit={onSubmit} />
     </>
   )
 });
