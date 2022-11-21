@@ -64,12 +64,15 @@ export const ChatRooms = (props:any) => {
  
  <Link className="border" to={`/groupchat/${group_room?.language}`}>
   <p className="ml-8">GroupChat</p>
+ 
   <p className="ml-8 text-xl">
+ 
     {group_room_message?.message.length > 30 ? group_room_message?.message.substr(0, 30) + "..." : group_room_message?.message}
     </p>
   </Link>
   </div>
- <div className="mt-0 m-6">
+
+  <div className="border mx-6 my-0">
      {direct_rooms ? (
  direct_rooms?.map((chatRoom:ChatRoom, index:number) => {
     return (
@@ -93,6 +96,7 @@ export const ChatRooms = (props:any) => {
   } ) ): (
     <p>トークルームがありません</p>
   )}    
+  
   </div>
     </>
   )

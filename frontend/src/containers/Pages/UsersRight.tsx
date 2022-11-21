@@ -52,10 +52,8 @@ const navigate = useNavigate();
     
 
           <Link className="" to={`/users/${user.id}`}><img className="rounded-full" src={user.profile_image?.url ? (user.profile_image?.url) : ("../../icon/kkrn_icon_user_3.png")} width={30} height={30} /></Link>
-          <Link className="mt-[1px]" to={`${user.id}`}><p>{user.name}</p></Link>
-     
+          <Link className="mt-[1px]" to={`/users/${user.id}`}><p>{user.name}</p></Link>
   
-          {/* <Link to={`${user.id}/edit/`}>編集</Link> */}
         </div>
           )
         }
