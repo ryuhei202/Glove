@@ -4,13 +4,17 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { updateUser } from "../../apis/users_update";
 import { Header } from "../Templetes/Header";
-import { UpDateUser } from "../../interfaces";
-import { useCallback, useEffect, useState } from "react";
+import { CurrentUser, UpDateUser } from "../../interfaces";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { UserContext } from "../../providers/UserProvider";
 
 
 export const UsersEdit= (props:any) => {
 
   const navigate = useNavigate();
+
+  const usercontext:CurrentUser = useContext(UserContext).currentUserInfo;
+  console.log(usercontext);
 
   //showページのuseNvigateからstateを引き継ぐ
   const { state } = useLocation();
@@ -45,6 +49,12 @@ useEffect(()=>{
     navigate('/login')
   }
 },[])
+//currentuser以外が他のuserの編集画面にアクセスした時
+useEffect(()=>{
+  if( id != usercontext?.data.user.id ){
+ navigate("/")
+  }
+})
 
 console.log(state)
 

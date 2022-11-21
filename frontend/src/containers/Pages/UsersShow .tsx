@@ -12,28 +12,12 @@ import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
 
 
-// type Userstype = {
-//   created_at: string;
-//   email: string;
-//   gender: string;
-//   id: number;
-//   name: string;
-//   password_digest: string;
-//   profile_image: Url;
-//   self_introduction: string;
-//   updated_at: string;
-// }
-
-// interface Url {
-//   url:string;
-// }
-
 
 
 export const UsersShow = (props:any) => {
 
   const navigate = useNavigate();
-  const usercontext:CurrentUser = useContext(UserContext).currentUserInfo;
+  const usercontext:CurrentUser = useContext(UserContext);
   console.log(usercontext);
 
   const chatcontext = useContext(ChatRoomsContext);
@@ -155,7 +139,10 @@ useEffect(()=>{
         <li className="text-gray-600 font-medium">{state?.gender}</li>
         <li className="text-gray-600 font-medium m-3">{state?.self_introduction}</li>
       </ul>
-      <button onClick={onClickCreateChatRoom}>チャットする</button>
+      { id == current_user.currentUserInfo?.data.user.id ? ( <button onClick={onClickEdit}>編集する</button>) : ( <button onClick={onClickCreateChatRoom}>チャットする</button>)}
+     
+     
+
     </div>
   </div>
   </div>
