@@ -135,11 +135,14 @@ useEffect(()=>{
 
     <div className="p-4 border-t border-gray-200">
       <ul className="">
-        <li className="text-gray-600 font-medium">{state?.name}</li>
-        <li className="text-gray-600 font-medium">{state?.gender}</li>
-        <li className="text-gray-600 font-medium m-3">{state?.self_introduction}</li>
+      <label className="mt-3 block text-sm font-medium text-neutral-600"> Name: </label>
+        <li className="ml-2 text-gray-600 font-medium">{state?.name}</li>
+        <label className="mt-3 block text-sm font-medium text-neutral-600"> Gender: </label>
+        <li className="ml-2 text-gray-600 font-medium">{state?.gender}</li>
+        <label className="mt-3 block text-sm font-medium text-neutral-600"> Self introduction: </label>
+        <li className="ml-2 text-gray-600 font-medium mt-1">{state?.self_introduction}</li>
       </ul>
-      { id == current_user.currentUserInfo?.data.user.id ? ( <button onClick={onClickEdit}>編集する</button>) : ( <button onClick={onClickCreateChatRoom}>チャットする</button>)}
+      { id == current_user.currentUserInfo?.data.user.id ? ( <button className="my-3 ml-auto shadow-lg px-2 py-1  bg-blue-400 text-sm text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition" onClick={onClickEdit}>編集する</button>) : ( <button className="my-3 ml-auto shadow-lg px-2 py-1  bg-blue-400 text-sm text-white font-semibold rounded  hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition" onClick={onClickCreateChatRoom}>チャットする</button>)}
      
      
 

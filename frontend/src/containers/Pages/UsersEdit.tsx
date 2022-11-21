@@ -68,34 +68,42 @@ const uploadImage = useCallback((e:any) => {
   const formData = new FormData()
 
   formData.append("user[name]", data.name)
-  formData.append("user[gender]", data.gender)
-  formData.append("user[self_ingroduction]", data.self_introduction)
+  formData.append("user[self_introduction]", data.self_introduction)
   if (image) formData.append("user[profile_image]", image)
 
   return formData
 }
-
+ 
 
   return (
     <>
       <Header>編集ページです</Header>
-    <form onSubmit={handleSubmit(onSubmit)}>
-        <h4>Name: </h4>
-        <input {...register('name', { required: true })} />
+   
+
+      {/* ここから */}
+
+
+    <div className="mt-16 flex justify-center">
+
+<div className="w-80 bg-white shadow rounded border border-transparent">
+<div className="h-48 w-full checker-bg flex items-center justify-center p-4 text-blue-500">
+ 
+  <img className="rounded-full" src={usercontext.data?.user.profile_image?.url ? (usercontext.data?.user.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={180} height={180} />
+ 
+</div>
+
+<div className="p-4 border-t border-gray-200">
+  <form onSubmit={handleSubmit(onSubmit)}>
+  <label className="mt-3 block text-sm font-medium text-neutral-600"> Name </label>
+        <input placeholder="Your Name" className="mt-2 block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"{...register('name', { required: true })} />
         { errors.name && <span>名前は1文字以上</span> }
 
-        <h4>gender: </h4>
-        <select { ...register('gender', { required: true })} >
-          <option value="man">Man</option>
-          <option value="woman">Woman</option>
-        </select>
-        { errors.gender && <span>genderを選択してください</span> } 
-
-        <h4>self_introduction: </h4>
-        <input { ...register('self_introduction')} />
+        <label className="mt-3 block text-sm font-medium text-neutral-600"> Self introduction </label>
+        <input placeholder="よろしくお願いします" className="mt-2 block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"{ ...register('self_introduction')} />
         { errors.self_introduction && <span>自己紹介を入れてください</span> } 
-        
-        <input
+
+        <label className="mt-3 block text-sm font-medium text-neutral-600"> Avatar </label>
+        <input className="mt-3"
               accept="image/*"
               type="file"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -103,11 +111,15 @@ const uploadImage = useCallback((e:any) => {
               }}
             />
         <div>
-            <input type="submit" value="Submit"></input>
+        <input type="submit" value="Submit" className="mt-5 flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"></input>
         </div>
     </form>
+ 
+ 
 
-
+</div>
+</div>
+</div>
 
      
     </>
