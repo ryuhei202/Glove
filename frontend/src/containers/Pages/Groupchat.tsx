@@ -92,7 +92,7 @@ console.log(messages);
           if (otherUser[i].id == message.user_id && message.image.url) {
            return (
              <React.Fragment key={index} >
-              <div className="border mt-1 mb-1">
+              <div className="mt-1 mb-1 w-2/3 break-words">
 
              {/* ユーザー */}
               <div className="flex ml-2">
@@ -104,7 +104,7 @@ console.log(messages);
               {/* 吹き出し */}
               <div className="mb-3">
              <p className="ml-10 text-xl">{message.message}</p>
-             <img src={message?.image.url} width={150} height={150}  /> 
+             <img className="rounded-md ml-10" src={message?.image.url} width={150} height={150}  /> 
               </div>
               </div>
              </React.Fragment>
@@ -113,7 +113,7 @@ console.log(messages);
        }else if(otherUser[i].id == message.user_id && !message.image.url){
         return (
           <React.Fragment key={index} >
-            <div className="border mt-1 mb-1">
+            <div className=" mt-1 mb-1 w-2/3 break-words">
               {/* ユーザー */}
               <div className="flex ml-2">
 
@@ -135,13 +135,13 @@ console.log(messages);
          return (
            <React.Fragment key={index} >
             
-            <div className="flex justify-end border mt-1 mb-1 ">
-           <p className="text-sm text-gray-600">あなた</p>
+            <div className="text-right mt-1 mb-1 ml-64">
+           <p className="text-sm text-gray-600 mr-4">あなた</p>
 
           {/* 吹き出し */}
-          <div className="mb-3">
-             <p className="ml-10 text-xl">{message.message}</p>
-             <img src={message?.image.url} width={150} height={150}  /> 
+          <div className="my-3">
+             <img className="ml-auto rounded-md mr-4" src={message?.image.url} width={150} height={150}  /> 
+             <p className="text-xl mr-4">{message.message}</p>
               </div>
               
             </div>
@@ -152,12 +152,12 @@ console.log(messages);
        }else if(current_user.currentUserInfo?.data.user.id == message.user_id && !message.image.url){
         return (
           <React.Fragment key={index} >
-            <div className="border mt-1 mb-1 text-right">
-            <p className="text-sm text-gray-600">あなた</p>
+            <div className="ml-64 mt-1 mb-1 text-right  break-words">
+            <p className="text-sm text-gray-600 mr-4">あなた</p>
             
            {/* 吹き出し */}
-              <div className="mb-3">
-             <p className="ml-10 text-xl">{message.message}</p>
+              <div className="">
+             <p className="text-xl mr-4">{message.message}</p>
               </div>
             </div>
           </React.Fragment>
