@@ -53,25 +53,30 @@ useEffect(()=>{
     
   <>
    <Header>ユーザー一覧ページです</Header>
-
+   <div className="mb-3 mt-10 mx-5 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 left-0 md:right-1/4 md:left-1/4 h-3/4  overflow-auto">
+   <div className="mx-6 mt-10">
+      <h2 className="mt-6 text-3xl font-extrabold text-neutral-600">Users.</h2>
+    </div>
    {
       state.usersList.map((user: User) =>{
         if(user.id !== current_user.currentUserInfo?.data?.user.id){
           return(
-        <div key={user.id} className="flex justify-center m-5">
-    
-
-          <Link className="" to={`/users/${user.id}`}><img className="rounded-full" src={user.profile_image?.url ? (user.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} /></Link>
+            
+            
+        <div key={user.id} className="mx-6 mt-10">
+          <Link className="" to={`/users/${user.id}`}>
+            <img className="rounded-full" src={user.profile_image?.url ? (user.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} />
+          </Link>
           <Link className="mt-[1px]" to={`${user.id}`}><p>{user.name}</p></Link>
-     
-  
-          {/* <Link to={`${user.id}/edit/`}>編集</Link> */}
         </div>
+
+        
           )
         }
       }
       )
     }
+    </div>
 
     </>
   )

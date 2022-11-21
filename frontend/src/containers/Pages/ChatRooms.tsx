@@ -60,9 +60,13 @@ export const ChatRooms = (props:any) => {
     <>
     
     <Header>chatroom一覧です</Header>
-    <div className="border mx-6 my-0">
- 
- <Link className="border" to={`/groupchat/${group_room?.language}`}>
+    <div className="mb-3 mt-10 mx-5 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 left-0 md:right-1/4 md:left-1/4 h-3/4  overflow-auto">
+    <div className="mx-6 mt-10">
+      <h2 className="mt-6 text-3xl font-extrabold text-neutral-600">Messages.</h2>
+    </div>
+
+    <div className="mx-6 mt-10">
+ <Link className="" to={`/groupchat/${group_room?.language}`}>
   <p className="ml-8">GroupChat</p>
  
   <p className="ml-8 text-xl">
@@ -72,12 +76,12 @@ export const ChatRooms = (props:any) => {
   </Link>
   </div>
 
-  <div className="border mx-6 my-0">
+  <div className=" mx-6 my-0">
      {direct_rooms ? (
  direct_rooms?.map((chatRoom:ChatRoom, index:number) => {
     return (
       <React.Fragment key={index}>  
-      <div className="border">
+      <div className="my-3">
       <Link  to={`${chatRoom.room.id}`} state={{userId:current_user?.currentUserInfo?.data?.user.id, roomId:chatRoom.room.id} }>
 <div className="flex">
 <img className="rounded-full mr-1" src={chatRoom.other_users[0]?.profile_image?.url ? (chatRoom.other_users[0]?.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={30} height={30} />
@@ -97,6 +101,7 @@ export const ChatRooms = (props:any) => {
     <p>トークルームがありません</p>
   )}    
   
+  </div>
   </div>
     </>
   )
