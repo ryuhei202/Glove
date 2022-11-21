@@ -52,7 +52,7 @@ useEffect(()=>{
 
     
   <>
-   <Header>ユーザー一覧ページです</Header>
+   <Header>users</Header>
    <div className="mb-3 mt-10 mx-5 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 left-0 md:right-1/4 md:left-1/4 h-3/4  overflow-auto">
    <div className="mx-6 mt-10">
       <h2 className="mt-6 text-3xl font-extrabold text-neutral-600">Users.</h2>

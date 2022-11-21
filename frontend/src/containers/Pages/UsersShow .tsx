@@ -122,7 +122,7 @@ useEffect(()=>{
 
   return (
     <>
-    <Header>showページです</Header>
+    <Header>show</Header>
     
    
 <div className="mt-16 flex justify-center">

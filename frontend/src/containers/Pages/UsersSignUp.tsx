@@ -47,7 +47,7 @@ export const UsersSignUp = (props:any) => {
   return (
     
     <>
-  <Header>ユーザー登録ページです</Header>
+  <Header>sign up</Header>
     <form onSubmit={handleSubmit(onSubmit)}>
 
     <div className=" items-center px-5 lg:px-20">

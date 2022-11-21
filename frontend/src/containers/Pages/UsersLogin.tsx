@@ -41,7 +41,7 @@ export const UsersLogin = (props:any) => {
 
   return (
     <>
-   <Header>ログインページです</Header>
+   <Header>sign in</Header>
 
   <form onSubmit={handleSubmit(onSubmit)}>
 
