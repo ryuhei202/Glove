@@ -44,7 +44,7 @@ module Api
         user = User.find(params[:userId])
         
         other_user = @group_room.users.where.not(id: user.id)
-        messages = @group_room.messages.order("created_at DESC")
+        messages = @group_room.messages.order(created_at: :ASC)
     
         render json: { status: 200, other_user: other_user, messages: messages, room: @group_room }
       end

@@ -1,5 +1,5 @@
 import { getValue } from "@testing-library/user-event/dist/utils";
-import React, { memo, useCallback, useContext, useEffect, useState } from "react";
+import React, { memo, useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { getEachRooms } from "../../apis/eachrooms";
@@ -23,6 +23,7 @@ const [content, setContent] = useState<string>("");
 
 const [loading, setLoading] = useState<boolean>(true)
 
+const chatdiv = useRef<HTMLDivElement>(null);
 const [otherUser, setOtherUser] = useState<User>();
 const [messages, setMessages] = useState<any>([]);
 
@@ -88,6 +89,11 @@ console.log(messages)
 const onChangeTextare = (e:any) => {
   setContent(e.target.value)
 }
+
+useLayoutEffect(()=>{
+
+  chatdiv?.current?.scrollIntoView();
+})
   
 
   return (
@@ -176,6 +182,7 @@ const onChangeTextare = (e:any) => {
        
       }
     })}
+    <div ref={chatdiv}></div>
     </div>
 
 <MessageForm content={content} onChangeTextare={onChangeTextare} uploadImage={uploadImage} onSubmit={onSubmit} />

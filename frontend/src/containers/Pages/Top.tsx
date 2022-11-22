@@ -25,21 +25,14 @@ export const Top = (props:any) => {
   return (
     <>
     <Header>HOME</Header>
-    {/* <Link to="/users">ユーザー一覧ページです</Link>
-    <br />
-    <Link to="/signup">ユーザー登録ページです</Link>
-    <br />
-    <Link to="/login">ログインページです</Link>
-    <br />
-    <Link to="/chatrooms">chatroom</Link>
-      */}
+    
 
      {
       usercontext?.data?.logged_in == true ? (
         <>
-        <div className="mt-28 ml-40">
+        <div className="container flex mx-auto p-40 flex-col md:flex-row">
+        <div className="">
         <h2 className="mt-6 text-9xl font-extrabold text-neutral-600">Glove</h2>
-        <p></p>
         </div>
 
         <div>
@@ -52,11 +45,13 @@ export const Top = (props:any) => {
     <Link to="/chatrooms">chatroom</Link>
      
         </div>
+        </div>
+       
         </>
       ) : (
         <>
    
-        <div className="flex-col md:flex">
+        <div className="flex-col md:flex-row">
         <div className="mt-28 ml-40">
         <h2 className="mt-6 text-9xl font-extrabold text-neutral-600">Glove</h2>
         <p></p>

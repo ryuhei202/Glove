@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { getEachRooms } from "../../apis/eachrooms";
 import { getGroupChats } from "../../apis/groupchats";
@@ -17,6 +17,7 @@ export const GroupChatRoom = (props:any) => {
   const current_user = useContext(UserContext);
   console.log(current_user);
   
+  const chatdiv = useRef<HTMLDivElement>(null);
 
   const navigate = useNavigate();
 
@@ -84,6 +85,13 @@ console.log(messages);
 const onChangeTextare = (e:any) => {
   setContent(e.target.value)
 }
+
+useLayoutEffect(()=>{
+
+  chatdiv?.current?.scrollIntoView();
+})
+
+
 
   return (
     <>
@@ -171,6 +179,7 @@ const onChangeTextare = (e:any) => {
            }
                   )
       }
+      <div ref={chatdiv}></div>
     </div>
 
  <div className="mb-3 mt-2 mx-1 p-3 border border-red-600 fixed top-28 right-0  left-3/4 h-3/4 rounded-3xl overflow-auto hidden md:block">
