@@ -51,15 +51,13 @@ export const Top = (props:any) => {
       ) : (
         <>
    
-        <div className="flex-col md:flex-row">
-        <div className="mt-28 ml-40">
-        <h2 className="mt-6 text-9xl font-extrabold text-neutral-600">Glove</h2>
-        <p></p>
+        <div className="container justify-center flex p-5 flex-col md:flex-row items-center mt-24">
+        <div className="">
+        <h2 className="text-9xl font-extrabold text-neutral-600  mx-10">Glove</h2>
+        <p className=" ml-14 font-extrabold text-neutral-600 mt-4 w-60 ">You can connect with people from the same country.</p>
         </div>
 
-        <div className="h-96 w-80 mt-28 ml-40">
-       
-
+        <div className="w-80 mt-5  ">
         <input onClick={onClickSignUp} value="Sign up" className="mt-5 flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer"></input>
 
         <input onClick={onClickSignIn} value="Sign in" className="mt-5 flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer"></input>
