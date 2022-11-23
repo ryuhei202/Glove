@@ -21,6 +21,12 @@ export const Top = (props:any) => {
   const onClickSignIn = () => {
     navigate('/login')
   }
+  const onClickUsers = () => {
+    navigate('/users')
+  }
+  const onClickChat = () => {
+    navigate('/chatrooms')
+  }
 
   return (
     <>
@@ -30,20 +36,19 @@ export const Top = (props:any) => {
      {
       usercontext?.data?.logged_in == true ? (
         <>
-        <div className="container flex mx-auto p-40 flex-col md:flex-row">
+        <div className="container justify-center flex p-5 flex-col md:flex-row items-center mt-24">
         <div className="">
-        <h2 className="mt-6 text-9xl font-extrabold text-neutral-600">Glove</h2>
+        <h2 className="mt-6 text-9xl font-extrabold text-neutral-600 mx-10">Glove</h2>
         </div>
 
-        <div>
-        <Link to="/users">ユーザー一覧ページです</Link>
-    <br />
-    <Link to="/signup">ユーザー登録ページです</Link>
-    <br />
-    <Link to="/login">ログインページです</Link>
-    <br />
-    <Link to="/chatrooms">chatroom</Link>
-     
+        <div className="w-80 mt-5  ">
+
+        <div className="h-48 w-full checker-bg flex items-center justify-center p-4 text-blue-500">     
+     <img className="rounded-full" src={usercontext.data?.user.profile_image?.url ? (usercontext.data?.user.profile_image?.url) : ("../icon/kkrn_icon_user_3.png")} width={180} height={180} /> 
+   </div>
+        <input onClick={onClickUsers} value="Users" className="mt-5 flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer"></input>
+
+        <input onClick={onClickChat} value="Chat" className="mt-5 flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer"></input>
         </div>
         </div>
        
