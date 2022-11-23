@@ -77,7 +77,7 @@ console.log(usercontext?.data?.user.profile_image?.url)
 
   return (
     <>
-      <Header>編集ページです</Header>
+      <Header>edit</Header>
    
   
 

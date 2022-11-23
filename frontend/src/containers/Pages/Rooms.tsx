@@ -100,7 +100,7 @@ useLayoutEffect(()=>{
     <>
     <Header>{otherUser?.name}とのchatroomです</Header>
     
-    <div className="mb-3 mt-2 mx-5 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 left-0 md:right-1/4 md:left-1/4 h-3/4  overflow-auto">
+    <div className="mt-4 mx-5 p-3 border  border-sky-400  rounded-3xl fixed top-28 bottom-28 right-0 left-0 md:right-1/4 md:left-1/4   overflow-auto">
     {messages.map((m:any,index:number)=>{
    
     

@@ -24,7 +24,7 @@ export const Top = (props:any) => {
 
   return (
     <>
-    <Header>HOME</Header>
+    <Header>home</Header>
     
 
      {

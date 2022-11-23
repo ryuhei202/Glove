@@ -4,8 +4,8 @@ export const MessageForm = (props:any) => {
  
   return(
 <>
-<form className="fixed bottom-0 left-0 right-0 h-20 z-10 rounded-lg">
-<div className="flex border-t border-gray-200 p-5 bg-green-400 rounded-lg">
+<form className="fixed bottom-0 left-0 right-0 h-34 z-10 rounded-lg">
+<div className="flex h-34 border-t border-gray-200 p-5 rounded-lg">
 
      <textarea className="border-4 mr-5 w-6/12" placeholder="メッセージを入力"  value={props.content} onChange={props.onChangeTextare}/>
 

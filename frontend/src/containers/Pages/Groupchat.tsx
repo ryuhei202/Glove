@@ -95,10 +95,10 @@ useLayoutEffect(()=>{
 
   return (
     <>
-    <Header >{current_user.currentUserInfo?.data.user.language}ページです</Header>
+    <Header >group chat</Header>
 
 
-    <div className="mb-3 mt-2 mx-5 p-3 border  border-sky-400  rounded-3xl fixed top-28 right-0 md:right-1/4 left-0 h-3/4  overflow-auto">
+    <div className="mt-4 mx-5 p-3 border  border-sky-400  rounded-3xl fixed top-28 bottom-28 right-0 md:right-1/4 left-0   overflow-auto">
   
     {messages.map((message:any,index:number)=>{
       for (let i = 0; i < otherUser.length; i++) {
@@ -182,7 +182,7 @@ useLayoutEffect(()=>{
       <div ref={chatdiv}></div>
     </div>
 
- <div className="mb-3 mt-2 mx-1 p-3 border border-red-600 fixed top-28 right-0  left-3/4 h-3/4 rounded-3xl overflow-auto hidden md:block">
+ <div className="mt-4 mx-1 p-3 border border-red-600 fixed top-28 bottom-28 right-0  left-3/4  rounded-3xl overflow-auto hidden md:block">
   <UsersRight></UsersRight>
  </div>
 
