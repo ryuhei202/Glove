@@ -44,7 +44,7 @@ export const Header = (props:any) => {
       </nav>
    
     :
-      <h2 className="flex md:ml-auto text-base">ログインしていません</h2>
+      <h2 className="flex md:ml-auto text-base">not logged in</h2>
     }
       </div>
     </header>
