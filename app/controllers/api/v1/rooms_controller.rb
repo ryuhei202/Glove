@@ -54,9 +54,9 @@ module Api
         user = User.find(params[:userId])
         other_user = User.find(params[:otherUserId])
         
-        @room = Room.create
-        Member.create(room_id:@room.id, user_id: user.id)
-        Member.create(room_id:@room.id, user_id: other_user.id)
+        @room = Room.create!
+        Member.create!(room_id:@room.id, user_id: user.id)
+        Member.create!(room_id:@room.id, user_id: other_user.id)
 
         render json: {
           room: @room,

@@ -17,11 +17,8 @@ import { Header } from "../Templetes/Header";
 export const UsersShow = (props:any) => {
 
   const navigate = useNavigate();
-  const usercontext:CurrentUser = useContext(UserContext);
-  console.log(usercontext);
 
-  const chatcontext = useContext(ChatRoomsContext);
-  console.log(chatcontext.chatRooms);
+  
 
   const current_user = useContext(UserContext);
   console.log(current_user);
@@ -59,11 +56,13 @@ export const UsersShow = (props:any) => {
     })
   };
 
-  
+  const chatcontext = useContext(ChatRoomsContext);
+  console.log(chatcontext);
 
   const findObjById = (chatrooms:any, roomid:number) => {
     
     for (let i = 0; i < chatrooms.length; i++) {
+      
       if (chatrooms[i].other_users[0]?.id == roomid) {
         return chatrooms[i].room.id;
       }
@@ -77,14 +76,13 @@ export const UsersShow = (props:any) => {
       console.log(findObjById(chatcontext.chatRooms,id))
       navigate(`/chatrooms/${findObjById(chatcontext.chatRooms,id)}`, { state: {userId:current_user.currentUserInfo.data.user.id, roomId:findObjById(chatcontext.chatRooms,id)} })
     }else{
-
     createRoom({
-      userid:usercontext.data.user.id,
+      userid:current_user.currentUserInfo?.data.user.id,
       other_userid:id
     }).then(res => {
       console.log(res)
       
-      navigate(`/chatrooms/${res.room.id}`,{ state: { roomId:res.room.id, userId:usercontext.data.user.id} })
+      navigate(`/chatrooms/${res.room.id}`,{ state: { roomId:res.room.id, userId:current_user.currentUserInfo?.data.user.id} })
     }).catch((error) => {
       console.log(error)
     })
