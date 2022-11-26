@@ -97,6 +97,7 @@ GEM
     io-console (0.5.11)
     irb (1.4.2)
       reline (>= 0.3.0)
+    kgio (2.11.4)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -160,6 +161,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
+    raindrops (0.20.0)
     rake (13.0.6)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -170,6 +172,9 @@ GEM
     timeout (0.3.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    unicorn (6.1.0)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
     user_agent_parser (2.11.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -191,6 +196,7 @@ DEPENDENCIES
   rails (~> 7.0.4)
   rails_same_site_cookie (~> 0.1.8)
   tzinfo-data
+  unicorn
 
 RUBY VERSION
    ruby 3.1.2p20
