@@ -9,6 +9,10 @@
   )
 end
 
+
+
+
+
 5.times do |n|
   User.create!(
     name:"english_user_#{n}",
@@ -285,7 +289,320 @@ end
 end
 
 
+Room.create!(
+  language:"chinese"
+)
 
+Room.create!(
+  language:"english"
+)
+
+Room.create!(
+  language:"russia"
+)
+
+Room.create!(
+  language:"romanian"
+)
+
+Room.create!(
+  language:"lithuania"
+)
+
+Room.create!(
+  language:"latvian"
+)
+
+Room.create!(
+  language:"portuguese"
+)
+
+Room.create!(
+  language:"polish"
+)
+
+Room.create!(
+  language:"bulgarian"
+)
+
+Room.create!(
+  language:"french"
+)
+
+Room.create!(
+  language:"finnish"
+)
+
+Room.create!(
+  language:"hungarian"
+)
+
+Room.create!(
+  language:"turkish"
+)
+
+Room.create!(
+  language:"german"
+)
+
+Room.create!(
+  language:"danish"
+)
+
+Room.create!(
+  language:"czech"
+)
+
+Room.create!(
+  language:"slovenian"
+)
+
+Room.create!(
+  language:"slovakian"
+)
+
+Room.create!(
+  language:"spanish"
+)
+
+Room.create!(
+  language:"swedish"
+)
+
+Room.create!(
+  language:"greek"
+)
+
+Room.create!(
+  language:"dutch"
+)
+
+Room.create!(
+  language:"estonian"
+)
+
+Room.create!(
+  language:"ukrainian"
+)
+
+Room.create!(
+  language:"indonesian"
+)
+
+Room.create!(
+  language:"italian"
+)
+
+
+
+
+5.times do |n|
+  Member.create!(
+    # 1~5
+    user_id:1+n,
+    room_id:1    
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 6~10
+    user_id:6+n,
+    room_id:2    
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 11~15
+    user_id:11+n,
+    room_id:3   
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 16~20
+    user_id:16+n,
+    room_id:4   
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 21~25
+    user_id:21+n,
+    room_id:5   
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:26+n,
+    room_id:6  
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:31+n,
+    room_id:7  
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:36+n,
+    room_id:8  
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:41+n,
+    room_id:9  
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:46+n,
+    room_id:10  
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:51+n,
+    room_id:11 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:56+n,
+    room_id:12 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:61+n,
+    room_id:13 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:66+n,
+    room_id:14 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:71+n,
+    room_id:15 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:76+n,
+    room_id:16 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:81+n,
+    room_id:17 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:86+n,
+    room_id:18 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:91+n,
+    room_id:19 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:96+n,
+    room_id:20 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:101+n,
+    room_id:21 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:106+n,
+    room_id:22 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:111+n,
+    room_id:23 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:116+n,
+    room_id:24 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:121+n,
+    room_id:25 
+  )
+end
+
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:126+n,
+    room_id:26 
+  )
+end
 
 
 

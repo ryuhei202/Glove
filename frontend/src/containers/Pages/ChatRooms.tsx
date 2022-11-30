@@ -61,6 +61,7 @@ export const ChatRooms = (props:any) => {
 
         <div className="mx-6 mt-10">
           <Link className="" to={`/groupchat/${group_room?.language}`}>
+
             <p className="ml-8">GroupChat</p>
             <p className="ml-8 text-xl">
                {group_room_message?.message.length > 30 ? group_room_message?.message.substr(0, 30) + "..." : group_room_message?.message}
