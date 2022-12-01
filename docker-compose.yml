@@ -1,0 +1,33 @@
+version: "3"
+services:
+  rails:
+    # コンテナ名の指定
+    container_name: caian_rails
+    # Dockerfile のあるディレクトリのパスを指定「.」で同じフォルダ内
+    build: .
+    # デフォルトのコマンド指定
+    # command: bundle exec puma -C config/puma.rb
+    # データの参照先（ホスト側のカレントディレクトリにマウントする）
+    ports:
+      - "80:3000"
+    volumes:
+      # Docker.fileのCOPY . /caian_appですでに実行されているのでコメントアウト
+      - .:/caian_app
+      - public-data:/caian_app/public
+      - tmp-data:/caian_app/tmp
+    # 出力結果を見やすくする
+    tty: true
+    # 入力を可能にする
+    stdin_open: true
+    # 依存関係の指定（dbが起動した後に、webが起動するようになる）
+    # depends_on:
+    #   - db
+    user: root
+
+volumes:
+  db:
+    driver: local
+  public-data:
+  tmp-data:
+  log-data:
+  mysql-data:
