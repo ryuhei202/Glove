@@ -16,7 +16,7 @@ export const UsersRight = (props:any) => {
   const current_user = useContext(UserContext);
   console.log(current_user);
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const [state, dispatch] = useReducer(usersReducer, initialState);
 
   
@@ -38,12 +38,8 @@ const navigate = useNavigate();
 
 
   console.log(state)
-  return (
-
-    
+  return (  
   <>
-  
-
    {
       state.usersList.map((user: User) =>{
         if(user.id !== current_user?.currentUserInfo?.data?.user.id){
