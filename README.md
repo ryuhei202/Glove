@@ -1,24 +1,54 @@
-# README
+## アプリケーション名
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Glove
 
-Things you may want to cover:
+## アプリケーション概要
 
-* Ruby version
+同じ国籍の人同士が繋がれるチャットアプリケーションです。
 
-* System dependencies
+## URL
 
-* Configuration
+http://myportfoliobc.s3-website-ap-northeast-1.amazonaws.com
 
-* Database creation
+＊上記 url からアクセスできますが、現在ドメイン設定中です 🙇🙇
 
-* Database initialization
+## テスト用アカウント
 
-* How to run the test suite
+メールアドレス: sample_user@example.com  
+パスワード: foobar
 
-* Services (job queues, cache servers, search engines, etc.)
+## 利用方法
 
-* Deployment instructions
+sign up にて新規登録をします。その際に自分の言語を選択します。新規登録を終えると、同じ言語を選んだユーザー同士のグループチャットに参加します。そこで同じ国籍の人同士で会話することが可能です。また、個人チャットも可能です。編集画面で自分のプロフィールを変更することができます。
 
-* ...
+## 目指した課題解決
+
+日本に滞在する外国人がそれぞれの出身国のコミュニティに属したり、同じ国の人々と繋がりたいというユーザーのニーズを満たすことを目指しました。
+
+## 使用技術
+
+- Ruby 3.1.2
+- Ruby on Rails 7.0.4
+- React 18.2.0
+- TypeScript 4.9.3
+- TailwindCSS 3.2.4
+- MySQL 8.0.30
+- AWS
+  - VPC
+  - EC2
+  - S3
+  - CloudFront
+  - Route53
+- Docker/Docker-compose
+
+## 機能一覧
+
+・ユーザー登録、ログイン機能
+・ユーザー編集機能
+・グループチャット機能
+・個人チャット機能
+
+## 備考
+
+このアプリは学習用兼、就職活動用のポートフォリオとして作成しました。
+作成期間 10/3~12/5（約二ヶ月間)
