@@ -10,7 +10,7 @@ Glove
 
 http://myportfoliobc.s3-website-ap-northeast-1.amazonaws.com
 
-＊上記 url からアクセスできますが、現在ドメイン設定中です 🙇🙇
+＊上記 url からアクセスできますが、現在独自ドメイン設定中です 🙇🙇
 
 ## テスト用アカウント
 
