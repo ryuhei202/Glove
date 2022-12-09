@@ -1,5 +1,16 @@
 5.times do |n|
   User.create!(
+    name:"japanese_user_#{n}",
+    email:"japanese#{n+1}@gmail.com",
+    language: "japanese",
+    password:"foobar",
+    password_confirmation:"foobar",
+    gender:0
+  )
+end
+
+5.times do |n|
+  User.create!(
     name:"chinese_user_#{n}",
     email:"chinese#{n+1}@gmail.com",
     language: "chinese",
@@ -288,6 +299,9 @@ end
   )
 end
 
+Room.create!(
+  language:"japanese"
+)
 
 Room.create!(
   language:"chinese"
@@ -604,13 +618,20 @@ end
   )
 end
 
+5.times do |n|
+  Member.create!(
+    # 26~30
+    user_id:131+n,
+    room_id:27 
+  )
+end
 
 
 
 
 
 
-# User.create!(name:"1",email:"eampleuuser1@gmail.com",gender:0,language:"japanese",password:"foobard")
+# User.create!(name:"1",email:"japanese1@gmail.com",gender:0,language:"japanese",password:"foobar")
 #   user.save!
 
 
