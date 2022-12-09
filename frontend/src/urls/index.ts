@@ -1,4 +1,4 @@
-const DEFAULT_API_LOCALHOST: string = 'https://54.249.2.212/api/v1';
+const DEFAULT_API_LOCALHOST: string = 'http://54.249.2.212/api/v1';
 
 export const usersIndex: string = `${DEFAULT_API_LOCALHOST}/users`;
 export const usersShow = (userid: number) => `${DEFAULT_API_LOCALHOST}/users/${userid}`;
