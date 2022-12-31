@@ -1,46 +1,39 @@
 import React, { useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { getEachRooms } from "../../apis/eachrooms";
+import { Link,useNavigate } from "react-router-dom";
 import { getGroupChats } from "../../apis/groupchats";
 import { createMessage } from "../../apis/messages";
-import { Message, User } from "../../interfaces";
-import { LoggedInStatesContext } from "../../providers/LoggedInStatesProvider";
+import {  User } from "../../interfaces";
 import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
 import { MessageForm } from "../Templetes/MessageForm";
-import { Users } from "./Users";
 import { UsersRight } from "./UsersRight";
 
 
 export const GroupChatRoom = (props:any) => {
 
   const current_user = useContext(UserContext);
-  console.log(current_user);
   
   const chatdiv = useRef<HTMLDivElement>(null);
 
   const navigate = useNavigate();
 
   const [otherUser, setOtherUser] = useState<User[]>([]);
-const [messages, setMessages] = useState<any>([]);
-const [image, setImage] = useState<File>()
+  const [messages, setMessages] = useState<any>([]);
+  const [image, setImage] = useState<File>()
 
 // const [myMessages, setMyMessages] = useState<Message[]>([]);
-const [content, setContent] = useState<string>("");
+  const [content, setContent] = useState<string>("");
 
-const onSubmit = () => {
+  const onSubmit = () => {
   const data = createFormData();
 
-  createMessage(
-   data
-  ).then((res)=>{
-console.log(res);
-setMessages([...messages, res.message])
-setContent("")
+  createMessage(data).then((res)=>{ 
+    setMessages([...messages, res.message])
+    setContent("")
   }).catch((error)=>{
     console.log(error)
   })
-}
+  }
 
   useEffect(()=>{
     //ここでotheruserのメッセージを取得する関数を実行する。
@@ -53,8 +46,6 @@ setContent("")
       console.log(error);
     });
   },[current_user])
-  console.log(otherUser);
-  console.log(messages);
   
 //認可処理
   useEffect(()=>{

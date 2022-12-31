@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getRooms } from "../../apis/rooms";
-import { ChatRoom, CurrentUser, Room } from "../../interfaces";
-import { ChatRoomsContext, ChatRoomsProvider } from "../../providers/ChatRoomsProvider";
+import { ChatRoom } from "../../interfaces";
+import { ChatRoomsContext } from "../../providers/ChatRoomsProvider";
 
 import { UserContext } from "../../providers/UserProvider";
 import { Header } from "../Templetes/Header";
@@ -10,19 +10,16 @@ import { Header } from "../Templetes/Header";
 export const ChatRooms = (props:any) => {
 
   const navigate = useNavigate();
-
   const { setChatRooms } = useContext(ChatRoomsContext);
   const chatcontext = useContext(ChatRoomsContext);
-  console.log(chatcontext);
+ 
   const direct_rooms = chatcontext.chatRooms?.rooms
   const group_room = chatcontext.chatRooms?.grouproom
   const group_room_message = chatcontext.chatRooms?.grlastmessage
-  console.log(direct_rooms);
-  console.log(group_room);
-  console.log(group_room_message);
+  
 
   const current_user = useContext(UserContext);
-  console.log(current_user);
+
 
   //チャット一覧を取得
   const handleGetChatRooms =  () => {
